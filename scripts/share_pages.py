@@ -152,7 +152,7 @@ def card(p):
   .heart {{ font-size: 40px; letter-spacing: .15em; }}
   /* The opening 「 hangs into the margin (it has built-in space on its left); only line one. */
   h1 .q {{ margin-left: -.45em; }}
-  .kicker {{ flex: none; margin-top: 22px; font-size: 44px; font-weight: 900; }}
+  .kicker {{ flex: none; margin-top: 18px; font-size: 64px; font-weight: 900; line-height: 1.1; }}
   h1 {{
     flex: none; margin: 2px 0 0; color: #fff; font-size: {size}px; font-weight: 900; line-height: 1.1;
     word-break: keep-all; overflow-wrap: anywhere;
