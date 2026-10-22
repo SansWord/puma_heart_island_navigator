@@ -347,7 +347,14 @@ async function main() {
     sharesHeart
   );
   $("#q").oninput = (e) => {
-    state.q = e.target.value.trim();
+    const q = e.target.value.trim();
+    // A new search starts from 全部, so earlier filters don't hide matches. Only when the box goes
+    // from empty to text: filters picked after that narrow the results and survive further typing.
+    if (q && !state.q) {
+      state.heart.clear();
+      state.island.clear();
+    }
+    state.q = q;
     rerender();
     // Typing from deep in the list jumps back to where the results start (search bar at the top).
     const resultsTop = $(".top-band").offsetHeight;
