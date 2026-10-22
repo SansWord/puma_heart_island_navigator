@@ -14,6 +14,7 @@ Learnings from building the 沈伯洋 HEART 政策島 導航器, newest first.
 
 | Version | Summary |
 |---------|---------|
+| [v1.5.4](#v154--official-terminology-2026-10-22-0437) | Labels follow puma.taipei: HEART 政策願景, 政策主題 / 細項, 看政見頁 |
 | [v1.5.3](#v153--pinned-search-and-topic-reset-2026-10-22-0432) | Search bar pinned on phones too, typing jumps to results; picking a HEART direction drops topics outside it |
 | [v1.5.2](#v152--footer-credit-2026-10-22-0428) | Low-key footer line: 由 SansWord 製作 · GitHub 原始碼 |
 | [v1.5.1](#v151--back-to-top-button-2026-10-22-0426) | Floating 回到頂端 button once the header scrolls away |
@@ -27,6 +28,29 @@ Learnings from building the 沈伯洋 HEART 政策島 導航器, newest first.
 | [v1.1.0](#v110--puma-brand-theme-and-favicon-2026-10-22-0402) | Light-only theme from puma.taipei's brand tokens, orange header band, Noto Sans TC, official favicon |
 | [v1.0.1](#v101--build-time-data-fetch-2026-10-22-0400) | Pages now deploys through GitHub Actions and downloads the official JSON at build time; no more data commits |
 | [v1.0.0](#v100--initial-release-2026-10-22-0356) | Static per-year view of the 94 HEART policies, daily data sync via GitHub Actions, published on GitHub Pages |
+
+## v1.5.4 — Official terminology (2026-10-22 04:37)
+
+**Review:** not yet
+
+**What was built:**
+- HEART filter label: 「HEART 面向」 → 「HEART 政策願景」.
+- Header counts: 「14 個主題 · 94 項政策」 → 「14 項政策主題 · 94 個細項」, as on the island page.
+- Policy-page link: 「拜訪網站政策專區 - 教育政策」 → 「看政見頁 - 教育政策」.
+
+**Key technical learnings:**
+- `[insight]` Terminology reference, checked against puma.taipei on 2026-10-22. Use the official term in the UI; news wording is context only.
+
+  | Concept | puma.taipei | News coverage | This site |
+  |---|---|---|---|
+  | H/E/A/R/T as a set | 政策願景 (「五個政策願景」, nav item) | 五大主軸, HEART 五大政見 | HEART 政策願景 |
+  | Letter names | H 空間, E 機會, A 陪伴, R 韌性, T 時間 | E sometimes 培力 / 創造機會 | as official |
+  | An island | 政策主題 (「14 項政策主題」) | — | 政策主題 |
+  | A policy item | 細項 (「94 個細項」), 政見 (「選一項政見」) | 政見 | 細項 in counts, 政見 in prose |
+  | Island panel list | 政策細項 | — | 政策細項 |
+  | `/policies/<name>` page | 政見頁 (「前往政見頁：…」) | — | 看政見頁 |
+  | Timeline panel | 任期時間軸 | — | 任期第 N 年 |
+  | Undated policies | (no official term) | — | 施政方向 |
 
 ## v1.5.3 — Pinned search and topic reset (2026-10-22 04:32)
 
