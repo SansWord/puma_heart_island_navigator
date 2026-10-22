@@ -48,6 +48,19 @@ h1 { margin: 10px 0 10px; font-size: clamp(30px, 6vw, 48px); font-weight: 900; l
 .top .lede { margin: 0 0 6px; max-width: 46em; font-weight: 500; }
 .top .meta { margin: 0; font-size: 13px; }
 .top a { color: var(--ink); font-weight: 700; }
+/* Invitation to the official island, where Puma walks the islands (he starts at 01 市府核心).
+   Loud in the header band, which scrolls away before the policies start. */
+.top .cta { margin: 14px 0 12px; }
+.top .cta a {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  text-decoration: none;
+}
+.top .cta a:hover { background: #000; }
+.top .cta a:focus-visible { outline: 3px solid var(--highlight); outline-offset: 2px; }
 
 /* The search bar is always pinned. The filter pills wrap instead of scrolling sideways; on phones
    they're too tall to pin, so they stick (under the search bar) only on wider screens. */
@@ -188,7 +201,82 @@ h1 { margin: 10px 0 10px; font-size: clamp(30px, 6vw, 48px); font-weight: 900; l
 .card .who { margin: 0; font-size: 12px; color: var(--muted); }
 .card details { font-size: 13px; color: var(--muted); }
 .card details ul { margin: 4px 0 0; padding-left: 18px; }
-.card .links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: auto; padding-top: 6px; font-size: 13px; }
+.card .links { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px; margin-top: auto; padding-top: 6px; font-size: 13px; }
+/* 分享: a link-styled toggle whose menu opens upward, over the card, so it never runs off the
+   bottom of the last card. */
+.share { position: relative; }
+.share summary {
+  list-style: none;
+  color: var(--accent);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.share summary::-webkit-details-marker { display: none; }
+.share summary::after { content: " ▾"; font-size: 10px; }
+.share[open] summary::after { content: " ▴"; }
+.share summary:hover { color: var(--accent-hover); }
+.share-menu {
+  position: absolute;
+  left: 0;
+  bottom: calc(100% + 6px);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  min-width: 9em;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  box-shadow: 0 6px 18px rgb(33 29 29 / .18);
+}
+.share-menu.flip { left: auto; right: 0; }
+.share-menu a, .share-menu button {
+  display: block;
+  padding: 8px 12px;
+  border: 0;
+  border-radius: 6px;
+  background: none;
+  color: var(--ink);
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.share-menu a:hover, .share-menu button:hover { background: var(--chip); color: var(--ink); }
+/* Touch screens: 分享 becomes a pill button and menu items get 44px rows, so each is an easy tap. */
+@media (pointer: coarse) {
+  .card .links { align-items: center; }
+  .share summary {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0 16px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: var(--chip);
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  .share-menu { min-width: 11em; }
+  .share-menu a, .share-menu button {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    font-size: 16px;
+  }
+}
+/* Card opened from a shared p/<id>/ link: clears the pinned search bar (and filters on wide screens). */
+.card { scroll-margin-top: calc(var(--search-h) + 16px); }
+@media (min-width: 720px) {
+  .card { scroll-margin-top: 220px; }
+}
+.card.linked { outline: 3px solid var(--highlight); outline-offset: 2px; animation: linked 1.2s ease-out 2; }
+@keyframes linked { 50% { outline-color: var(--brand); } }
+@media (prefers-reduced-motion: reduce) {
+  .card.linked { animation: none; }
+}
 
 /* Bottom padding clears the floating back-to-top button. */
 .foot { margin-top: 56px; padding-bottom: 88px; font-size: 12px; color: var(--muted); }

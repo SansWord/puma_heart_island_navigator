@@ -3,6 +3,15 @@
 // The official file is served for puma.taipei's own pages (no CORS header), so this page reads its own copy.
 
 const MAP_URL = "https://puma.taipei/heart-island";
+// Share targets, each building its preview card from the shared page's og: tags.
+// Threads also takes prefilled text; LINE and Facebook only take the link.
+const SHARE_TARGETS = [
+  { label: "Threads", href: (url, text) => `https://www.threads.com/intent/post?${new URLSearchParams({ text, url })}` },
+  { label: "LINE", href: (url) => `https://social-plugins.line.me/lineit/share?${new URLSearchParams({ url })}` },
+  { label: "Facebook", href: (url) => `https://www.facebook.com/sharer/sharer.php?${new URLSearchParams({ u: url })}` },
+];
+// Phones get one more item for the system share sheet (Messenger, IG, mail…).
+const nativeShare = !!navigator.share && matchMedia("(pointer: coarse)").matches;
 
 // HEART 政策願景 letters as named on https://puma.taipei/heart.
 const HEART = { H: "空間", E: "機會", A: "陪伴", R: "韌性", T: "時間" };
@@ -137,6 +146,11 @@ function matches(p) {
   return true;
 }
 
+// Per-policy share page (p/<id>/, generated at deploy by scripts/share_pages.py). It carries the
+// policy's own preview tags and redirects people to ?p=<id> on this page.
+const shareUrl = (p) => new URL(`p/${encodeURIComponent(p.id)}/`, location.href).href;
+const shareText = (p) => `沈伯洋的政見：「${p.name}」（${String(p.island.number).padStart(2, "0")} ${p.islandName}）`;
+
 function card(p, bucketId) {
   const steps = p.placements.get(bucketId).filter(Boolean);
   const stepsHtml = steps.length
@@ -146,7 +160,17 @@ function card(p, bucketId) {
   const facts = p.facts.length
     ? `<details open><summary>細節</summary><ul>${p.facts.map((f) => `<li>${esc(f)}</li>`).join("")}</ul></details>`
     : "";
-  return `<article class="card">
+  const url = shareUrl(p);
+  // One 分享 menu keeps the link row short however many targets there are.
+  const share = `<details class="share">
+      <summary>分享</summary>
+      <div class="share-menu">
+        ${SHARE_TARGETS.map((t) => `<a href="${esc(t.href(url, shareText(p)))}" target="_blank" rel="noopener">${t.label}</a>`).join("")}
+        <button type="button" data-copy="${esc(p.id)}">複製連結</button>
+        ${nativeShare ? `<button type="button" data-native="${esc(p.id)}">其他…</button>` : ""}
+      </div>
+    </details>`;
+  return `<article class="card" data-id="${esc(p.id)}">
     <div class="tag"><span>${String(p.island.number).padStart(2, "0")} ${esc(p.islandName)}</span><span class="heart">${esc(p.heart.join(""))}</span></div>
     <h3>${esc(p.name)}</h3>
     ${stepsHtml}
@@ -157,6 +181,7 @@ function card(p, bucketId) {
     <div class="links">
       <a href="${esc(p.mapUrl)}" target="_blank" rel="noopener" title="開啟「${esc(p.islandName)}」後，在「政策細項」點選「${esc(p.name)}」">拜訪政策島 ↗</a>
       <a href="${esc(p.sourceUrl)}" target="_blank" rel="noopener">${p.sourceUrl.startsWith("https://puma.taipei/") ? "看政見頁 - " : ""}${esc(p.sourceTitle)} ↗</a>
+      ${share}
     </div>
   </article>`;
 }
@@ -235,6 +260,14 @@ async function main() {
   $("#meta").textContent = `${D.islands.length} 項政策主題 · ${policies.length} 個細項 · 官方資料核對日 ${D.meta?.verifiedAt || "—"} · 本站資料更新 ${synced}`;
 
   readState();
+  // ?p=<id> (from a shared p/<id>/ link) points at one policy. writeState() drops it from the URL
+  // on the first render; if the filters in the same URL would hide that policy, they're cleared.
+  const linked = policies.find((p) => p.id === new URLSearchParams(location.search).get("p"));
+  if (linked && !matches(linked)) {
+    state.q = "";
+    state.heart.clear();
+    state.island.clear();
+  }
   $("#q").value = state.q;
   const islandHeart = new Map(D.islands.map((i) => [i.id, i.heart || []]));
   const sharesHeart = (id) => !state.heart.size || (islandHeart.get(id) || []).some((h) => state.heart.has(h));
@@ -280,9 +313,64 @@ async function main() {
     }
     requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView());
   };
-  if (location.hash) history.scrollRestoration = "manual";
-  jumpToHash();
+  if (location.hash || linked) history.scrollRestoration = "manual";
+  // A policy spanning two periods has a card in each: scroll to the first, highlight them all.
+  if (linked) {
+    requestAnimationFrame(() => {
+      const cards = document.querySelectorAll(`.card[data-id="${CSS.escape(linked.id)}"]`);
+      cards[0]?.scrollIntoView({ block: "start" });
+      for (const c of cards) c.classList.add("linked");
+    });
+  } else jumpToHash();
   addEventListener("hashchange", jumpToHash);
+
+  // 分享 menus: one open at a time; outside clicks and Escape close them.
+  const closeMenus = (except) => {
+    for (const d of document.querySelectorAll("details.share[open]")) if (d !== except) d.open = false;
+  };
+  // `toggle` doesn't bubble, so listen in the capture phase.
+  $("#timeline").addEventListener(
+    "toggle",
+    (e) => {
+      if (!e.target.open) return;
+      closeMenus(e.target);
+      // Open leftward when the menu would run past the right edge (right-hand column, phones).
+      const menu = e.target.querySelector(".share-menu");
+      menu.classList.remove("flip");
+      if (menu.getBoundingClientRect().right > document.documentElement.clientWidth - 8) menu.classList.add("flip");
+    },
+    true
+  );
+  document.addEventListener("click", (e) => closeMenus(e.target.closest("details.share")));
+  document.addEventListener("keydown", (e) => {
+    const open = document.querySelector("details.share[open]");
+    if (e.key !== "Escape" || !open) return;
+    open.open = false;
+    open.querySelector("summary").focus();
+  });
+  $("#timeline").addEventListener("click", async (e) => {
+    const item = e.target.closest(".share-menu a, .share-menu button");
+    if (!item) return;
+    const menu = item.closest("details");
+    const p = policies.find((x) => x.id === (item.dataset.copy || item.dataset.native));
+    if (item.dataset.native) {
+      menu.open = false;
+      try {
+        await navigator.share({ title: p.name, text: shareText(p), url: shareUrl(p) });
+      } catch {} // dismissed
+    } else if (item.dataset.copy) {
+      try {
+        await navigator.clipboard.writeText(shareUrl(p));
+        item.textContent = "已複製 ✓";
+      } catch {
+        item.textContent = "複製失敗";
+      }
+      setTimeout(() => {
+        item.textContent = "複製連結";
+        menu.open = false;
+      }, 1200);
+    } else menu.open = false; // a share link opened in a new tab
+  });
 }
 
 // Back-to-top button shows once the header has scrolled away; hidden, it's out of the tab order.

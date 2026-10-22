@@ -33,6 +33,22 @@ jobs:
           else
             echo "::warning::Fetch failed; deploying the committed snapshot"
           fi
+      # Preview images are cached by content hash, so only new or changed policies render.
+      # A fresh key every run saves the updated cache; restore-keys picks up the latest one.
+      - uses: actions/cache@v4
+        with:
+          path: .cache/og
+          key: og-${{ github.run_id }}
+          restore-keys: og-
+      # One link-preview page + image per policy (p/<id>/). The runner has Chrome; the CJK fonts
+      # back up Google Fonts, and are only installed when something needs rendering.
+      # Failed images fall back to assets/og.png.
+      - name: Generate share pages
+        run: |
+          if [ "$(python3 scripts/share_pages.py --missing)" != 0 ]; then
+            { sudo apt-get update -qq && sudo apt-get install -y -qq fonts-noto-cjk; } >/dev/null || echo "::warning::fonts-noto-cjk install failed"
+          fi
+          python3 scripts/share_pages.py --images
           rm -rf docs scripts README.md
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3

@@ -1,6 +1,6 @@
 # Devlog
 
-Learnings from building the 沈伯洋 HEART 政策島 導航器, newest first.
+Learnings from building the 沈伯洋 HEART 政策島 導覽器, newest first.
 
 ### Learning tags
 
