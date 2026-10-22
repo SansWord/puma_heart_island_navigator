@@ -255,6 +255,23 @@ async function main() {
   }
 }
 
+// Back-to-top button shows once the header has scrolled away; hidden, it's out of the tab order.
+function backToTop() {
+  const btn = $("#to-top");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)");
+  new IntersectionObserver(([entry]) => {
+    const show = !entry.isIntersecting;
+    btn.classList.toggle("show", show);
+    btn.tabIndex = show ? 0 : -1;
+    btn.setAttribute("aria-hidden", String(!show));
+  }).observe($(".top-band"));
+  btn.onclick = () => {
+    window.scrollTo({ top: 0, behavior: reduce.matches ? "auto" : "smooth" });
+    if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+  };
+}
+
+backToTop();
 main().catch((err) => {
   console.error(err);
   $("#meta").textContent = "資料載入失敗。";

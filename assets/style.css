@@ -168,3 +168,32 @@ h1 { margin: 10px 0 10px; font-size: clamp(30px, 6vw, 48px); font-weight: 900; l
 
 .foot { margin-top: 56px; padding-bottom: 40px; font-size: 12px; color: var(--muted); }
 .no-match { margin-top: 32px; color: var(--muted); }
+
+/* Back-to-top shortcut: hidden until the header scrolls out of view. */
+.to-top {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 3;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--accent-ink);
+  font: inherit;
+  font-size: 22px;
+  font-weight: 700;
+  box-shadow: 0 4px 12px rgb(33 29 29 / .25);
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(8px);
+  pointer-events: none;
+  transition: opacity .2s, transform .2s;
+}
+.to-top.show { opacity: 1; transform: none; pointer-events: auto; }
+.to-top:hover { background: var(--accent-hover); }
+.to-top:focus-visible { outline: 3px solid var(--highlight); outline-offset: 2px; }
+@media (prefers-reduced-motion: reduce) {
+  .to-top { transition: none; }
+}
