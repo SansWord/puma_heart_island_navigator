@@ -14,6 +14,7 @@ Learnings from building the 沈伯洋 HEART 政策島 導航器, newest first.
 
 | Version | Summary |
 |---------|---------|
+| [v1.4.1](#v141--local-preview-script-2026-10-22-0417) | `scripts/serve.sh` serves the site locally and opens the browser |
 | [v1.4.0](#v140--labeled-wrapping-filters-2026-10-22-0415) | Filter groups labeled HEART 面向 / 政策主題; pills wrap and show each HEART word; mobile-friendly controls |
 | [v1.3.1](#v131--descriptive-wording-everywhere-2026-10-22-0409) | Section subtitles, identifiers, README and devlog reworded to describe policies by what they are |
 | [v1.3.0](#v130--wording-pass-2026-10-22-0407) | Card links read 拜訪政策島 / 拜訪網站政策專區; new 施政方向 section name |
@@ -21,6 +22,17 @@ Learnings from building the 沈伯洋 HEART 政策島 導航器, newest first.
 | [v1.1.0](#v110--puma-brand-theme-and-favicon-2026-10-22-0402) | Light-only theme from puma.taipei's brand tokens, orange header band, Noto Sans TC, official favicon |
 | [v1.0.1](#v101--build-time-data-fetch-2026-10-22-0400) | Pages now deploys through GitHub Actions and downloads the official JSON at build time; no more data commits |
 | [v1.0.0](#v100--initial-release-2026-10-22-0356) | Static per-year view of the 94 HEART policies, daily data sync via GitHub Actions, published on GitHub Pages |
+
+## v1.4.1 — Local preview script (2026-10-22 04:17)
+
+**Review:** not yet
+
+**What was built:**
+- `scripts/serve.sh [port]` serves the repo at `http://127.0.0.1:8765/` (or the given port), bound to localhost only, and opens the browser. It exits with a hint if the port is already in use.
+- README explains why `index.html` needs a server.
+
+**Key technical learnings:**
+- `[note]` Opening `index.html` from disk (`file://`) can't work as built: Chrome blocks both `<script type="module">` and `fetch()` of local files. Supporting `file://` would mean a classic script plus the data shipped as a generated `policies.js` global. Decided to keep `fetch` + modules and use a local server.
 
 ## v1.4.0 — Labeled, wrapping filters (2026-10-22 04:15)
 
