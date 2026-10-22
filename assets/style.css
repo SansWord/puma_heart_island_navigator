@@ -85,7 +85,7 @@ h1 { margin: 10px 0 10px; font-size: clamp(30px, 6vw, 48px); font-weight: 900; l
   .controls { position: sticky; top: var(--search-h); z-index: 2; }
 }
 .filter { display: flex; gap: 4px 10px; align-items: baseline; margin-top: 6px; }
-.filter-label { flex: none; width: 6.5em; white-space: nowrap; font-size: 12px; font-weight: 700; color: var(--muted); }
+.filter-label { flex: none; width: 7.5em; white-space: nowrap; font-size: 12px; font-weight: 700; color: var(--muted); }
 @media (max-width: 540px) {
   .filter { flex-direction: column; }
 }

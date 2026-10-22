@@ -4,7 +4,7 @@
 
 const MAP_URL = "https://puma.taipei/heart-island";
 
-// HEART letters as named on https://puma.taipei/heart.
+// HEART 政策願景 letters as named on https://puma.taipei/heart.
 const HEART = { H: "空間", E: "機會", A: "陪伴", R: "韌性", T: "時間" };
 
 // Term assumed to start 2026-12-25, so term year N ≈ calendar year 2026 + N.
@@ -150,7 +150,7 @@ function card(p, bucketId) {
     ${facts}
     <div class="links">
       <a href="${esc(p.mapUrl)}" target="_blank" rel="noopener" title="開啟「${esc(p.islandName)}」後，在「政策細項」點選「${esc(p.name)}」">拜訪政策島 ↗</a>
-      <a href="${esc(p.sourceUrl)}" target="_blank" rel="noopener">${p.sourceUrl.startsWith("https://puma.taipei/") ? "拜訪網站政策專區 - " : ""}${esc(p.sourceTitle)} ↗</a>
+      <a href="${esc(p.sourceUrl)}" target="_blank" rel="noopener">${p.sourceUrl.startsWith("https://puma.taipei/") ? "看政見頁 - " : ""}${esc(p.sourceTitle)} ↗</a>
     </div>
   </article>`;
 }
@@ -218,7 +218,7 @@ async function main() {
   ]);
   const policies = build(D);
   const synced = sync.fetchedAt ? new Date(sync.fetchedAt).toLocaleDateString("zh-TW") : "—";
-  $("#meta").textContent = `${D.islands.length} 個主題 · ${policies.length} 項政策 · 官方資料核對日 ${D.meta?.verifiedAt || "—"} · 本站資料更新 ${synced}`;
+  $("#meta").textContent = `${D.islands.length} 項政策主題 · ${policies.length} 個細項 · 官方資料核對日 ${D.meta?.verifiedAt || "—"} · 本站資料更新 ${synced}`;
 
   readState();
   $("#q").value = state.q;
