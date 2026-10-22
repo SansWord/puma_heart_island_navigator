@@ -14,6 +14,7 @@ Learnings from building the 沈伯洋 HEART 政策島 導航器, newest first.
 
 | Version | Summary |
 |---------|---------|
+| [v1.5.3](#v153--pinned-search-and-topic-reset-2026-10-22-0432) | Search bar pinned on phones too, typing jumps to results; picking a HEART direction drops topics outside it |
 | [v1.5.2](#v152--footer-credit-2026-10-22-0428) | Low-key footer line: 由 SansWord 製作 · GitHub 原始碼 |
 | [v1.5.1](#v151--back-to-top-button-2026-10-22-0426) | Floating 回到頂端 button once the header scrolls away |
 | [v1.5.0](#v150--heart-aware-topic-pills-2026-10-22-0424) | Selecting a HEART direction greys out topics that don't share it |
@@ -26,6 +27,19 @@ Learnings from building the 沈伯洋 HEART 政策島 導航器, newest first.
 | [v1.1.0](#v110--puma-brand-theme-and-favicon-2026-10-22-0402) | Light-only theme from puma.taipei's brand tokens, orange header band, Noto Sans TC, official favicon |
 | [v1.0.1](#v101--build-time-data-fetch-2026-10-22-0400) | Pages now deploys through GitHub Actions and downloads the official JSON at build time; no more data commits |
 | [v1.0.0](#v100--initial-release-2026-10-22-0356) | Static per-year view of the 94 HEART policies, daily data sync via GitHub Actions, published on GitHub Pages |
+
+## v1.5.3 — Pinned search and topic reset (2026-10-22 04:32)
+
+**Review:** not yet
+
+**What was built:**
+- The search box moved out of the filter section into its own `.searchbar` (64px, `--search-h`), pinned at the top on every screen size. On 720px and wider, the filter pills stay pinned right below it (`top: var(--search-h)`); on phones only the search bar stays pinned.
+- Typing in search while scrolled down jumps to where the results start (just below the orange header).
+- Picking a HEART direction drops any selected topic that doesn't share it. If none remain, the topic filter returns to 全部, so the list shows that whole direction.
+
+**Key technical learnings:**
+- `[gotcha]` `position: sticky` only sticks within its parent. To pin the search box without the filters on phones, it needed its own wrapper next to `.controls`, not inside it.
+- `[insight]` Two stacked sticky bars work as siblings: the first at `top: 0`, the second at `top: <first's height>`. A fixed height in a CSS variable keeps the offset and `scroll-margin-top` in sync.
 
 ## v1.5.2 — Footer credit (2026-10-22 04:28)
 
