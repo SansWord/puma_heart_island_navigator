@@ -4,6 +4,9 @@
 
 const MAP_URL = "https://puma.taipei/heart-island";
 
+// HEART letters as named on https://puma.taipei/heart.
+const HEART = { H: "空間", E: "機會", A: "陪伴", R: "韌性", T: "時間" };
+
 // Term assumed to start 2026-12-25, so term year N ≈ calendar year 2026 + N.
 const BUCKETS = [
   { id: "y2027", title: "2027", sub: "任期第 1 年" },
@@ -219,7 +222,12 @@ async function main() {
     writeState();
     render(policies);
   };
-  syncHeart = chips($("#heart-chips"), [..."HEART"].map((h) => ({ value: h, label: h })), state.heart, rerender);
+  syncHeart = chips(
+    $("#heart-chips"),
+    Object.entries(HEART).map(([h, word]) => ({ value: h, label: `${h} ${word}` })),
+    state.heart,
+    rerender
+  );
   syncIsland = chips(
     $("#island-chips"),
     D.islands.map((i) => ({ value: i.id, label: zh(i.name) })),

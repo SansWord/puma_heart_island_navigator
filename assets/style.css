@@ -49,10 +49,9 @@ h1 { margin: 10px 0 10px; font-size: clamp(30px, 6vw, 48px); font-weight: 900; l
 .top .meta { margin: 0; font-size: 13px; }
 .top a { color: var(--ink); font-weight: 700; }
 
+/* Pills wrap instead of scrolling sideways. On phones the wrapped pills are too tall to pin,
+   so the controls stick only on wider screens. */
 .controls {
-  position: sticky;
-  top: 0;
-  z-index: 2;
   background: var(--bg);
   padding-top: 16px;
   padding-bottom: 8px;
@@ -68,9 +67,16 @@ h1 { margin: 10px 0 10px; font-size: clamp(30px, 6vw, 48px); font-weight: 900; l
   color: var(--ink);
 }
 #q:focus { outline: 2px solid var(--brand); outline-offset: 0; border-color: var(--brand); }
-.chips { display: flex; gap: 6px; margin-top: 8px; overflow-x: auto; scrollbar-width: none; }
+@media (min-width: 720px) {
+  .controls { position: sticky; top: 0; z-index: 2; }
+}
+.filter { display: flex; gap: 4px 10px; align-items: baseline; margin-top: 10px; }
+.filter-label { flex: none; width: 6.5em; white-space: nowrap; font-size: 12px; font-weight: 700; color: var(--muted); }
+@media (max-width: 540px) {
+  .filter { flex-direction: column; }
+}
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chips button {
-  flex: none;
   font: inherit;
   font-size: 13px;
   padding: 4px 10px;
@@ -85,6 +91,10 @@ h1 { margin: 10px 0 10px; font-size: clamp(30px, 6vw, 48px); font-weight: 900; l
   background: var(--accent);
   border-color: var(--accent);
   color: var(--accent-ink);
+}
+@media (max-width: 540px) {
+  .chips { gap: 4px; }
+  .chips button { padding: 4px 8px; }
 }
 
 .summary {
@@ -108,7 +118,10 @@ h1 { margin: 10px 0 10px; font-size: clamp(30px, 6vw, 48px); font-weight: 900; l
 .summary b { font-size: 22px; font-weight: 900; color: var(--brand); margin-right: 4px; }
 .summary .bar { height: 4px; margin-top: 4px; border-radius: 2px; background: var(--brand); }
 
-.bucket { margin-top: 36px; scroll-margin-top: 150px; }
+.bucket { margin-top: 36px; scroll-margin-top: 16px; }
+@media (min-width: 720px) {
+  .bucket { scroll-margin-top: 220px; }
+}
 .bucket > h2 {
   margin: 0;
   padding-bottom: 6px;

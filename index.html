@@ -38,8 +38,14 @@
 
 <section class="controls" aria-label="篩選">
   <input id="q" type="search" placeholder="搜尋政策、關鍵字…" aria-label="搜尋政策">
-  <div class="chips" id="heart-chips" aria-label="依 HEART 字母篩選"></div>
-  <div class="chips" id="island-chips" aria-label="依政策主題篩選"></div>
+  <div class="filter">
+    <span class="filter-label" id="heart-label">HEART 面向</span>
+    <div class="chips" id="heart-chips" role="group" aria-labelledby="heart-label"></div>
+  </div>
+  <div class="filter">
+    <span class="filter-label" id="island-label">政策主題</span>
+    <div class="chips" id="island-chips" role="group" aria-labelledby="island-label"></div>
+  </div>
 </section>
 
 <nav class="summary" id="summary" aria-label="各時段政策數"></nav>
