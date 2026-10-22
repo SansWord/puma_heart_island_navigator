@@ -79,7 +79,7 @@ def page(p, has_image):
 <meta property="og:type" content="website">
 <meta property="og:locale" content="zh_TW">
 <meta property="og:site_name" content="沈伯洋 HEART 政策島 導覽器">
-<meta property="og:title" content="{e(p['name'])}｜沈伯洋的政見">
+<meta property="og:title" content="{e(p['name'])}｜沈伯洋的政見 — HEART 政策島 導覽器">
 <meta property="og:description" content="{e(desc)}">
 <meta property="og:url" content="{e(url)}">
 <meta property="og:image" content="{e(image)}">

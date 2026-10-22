@@ -4,10 +4,11 @@
 
 const MAP_URL = "https://puma.taipei/heart-island";
 // Share targets, each building its preview card from the shared page's og: tags.
-// Threads also takes prefilled text; LINE and Facebook only take the link.
+// Threads and LINE also take prefilled text (shareText). Facebook dropped prefilled text, so there
+// the caption only comes from the share page's og:title.
 const SHARE_TARGETS = [
   { label: "Threads", href: (url, text) => `https://www.threads.com/intent/post?${new URLSearchParams({ text, url })}` },
-  { label: "LINE", href: (url) => `https://social-plugins.line.me/lineit/share?${new URLSearchParams({ url })}` },
+  { label: "LINE", href: (url, text) => `https://social-plugins.line.me/lineit/share?${new URLSearchParams({ url, text })}` },
   { label: "Facebook", href: (url) => `https://www.facebook.com/sharer/sharer.php?${new URLSearchParams({ u: url })}` },
 ];
 // Phones get one more item for the system share sheet (Messenger, IG, mail…).
@@ -149,7 +150,8 @@ function matches(p) {
 // Per-policy share page (p/<id>/, generated at deploy by scripts/share_pages.py). It carries the
 // policy's own preview tags and redirects people to ?p=<id> on this page.
 const shareUrl = (p) => new URL(`p/${encodeURIComponent(p.id)}/`, location.href).href;
-const shareText = (p) => `沈伯洋的政見：「${p.name}」（${String(p.island.number).padStart(2, "0")} ${p.islandName}）`;
+const shareText = (p) =>
+  `沈伯洋的政見：「${p.name}」（${String(p.island.number).padStart(2, "0")} ${p.islandName}）\n— HEART 政策島 導覽器`;
 
 function card(p, bucketId) {
   const steps = p.placements.get(bucketId).filter(Boolean);

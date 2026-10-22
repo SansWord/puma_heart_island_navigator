@@ -44,7 +44,8 @@ a:hover { color: var(--accent-hover); }
   font-weight: 700;
   letter-spacing: .12em;
 }
-h1 { margin: 10px 0 10px; font-size: clamp(30px, 6vw, 48px); font-weight: 900; line-height: 1.15; color: #fff; }
+/* keep-all: wrap only at the spaces, so 導覽器 never splits on phones. */
+h1 { margin: 10px 0 10px; font-size: clamp(30px, 6vw, 48px); font-weight: 900; line-height: 1.15; color: #fff; word-break: keep-all; }
 .top .lede { margin: 0 0 6px; max-width: 46em; font-weight: 500; }
 .top .meta { margin: 0; font-size: 13px; }
 .top a { color: var(--ink); font-weight: 700; }
@@ -212,8 +213,8 @@ h1 { margin: 10px 0 10px; font-size: clamp(30px, 6vw, 48px); font-weight: 900; l
   cursor: pointer;
 }
 .share summary::-webkit-details-marker { display: none; }
-.share summary::after { content: " ▾"; font-size: 10px; }
-.share[open] summary::after { content: " ▴"; }
+.share summary::after { content: "▼"; margin-left: 3px; font-size: .6em; vertical-align: .15em; }
+.share[open] summary::after { content: "▲"; }
 .share summary:hover { color: var(--accent-hover); }
 .share-menu {
   position: absolute;
