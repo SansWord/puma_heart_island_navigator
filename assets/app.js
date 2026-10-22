@@ -6,10 +6,13 @@ const MAP_URL = "https://puma.taipei/heart-island";
 // Share targets, each building its preview card from the shared page's og: tags.
 // Threads and LINE also take prefilled text (shareText). Facebook dropped prefilled text, so there
 // the caption only comes from the share page's og:title.
+// encodeURIComponent, not URLSearchParams: the latter writes spaces as "+", which the Threads app
+// shows literally.
+const query = (params) => Object.entries(params).map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join("&");
 const SHARE_TARGETS = [
-  { label: "Threads", href: (url, text) => `https://www.threads.com/intent/post?${new URLSearchParams({ text, url })}` },
-  { label: "LINE", href: (url, text) => `https://social-plugins.line.me/lineit/share?${new URLSearchParams({ url, text })}` },
-  { label: "Facebook", href: (url) => `https://www.facebook.com/sharer/sharer.php?${new URLSearchParams({ u: url })}` },
+  { label: "Threads", href: (url, text) => `https://www.threads.com/intent/post?${query({ text, url })}` },
+  { label: "LINE", href: (url, text) => `https://social-plugins.line.me/lineit/share?${query({ url, text })}` },
+  { label: "Facebook", href: (url) => `https://www.facebook.com/sharer/sharer.php?${query({ u: url })}` },
 ];
 // Facebook sharing is hidden while it's being debugged. Flip this to bring it back, or add ?fb=1
 // to the page URL to show it for testing (read once on load; the URL is rewritten afterwards).
