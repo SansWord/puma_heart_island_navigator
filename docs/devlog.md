@@ -14,6 +14,7 @@ Learnings from building the 沈伯洋 HEART 政策島 導航器, newest first.
 
 | Version | Summary |
 |---------|---------|
+| [v1.6.1](#v161--threads-screenshots-2026-10-22-0449) | Shorter 階段 subtitle; phone screenshots for sharing on Threads |
 | [v1.6.0](#v160--two-timeline-metrics-2026-10-22-0445) | Timeline regrouped: 任期期程 短期／中期／長期 (years absorbed) · 分階段推動 第一–三階段 · 施政方向 |
 | [v1.5.5](#v155--feedback-invitation-2026-10-22-0438) | Footer invites feedback through GitHub issues or a Threads DM |
 | [v1.5.4](#v154--official-terminology-2026-10-22-0437) | Labels follow puma.taipei: HEART 政策願景, 政策主題 / 細項, 看政見頁 |
@@ -30,6 +31,17 @@ Learnings from building the 沈伯洋 HEART 政策島 導航器, newest first.
 | [v1.1.0](#v110--puma-brand-theme-and-favicon-2026-10-22-0402) | Light-only theme from puma.taipei's brand tokens, orange header band, Noto Sans TC, official favicon |
 | [v1.0.1](#v101--build-time-data-fetch-2026-10-22-0400) | Pages now deploys through GitHub Actions and downloads the official JSON at build time; no more data commits |
 | [v1.0.0](#v100--initial-release-2026-10-22-0356) | Static per-year view of the 94 HEART policies, daily data sync via GitHub Actions, published on GitHub Pages |
+
+## v1.6.1 — Threads screenshots (2026-10-22 04:49)
+
+**Review:** not yet
+
+**What was built:**
+- 第一–三階段 section subtitle shortened to 「各主題內的推動順序」 so it fits on one line at phone width. The by-topic ordering is explained in the footer and README.
+- Five 1080×1440 (3:4) phone screenshots for a Threads post: header, summary tiles, HEART filter greying out topics, a 第一階段 card, and a searched 中期 card. Not committed.
+
+**Key technical learnings:**
+- `[insight]` Sharp phone screenshots without a device emulator: serve a wrapper page from the **same origin** as the site (a folder with symlinks to `index.html`, `assets/`, `data/` plus `shot.html`). The wrapper holds a 390px iframe, scrolls it to a selector through `contentWindow`, and hides the floating button. Then run headless Chrome with `--force-device-scale-factor=2.7692 --window-size=500,520` and center-crop to 1080×1440 with `sips -c 1440 1080`. Same origin is what allows scripting the iframe; from `file://` it's blocked.
 
 ## v1.6.0 — Two timeline metrics (2026-10-22 04:45)
 
