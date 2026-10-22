@@ -22,6 +22,42 @@ if (!FACEBOOK_SHARE && !new URLSearchParams(location.search).has("fb")) {
 }
 // Phones get one more item for the system share sheet (Messenger, IG, mail…).
 const nativeShare = !!navigator.share && matchMedia("(pointer: coarse)").matches;
+// The 分享 menu (Threads / LINE / Facebook links) is hidden: those links misbehave inside in-app
+// browsers. Cards get a single 複製並分享 button that copies the share text and link instead.
+// Flip this to bring the menu back, or add ?menu=1 to the page URL to test it.
+const SHARE_MENU = false;
+const showMenu = SHARE_MENU || new URLSearchParams(location.search).has("menu");
+
+// navigator.clipboard is often missing or blocked in in-app browsers (Threads, LINE, Facebook);
+// fall back to selecting a hidden textarea and execCommand("copy").
+async function copyText(text) {
+  try {
+    await navigator.clipboard.writeText(text);
+    return true;
+  } catch {}
+  const ta = document.createElement("textarea");
+  ta.value = text;
+  ta.readOnly = true;
+  ta.style.cssText = "position:fixed;top:0;left:0;opacity:0";
+  document.body.append(ta);
+  ta.select();
+  ta.setSelectionRange(0, text.length);
+  let ok = false;
+  try {
+    ok = document.execCommand("copy");
+  } catch {}
+  ta.remove();
+  return ok;
+}
+
+let toastTimer;
+function toast(message) {
+  const el = $("#toast");
+  el.textContent = message;
+  el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.remove("show"), 3500);
+}
 
 // HEART 政策願景 letters as named on https://puma.taipei/heart.
 const HEART = { H: "空間", E: "機會", A: "陪伴", R: "韌性", T: "時間" };
@@ -176,7 +212,9 @@ function card(p, bucketId) {
     : "";
   const url = shareUrl(p);
   // One 分享 menu keeps the link row short however many targets there are.
-  const share = `<details class="share">
+  const share = !showMenu
+    ? `<button type="button" class="share-copy" data-share="${esc(p.id)}">複製並分享</button>`
+    : `<details class="share">
       <summary>分享</summary>
       <div class="share-menu">
         ${SHARE_TARGETS.map((t) => `<a href="${esc(t.href(url, shareText(p)))}" target="_blank" rel="noopener">${t.label}</a>`).join("")}
@@ -373,17 +411,24 @@ async function main() {
         await navigator.share({ title: p.name, text: shareText(p), url: shareUrl(p) });
       } catch {} // dismissed
     } else if (item.dataset.copy) {
-      try {
-        await navigator.clipboard.writeText(shareUrl(p));
-        item.textContent = "已複製 ✓";
-      } catch {
-        item.textContent = "複製失敗";
-      }
+      item.textContent = (await copyText(shareUrl(p))) ? "已複製 ✓" : "複製失敗";
       setTimeout(() => {
         item.textContent = "複製連結";
         menu.open = false;
       }, 1200);
     } else menu.open = false; // a share link opened in a new tab
+  });
+
+  // 複製並分享: the share text plus link, ready to paste as a post, a reply or a chat message.
+  $("#timeline").addEventListener("click", async (e) => {
+    const btn = e.target.closest("button.share-copy");
+    if (!btn) return;
+    const p = policies.find((x) => x.id === btn.dataset.share);
+    if (await copyText(`${shareText(p)}\n${shareUrl(p)}`)) {
+      toast("已複製！貼到 Threads 回覆、LINE 或任何地方分享吧");
+      btn.textContent = "已複製 ✓";
+      setTimeout(() => (btn.textContent = "複製並分享"), 2000);
+    } else toast("複製失敗，請改用瀏覽器開啟本頁再試一次");
   });
 }
 

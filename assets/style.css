@@ -206,7 +206,9 @@ h1 { margin: 10px 0 10px; font-size: clamp(30px, 6vw, 48px); font-weight: 900; l
 /* 分享: a link-styled toggle whose menu opens upward, over the card, so it never runs off the
    bottom of the last card. */
 .share { position: relative; }
-.share summary {
+.share-copy { padding: 0; border: 0; background: none; font: inherit; }
+/* 複製並分享 (the menu's stand-in while it's hidden) shares the 分享 toggle's look. */
+.share summary, .share-copy {
   list-style: none;
   color: var(--accent);
   text-decoration: underline;
@@ -215,7 +217,7 @@ h1 { margin: 10px 0 10px; font-size: clamp(30px, 6vw, 48px); font-weight: 900; l
 .share summary::-webkit-details-marker { display: none; }
 .share summary::after { content: "▼"; margin-left: 3px; font-size: .6em; vertical-align: .15em; }
 .share[open] summary::after { content: "▲"; }
-.share summary:hover { color: var(--accent-hover); }
+.share summary:hover, .share-copy:hover { color: var(--accent-hover); }
 .share-menu {
   position: absolute;
   left: 0;
@@ -248,7 +250,7 @@ h1 { margin: 10px 0 10px; font-size: clamp(30px, 6vw, 48px); font-weight: 900; l
 /* Touch screens: 分享 becomes a pill button and menu items get 44px rows, so each is an easy tap. */
 @media (pointer: coarse) {
   .card .links { align-items: center; }
-  .share summary {
+  .share summary, .share-copy {
     display: inline-flex;
     align-items: center;
     min-height: 44px;
@@ -284,6 +286,32 @@ h1 { margin: 10px 0 10px; font-size: clamp(30px, 6vw, 48px); font-weight: 900; l
 .foot .credit a { color: inherit; }
 .foot .credit a:hover { color: var(--accent); }
 .no-match { margin-top: 32px; color: var(--muted); }
+
+/* Confirmation after 複製並分享, above the back-to-top button. */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: calc(max(16px, env(safe-area-inset-bottom)) + 64px);
+  z-index: 4;
+  width: max-content;
+  max-width: min(92vw, 560px);
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  text-align: center;
+  box-shadow: 0 6px 18px rgb(33 29 29 / .3);
+  opacity: 0;
+  transform: translate(-50%, 8px);
+  pointer-events: none;
+  transition: opacity .2s, transform .2s;
+}
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+@media (prefers-reduced-motion: reduce) {
+  .toast { transition: none; }
+}
 
 /* Back-to-top shortcut: hidden until the header scrolls out of view. */
 .to-top {

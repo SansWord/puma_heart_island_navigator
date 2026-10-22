@@ -59,9 +59,11 @@ scripts/serve.sh 9000     # 改用其他 port
 
 ## 分享連結
 
-每張卡片的「分享」選單有 Threads、LINE、複製連結（手機另有「其他…」開啟系統分享）。Threads 與 LINE 會預填文字：「沈伯洋的政見：「政見名稱」」、說明，空一行後接「點入看更多，並分享最觸動你的政策 — HEART 政策島 導覽器」；Facebook 不接受預填文字，同樣的字樣放在分享頁的 `og:title`。
+每張卡片有一個「複製並分享」按鈕：複製預填文字與分享網址，並提示可以貼到 Threads 回覆、LINE 或任何地方。預填文字是「沈伯洋的政見：「政見名稱」」、說明，空一行後接「點入看更多，並分享最觸動你的政策 — HEART 政策島 導覽器」，最後一行是網址。App 內建瀏覽器常擋 `navigator.clipboard`，所以失敗時改用隱藏 textarea ＋ `execCommand("copy")`。
 
-Facebook 分享目前隱藏（除錯中）：`assets/app.js` 的 `FACEBOOK_SHARE` 改成 `true` 即恢復；網址加 `?fb=1` 可不改程式、直接在線上測試。分享出去的網址是每項政見自己的頁面：
+原本的「分享」選單（Threads、LINE、Facebook、複製連結，手機另有「其他…」）在 App 內建瀏覽器裡運作不正常，目前隱藏：`assets/app.js` 的 `SHARE_MENU` 改成 `true` 即恢復，網址加 `?menu=1` 可直接在線上測試；選單內的 Facebook 另由 `FACEBOOK_SHARE`（或 `?fb=1`）控制。
+
+分享出去的網址是每項政見自己的頁面：
 
 ```
 https://sansword.github.io/puma_heart_island_navigator/p/transport-bus/
