@@ -14,6 +14,7 @@ Learnings from building the 沈伯洋 HEART 政策島 導航器, newest first.
 
 | Version | Summary |
 |---------|---------|
+| [v1.5.0](#v150--heart-aware-topic-pills-2026-10-22-0424) | Selecting a HEART direction greys out topics that don't share it |
 | [v1.4.2](#v142--policy-picking-guidance-2026-10-22-0423) | Header and link tooltips tell readers to pick the policy from the island's 政策細項 list |
 | [v1.4.1](#v141--local-preview-script-2026-10-22-0417) | `scripts/serve.sh` serves the site locally and opens the browser |
 | [v1.4.0](#v140--labeled-wrapping-filters-2026-10-22-0415) | Filter groups labeled HEART 面向 / 政策主題; pills wrap and show each HEART word; mobile-friendly controls |
@@ -23,6 +24,17 @@ Learnings from building the 沈伯洋 HEART 政策島 導航器, newest first.
 | [v1.1.0](#v110--puma-brand-theme-and-favicon-2026-10-22-0402) | Light-only theme from puma.taipei's brand tokens, orange header band, Noto Sans TC, official favicon |
 | [v1.0.1](#v101--build-time-data-fetch-2026-10-22-0400) | Pages now deploys through GitHub Actions and downloads the official JSON at build time; no more data commits |
 | [v1.0.0](#v100--initial-release-2026-10-22-0356) | Static per-year view of the 94 HEART policies, daily data sync via GitHub Actions, published on GitHub Pages |
+
+## v1.5.0 — HEART-aware topic pills (2026-10-22 04:24)
+
+**Review:** not yet
+
+**What was built:**
+- With any HEART direction selected, each 政策主題 pill stays active only if its island's `heart` letters include a selected one. The rest are greyed out (`disabled`, 35% opacity). A topic that's already selected stays clickable so it can be turned off.
+- `chips()` takes an optional `available(value)` callback, which the island group uses.
+
+**Key technical learnings:**
+- `[note]` HEART letters belong to islands (`islands[].heart`), and policies inherit them, so topic availability and the policy filter agree. 台北研究院 and 客家 have no letters in the current data, so they're greyed out under any HEART filter.
 
 ## v1.4.2 — Policy-picking guidance (2026-10-22 04:23)
 
