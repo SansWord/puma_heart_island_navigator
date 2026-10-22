@@ -14,6 +14,7 @@ Learnings from building the 沈伯洋 HEART 政策島 導航器, newest first.
 
 | Version | Summary |
 |---------|---------|
+| [v1.6.0](#v160--two-timeline-metrics-2026-10-22-0445) | Timeline regrouped: 任期期程 短期／中期／長期 (years absorbed) · 分階段推動 第一–三階段 · 施政方向 |
 | [v1.5.5](#v155--feedback-invitation-2026-10-22-0438) | Footer invites feedback through GitHub issues or a Threads DM |
 | [v1.5.4](#v154--official-terminology-2026-10-22-0437) | Labels follow puma.taipei: HEART 政策願景, 政策主題 / 細項, 看政見頁 |
 | [v1.5.3](#v153--pinned-search-and-topic-reset-2026-10-22-0432) | Search bar pinned on phones too, typing jumps to results; picking a HEART direction drops topics outside it |
@@ -29,6 +30,24 @@ Learnings from building the 沈伯洋 HEART 政策島 導航器, newest first.
 | [v1.1.0](#v110--puma-brand-theme-and-favicon-2026-10-22-0402) | Light-only theme from puma.taipei's brand tokens, orange header band, Noto Sans TC, official favicon |
 | [v1.0.1](#v101--build-time-data-fetch-2026-10-22-0400) | Pages now deploys through GitHub Actions and downloads the official JSON at build time; no more data commits |
 | [v1.0.0](#v100--initial-release-2026-10-22-0356) | Static per-year view of the 94 HEART policies, daily data sync via GitHub Actions, published on GitHub Pages |
+
+## v1.6.0 — Two timeline metrics (2026-10-22 04:45)
+
+**Review:** not yet
+
+**What was built:**
+- Sections went from 13 (five year sections, 短期／中期／長期, 第一–三階段, 施政方向, 其他) to 7 in three labelled groups:
+  - **任期期程**: 短期 (任期第 1–2 年), 中期 (第 3–4 年), 長期 (第 5 年起). Year codes and the official 短期／中期／長期 share this one scale. Codes that span the boundary (`m18-28`, `year2-3`, `ay117`, `year4+`) appear in both periods, each with its own step. Cards are sorted by start time (`at` in `STAGES`).
+  - **分階段推動**: 第一／二／三階段 with counts. Cards inside a stage keep topic order, so each topic's rollout lines up across the three sections.
+  - **貫穿任期**: 施政方向 (and 其他時程 if an unknown code ever appears).
+- Summary row shows the three groups with labels. On wide screens they sit in one row with equal tile sizes; on phones each group is a row of three tiles.
+- Old anchors `#y2027`–`#y2031` and `#none` redirect to their new section, on load and on in-page hash changes.
+- Lede, meta and OG text now say 「依承諾的期程排開」. The OG image tiles read 短期 · 中期 · 長期 · 分階段 · 施政方向. The footer and README explain the period mapping and what a 階段 means.
+
+**Key technical learnings:**
+- `[insight]` The data uses two separate ways to describe timing, and no topic mixes them. Term years and 短期／中期／長期 are time; 第一–三階段 (都市微森林, 營養午餐, 青年政策) is rollout order within a topic. Merging stages into periods would invent dates, so they stay a separate metric.
+- `[note]` Nothing in the data links one policy's stage to another policy. `flows` connect topics (every policy in a topic carries the same flow ids) and `phase` has only label, stages and basis. Cross-stage continuity exists only inside a single card (彈性餐費機制, AI 教育錢包).
+- `[gotcha]` Changing only the `#hash` of the current URL is a same-document navigation: no reload, so code that reads `location.hash` at load never runs. Anchor aliases need a `hashchange` listener too.
 
 ## v1.5.5 — Feedback invitation (2026-10-22 04:38)
 
