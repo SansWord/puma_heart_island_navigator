@@ -86,7 +86,8 @@ h1 { margin: 10px 0 10px; font-size: clamp(30px, 6vw, 48px); font-weight: 900; l
   color: var(--ink);
   cursor: pointer;
 }
-.chips button:hover { border-color: var(--brand); }
+.chips button:hover:enabled { border-color: var(--brand); }
+.chips button:disabled { opacity: .35; cursor: default; }
 .chips button[aria-pressed="true"] {
   background: var(--accent);
   border-color: var(--accent);

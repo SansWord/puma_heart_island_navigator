@@ -181,7 +181,9 @@ function render(policies) {
       .join("") || `<p class="no-match">沒有符合條件的政策。</p>`;
 }
 
-function chips(el, items, set, rerender) {
+// `available(value)` greys out pills that can't match the other filters; a selected pill stays
+// clickable so it can still be turned off.
+function chips(el, items, set, rerender, available = () => true) {
   el.innerHTML = "";
   const all = document.createElement("button");
   all.textContent = "全部";
@@ -202,7 +204,10 @@ function chips(el, items, set, rerender) {
   };
   return () => {
     all.setAttribute("aria-pressed", String(!set.size));
-    for (const [value, btn] of buttons) btn.setAttribute("aria-pressed", String(set.has(value)));
+    for (const [value, btn] of buttons) {
+      btn.setAttribute("aria-pressed", String(set.has(value)));
+      btn.disabled = !set.has(value) && !available(value);
+    }
   };
 }
 
@@ -217,6 +222,7 @@ async function main() {
 
   readState();
   $("#q").value = state.q;
+  const islandHeart = new Map(D.islands.map((i) => [i.id, i.heart || []]));
   let syncHeart, syncIsland;
   const rerender = () => {
     syncHeart();
@@ -234,7 +240,8 @@ async function main() {
     $("#island-chips"),
     D.islands.map((i) => ({ value: i.id, label: zh(i.name) })),
     state.island,
-    rerender
+    rerender,
+    (id) => !state.heart.size || islandHeart.get(id).some((h) => state.heart.has(h))
   );
   $("#q").oninput = (e) => {
     state.q = e.target.value.trim();
