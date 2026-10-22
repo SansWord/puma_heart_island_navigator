@@ -14,6 +14,7 @@ Learnings from building the 沈伯洋 HEART 政策島 導覽器, newest first.
 
 | Version | Summary |
 |---------|---------|
+| [v1.7.0](#v170--share-links-and-preview-cards-2026-10-22-1029) | Per-policy share pages and preview images, 複製並分享 button, 找找 Puma, rename to 導覽器, manual data sync |
 | [v1.6.1](#v161--threads-screenshots-2026-10-22-0449) | Shorter 階段 subtitle; phone screenshots for sharing on Threads |
 | [v1.6.0](#v160--two-timeline-metrics-2026-10-22-0445) | Timeline regrouped: 任期期程 短期／中期／長期 (years absorbed) · 分階段推動 第一–三階段 · 施政方向 |
 | [v1.5.5](#v155--feedback-invitation-2026-10-22-0438) | Footer invites feedback through GitHub issues or a Threads DM |
@@ -31,6 +32,38 @@ Learnings from building the 沈伯洋 HEART 政策島 導覽器, newest first.
 | [v1.1.0](#v110--puma-brand-theme-and-favicon-2026-10-22-0402) | Light-only theme from puma.taipei's brand tokens, orange header band, Noto Sans TC, official favicon |
 | [v1.0.1](#v101--build-time-data-fetch-2026-10-22-0400) | Pages now deploys through GitHub Actions and downloads the official JSON at build time; no more data commits |
 | [v1.0.0](#v100--initial-release-2026-10-22-0356) | Static per-year view of the 94 HEART policies, daily data sync via GitHub Actions, published on GitHub Pages |
+
+## v1.7.0 — Share links and preview cards (2026-10-22 10:29)
+
+**Review:** not yet
+
+**What was built:**
+- **Per-policy share links** `p/<id>/`: one static page per policy with its own `og:` title, description and 1200×630 preview image, then a JS-only redirect to `?p=<id>`, which scrolls to the card and highlights every copy of it. `404.html` sends dead links (removed policies) home.
+- **Preview images** rendered by `scripts/share_pages.py --images` with headless Chrome and **committed to `assets/share/`** for review before deploy. They read like the share text: 沈伯洋的政見：(64px), 「policy name」 (88–112px), summary (40px), topic, timing, and a 點入看更多，並分享最觸動你的政策 → badge. `manifest.json` records the card-HTML hash each image was rendered from; stale images fall back to `og.png` with a deploy warning, and image URLs carry `?v=<hash>`.
+- **Sharing UI**: started as a 分享 menu (Threads, LINE, Facebook, copy link, system share sheet), ended as **one 複製並分享 button** that copies the share text plus link and shows a toast suggesting pasting it as a Threads reply, into LINE, or anywhere. The menu is kept behind `SHARE_MENU` (`?menu=1`), Facebook behind `FACEBOOK_SHARE` (`?fb=1`).
+- Share text: `沈伯洋的政見：「name」`, summary, a blank line, `點入看更多，並分享最觸動你的政策 — HEART 政策島 導覽器`, link.
+- Header: 非官方 · 小水滴自主整理 label and a ✦ 到政策島找找 Puma button (`heart-island?focus=civil`, where the island's Puma easter-egg character starts his walk); a quieter repeat in the footer.
+- Renamed 導航器 → 導覽器 everywhere visible; the repo and URL keep `navigator`. The h1 uses `word-break: keep-all` so 導覽器 doesn't split on phones.
+- **Manual data sync**: no daily schedule and no download at deploy. `scripts/sync.py` fetches the official JSON and lists added / removed / changed policies for review before committing. Footer says 人工檢查後同步.
+- A new search (box goes from empty to text) resets the HEART and topic filters to 全部.
+
+**Key technical learnings:**
+- `[insight]` Link-preview crawlers (Threads, LINE, Facebook) read `og:` tags without running JavaScript, so `?p=<id>` on a single-page site can never have its own preview. Each policy needs its own static HTML. Redirect people with JS only: a `<meta http-equiv="refresh">` may be followed by the crawler, which then reads the home page's generic tags. Point `og:url` and `canonical` at the share page itself for the same reason.
+- `[gotcha]` `URLSearchParams` encodes spaces as `+`. Browsers decode that, but the Threads app showed the `+` signs literally in the post. Build share URLs with `encodeURIComponent` (spaces become `%20`).
+- `[gotcha]` In-app browsers (Threads, LINE, Facebook) often block `navigator.clipboard`. Fall back to a hidden `<textarea>`, `select()`, `document.execCommand("copy")`.
+- `[note]` Facebook's `sharer.php` takes no prefilled text (`quote` is deprecated and against platform policy); any caption has to live in `og:title`. Threads' post intent can open as a reply, but only via `reply_post_shortcode` of one known post, so a generic "share as reply" button isn't possible.
+- `[insight]` A preview image is fully determined by its card HTML, so hash that HTML: re-render only what changed, detect stale committed images, and put the hash in the image URL (`?v=`) so platforms that cache by URL fetch the new one.
+- `[note]` The official island keys its 3D buildings on the policy ids (`islands[].buildings[].id`), which is a good reason to expect them to stay stable as share-link ids.
+- `[gotcha]` Headless Chrome won't make its window narrower than about 500px (390px shots came out cropped) and screenshots taken after the page scrolls come out blank. Drive Chrome through the DevTools protocol instead: `Emulation.setDeviceMetricsOverride` for a real phone viewport, `Emulation.setTouchEmulationEnabled` for `(pointer: coarse)`, `Page.captureScreenshot`. Touch emulation sticks for the rest of the session, so take desktop shots in a separate run.
+- `[gotcha]` `-webkit-line-clamp` on a box with padding lets the next line show through the padding. Clamp an inner span instead.
+- `[gotcha]` puma.taipei answers Python's default `urllib` client with 403; `curl` works.
+- `[note]` `▾` renders as a dot in Noto Sans TC; `▼` at `.6em` reads clearly.
+- `[note]` The official site uses one candidate-first preview image (photo, 你的市長 沈伯洋, 台北順起來) for every page and varies only the title. This page's cards lead with the policy instead, with 沈伯洋的政見： as the heading; no photo or slogan, so they don't pass as official material.
+
+**Process learnings:**
+- `[insight]` Share-to-social-network buttons are hard to get right: each platform has its own URL scheme and limits (Facebook ignores text, Threads can't target a reply), encoding differs between browser and app, and in-app browsers break the flow. A single 複製並分享 button covers new posts, replies and chats on every platform with one code path. Still to observe whether people actually use it.
+- `[insight]` Real-phone testing caught what emulation didn't: the `+` signs in the Threads app, preview text too small at chat size, and the in-app browser problems. For anything that leaves the site (shares, previews), test on the target app early.
+- `[note]` While the campaign's data and cooperation aren't stable, review before publishing: data is synced by hand and preview images are committed, so every public change goes through a diff.
 
 ## v1.6.1 — Threads screenshots (2026-10-22 04:49)
 
