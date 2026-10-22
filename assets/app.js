@@ -223,8 +223,12 @@ async function main() {
   readState();
   $("#q").value = state.q;
   const islandHeart = new Map(D.islands.map((i) => [i.id, i.heart || []]));
+  const sharesHeart = (id) => !state.heart.size || (islandHeart.get(id) || []).some((h) => state.heart.has(h));
   let syncHeart, syncIsland;
   const rerender = () => {
+    // Picking a HEART direction drops topics outside it, so the list shows that whole direction
+    // instead of nothing; with no topic left, the topic filter is back to 全部.
+    for (const id of state.island) if (!sharesHeart(id)) state.island.delete(id);
     syncHeart();
     syncIsland();
     writeState();
@@ -241,11 +245,14 @@ async function main() {
     D.islands.map((i) => ({ value: i.id, label: zh(i.name) })),
     state.island,
     rerender,
-    (id) => !state.heart.size || islandHeart.get(id).some((h) => state.heart.has(h))
+    sharesHeart
   );
   $("#q").oninput = (e) => {
     state.q = e.target.value.trim();
     rerender();
+    // Typing from deep in the list jumps back to where the results start (search bar at the top).
+    const resultsTop = $(".top-band").offsetHeight;
+    if (scrollY > resultsTop) window.scrollTo({ top: resultsTop });
   };
   rerender();
   // Sections only exist after the data loads, so the browser's own #hash jump misses them.

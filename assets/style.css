@@ -26,7 +26,7 @@ body {
 a { color: var(--accent); }
 a:hover { color: var(--accent-hover); }
 
-.top, .controls, .summary, main, .foot {
+.top, .searchbar, .controls, .summary, main, .foot {
   max-width: 1080px;
   margin: 0 auto;
   padding: 0 16px;
@@ -49,16 +49,26 @@ h1 { margin: 10px 0 10px; font-size: clamp(30px, 6vw, 48px); font-weight: 900; l
 .top .meta { margin: 0; font-size: 13px; }
 .top a { color: var(--ink); font-weight: 700; }
 
-/* Pills wrap instead of scrolling sideways. On phones the wrapped pills are too tall to pin,
-   so the controls stick only on wider screens. */
+/* The search bar is always pinned. The filter pills wrap instead of scrolling sideways; on phones
+   they're too tall to pin, so they stick (under the search bar) only on wider screens. */
+:root { --search-h: 64px; }
+.searchbar {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  height: var(--search-h);
+  padding-top: 12px;
+  padding-bottom: 8px;
+  background: var(--bg);
+}
 .controls {
   background: var(--bg);
-  padding-top: 16px;
   padding-bottom: 8px;
   border-bottom: 2px solid var(--line);
 }
 #q {
   width: 100%;
+  height: 44px;
   font: inherit;
   padding: 10px 12px;
   border: 1px solid var(--line);
@@ -67,10 +77,14 @@ h1 { margin: 10px 0 10px; font-size: clamp(30px, 6vw, 48px); font-weight: 900; l
   color: var(--ink);
 }
 #q:focus { outline: 2px solid var(--brand); outline-offset: 0; border-color: var(--brand); }
-@media (min-width: 720px) {
-  .controls { position: sticky; top: 0; z-index: 2; }
+@media (max-width: 719px) {
+  .searchbar { border-bottom: 2px solid var(--line); padding-bottom: 6px; }
+  .controls { padding-top: 4px; }
 }
-.filter { display: flex; gap: 4px 10px; align-items: baseline; margin-top: 10px; }
+@media (min-width: 720px) {
+  .controls { position: sticky; top: var(--search-h); z-index: 2; }
+}
+.filter { display: flex; gap: 4px 10px; align-items: baseline; margin-top: 6px; }
 .filter-label { flex: none; width: 6.5em; white-space: nowrap; font-size: 12px; font-weight: 700; color: var(--muted); }
 @media (max-width: 540px) {
   .filter { flex-direction: column; }
@@ -119,7 +133,7 @@ h1 { margin: 10px 0 10px; font-size: clamp(30px, 6vw, 48px); font-weight: 900; l
 .summary b { font-size: 22px; font-weight: 900; color: var(--brand); margin-right: 4px; }
 .summary .bar { height: 4px; margin-top: 4px; border-radius: 2px; background: var(--brand); }
 
-.bucket { margin-top: 36px; scroll-margin-top: 16px; }
+.bucket { margin-top: 36px; scroll-margin-top: calc(var(--search-h) + 16px); }
 @media (min-width: 720px) {
   .bucket { scroll-margin-top: 220px; }
 }
