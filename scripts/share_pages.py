@@ -108,14 +108,16 @@ def card(p):
     """1200x630 preview image source, in the style of scripts/og-card.html.
 
     Chat apps show this at about a third of its size, so everything is set large: the name first,
-    then the summary (two lines at most), topic and timing.
+    then the summary (two lines at most), topic and timing. Name and summary read like the share
+    text: 沈伯洋的政見：「name」 summary.
     """
     e = html.escape
     n = len(p["name"])
     size = 112 if n <= 7 else 100 if n <= 9 else 88
     # A name too wide for one line (≈1080px usable; Latin glyphs about half a CJK one) leaves room
     # for only one line of summary.
-    wide = sum(0.55 if ord(c) < 0x2E80 else 1 for c in p["name"]) * size > 1080
+    # +1: the 「」 around the name take about one more character.
+    wide = (sum(0.55 if ord(c) < 0x2E80 else 1 for c in p["name"]) + 1) * size > 1080
     # Clamped text sits in an inner span: -webkit-line-clamp on a padded box lets the next line
     # show through the padding.
     when = f'<div class="when"><span>{e(p["when"])}</span></div>' if p["when"] else ""
@@ -145,8 +147,12 @@ def card(p):
     font-weight: 900;
     letter-spacing: .06em;
   }}
-  .heart {{ font-size: 40px; font-weight: 900; letter-spacing: .15em; color: #fff; }}
-  .island {{ flex: none; margin-top: 18px; font-size: 40px; font-weight: 900; }}
+  .tags {{ display: flex; align-items: baseline; gap: 18px; color: #fff; font-weight: 900; }}
+  .island {{ font-size: 32px; }}
+  .heart {{ font-size: 40px; letter-spacing: .15em; }}
+  /* The opening 「 hangs into the margin (it has built-in space on its left); only line one. */
+  h1 .q {{ margin-left: -.45em; }}
+  .kicker {{ flex: none; margin-top: 22px; font-size: 44px; font-weight: 900; }}
   h1 {{
     flex: none; margin: 2px 0 0; color: #fff; font-size: {size}px; font-weight: 900; line-height: 1.1;
     word-break: keep-all; overflow-wrap: anywhere;
@@ -168,9 +174,9 @@ def card(p):
 </style>
 </head>
 <body>
-  <div class="top"><span class="eyebrow">非官方 · 小水滴自主整理</span><span class="heart">{e(p["heart"])}</span></div>
-  <div class="island">{e(p["island"])}</div>
-  <h1>{e(p["name"])}</h1>
+  <div class="top"><span class="eyebrow">非官方 · 小水滴自主整理</span><span class="tags"><span class="island">{e(p["island"])}</span><span class="heart">{e(p["heart"])}</span></span></div>
+  <div class="kicker">沈伯洋的政見：</div>
+  <h1><span class="q">「</span>{e(p["name"])}」</h1>
   <p class="desc">{e(p["desc"])}</p>
   <div class="foot">{when}<div class="site"><span>HEART 政策島 導覽器</span><span class="more">點入看更多，並分享最觸動你的政策 →</span></div></div>
 </body>
