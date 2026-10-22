@@ -1,4 +1,4 @@
-// Turns the HEART policy-island data into a by-year timeline.
+// Turns the HEART policy-island data into a timeline: term periods, staged rollouts, and direction-level policies.
 // Data is downloaded at deploy time (daily) from https://puma.taipei/heart-island-assets/policies.json
 // The official file is served for puma.taipei's own pages (no CORS header), so this page reads its own copy.
 
@@ -7,42 +7,48 @@ const MAP_URL = "https://puma.taipei/heart-island";
 // HEART 政策願景 letters as named on https://puma.taipei/heart.
 const HEART = { H: "空間", E: "機會", A: "陪伴", R: "韌性", T: "時間" };
 
-// Term assumed to start 2026-12-25, so term year N ≈ calendar year 2026 + N.
-const BUCKETS = [
-  { id: "y2027", title: "2027", sub: "任期第 1 年" },
-  { id: "y2028", title: "2028", sub: "任期第 2 年" },
-  { id: "y2029", title: "2029", sub: "任期第 3 年" },
-  { id: "y2030", title: "2030", sub: "任期第 4 年" },
-  { id: "y2031", title: "2031–2034", sub: "任期第 5–8 年（第二任）" },
-  { id: "short", title: "短期／初期", sub: "近程推動" },
-  { id: "mid", title: "中期", sub: "中程推動" },
-  { id: "long", title: "長期", sub: "長程推動" },
-  { id: "stage1", title: "第一階段", sub: "分階段推動" },
-  { id: "stage2", title: "第二階段", sub: "分階段推動" },
-  { id: "stage3", title: "第三階段", sub: "分階段推動" },
-  { id: "direction", title: "施政方向", sub: "貫穿任期的方向與政策" },
-  { id: "other", title: "其他時程", sub: "其他官方時程標記" },
+// Two ways the official data describes timing, kept as two metrics:
+// - 任期期程: term years and the official 短期／中期／長期, on one scale.
+//   Term assumed to start 2026-12-25, so term year N ≈ calendar year 2026 + N.
+// - 分階段推動: 第一／二／三階段, a rollout order within one topic (no dates attached).
+const GROUPS = [
+  { id: "term", label: "任期期程" },
+  { id: "staged", label: "分階段推動" },
+  { id: "whole", label: "貫穿任期" },
 ];
+const BUCKETS = [
+  { id: "short", group: "term", title: "短期", sub: "任期第 1–2 年（約 2027–2028）" },
+  { id: "mid", group: "term", title: "中期", sub: "任期第 3–4 年（約 2029–2030）" },
+  { id: "long", group: "term", title: "長期", sub: "任期第 5 年起（第二任）" },
+  { id: "stage1", group: "staged", title: "第一階段", sub: "各主題內的推動順序，依主題排列" },
+  { id: "stage2", group: "staged", title: "第二階段", sub: "各主題內的推動順序，依主題排列" },
+  { id: "stage3", group: "staged", title: "第三階段", sub: "各主題內的推動順序，依主題排列" },
+  { id: "direction", group: "whole", title: "施政方向", sub: "貫穿任期的方向與政策" },
+  { id: "other", group: "whole", title: "其他時程", sub: "其他官方時程標記" },
+];
+// Earlier section anchors, so shared #links still land somewhere sensible.
+const HASH_ALIASES = { y2027: "short", y2028: "short", y2029: "mid", y2030: "mid", y2031: "long", none: "direction" };
 
-// Stage code in policies.json → buckets it lands in, plus an approximate calendar range.
+// Stage code in policies.json → buckets it lands in, a calendar hint, and a sort key (`at`, start
+// time within the term) so each period lists the earliest steps first.
 // The official label text already says "第 N 年" etc., so `when` only adds the calendar hint.
 const STAGES = {
-  "m1-8": { buckets: ["y2027"], when: "≈ 2027/1–8" },
-  "m8-18": { buckets: ["y2027", "y2028"], when: "≈ 2027/8–2028/6" },
-  "m18-28": { buckets: ["y2028", "y2029"], when: "≈ 2028/6–2029/4" },
-  year1: { buckets: ["y2027"], when: "≈ 2027" },
-  "year1-2": { buckets: ["y2027", "y2028"], when: "≈ 2027–2028" },
-  "year2-3": { buckets: ["y2028", "y2029"], when: "≈ 2028–2029" },
-  "year3-4": { buckets: ["y2029", "y2030"], when: "≈ 2029–2030" },
-  "year4+": { buckets: ["y2030", "y2031"], when: "≈ 2030 以後" },
-  "year5-8": { buckets: ["y2031"], when: "≈ 2031–2034" },
-  ay117: { buckets: ["y2028", "y2029"], when: "2028/8–2029/7" },
-  short: { buckets: ["short"] },
-  mid: { buckets: ["mid"] },
-  long: { buckets: ["long"] },
-  stage1: { buckets: ["stage1"] },
-  stage2: { buckets: ["stage2"] },
-  stage3: { buckets: ["stage3"] },
+  "m1-8": { buckets: ["short"], when: "≈ 2027/1–8", at: 0 },
+  year1: { buckets: ["short"], when: "≈ 2027", at: 1 },
+  "year1-2": { buckets: ["short"], when: "≈ 2027–2028", at: 1 },
+  "m8-18": { buckets: ["short"], when: "≈ 2027/8–2028/6", at: 2 },
+  short: { buckets: ["short"], at: 3 },
+  "m18-28": { buckets: ["short", "mid"], when: "≈ 2028/6–2029/4", at: 4 },
+  "year2-3": { buckets: ["short", "mid"], when: "≈ 2028–2029", at: 4 },
+  ay117: { buckets: ["short", "mid"], when: "2028/8–2029/7", at: 5 },
+  "year3-4": { buckets: ["mid"], when: "≈ 2029–2030", at: 6 },
+  mid: { buckets: ["mid"], at: 7 },
+  "year4+": { buckets: ["mid", "long"], when: "≈ 2030 以後", at: 8 },
+  "year5-8": { buckets: ["long"], when: "≈ 2031–2034", at: 9 },
+  long: { buckets: ["long"], at: 10 },
+  stage1: { buckets: ["stage1"], at: 0 },
+  stage2: { buckets: ["stage2"], at: 0 },
+  stage3: { buckets: ["stage3"], at: 0 },
 };
 
 const $ = (s) => document.querySelector(s);
@@ -77,7 +83,7 @@ function build(D) {
       if (!stages.length) add("direction", null);
       stages.forEach((st, n) => {
         const def = STAGES[st];
-        const step = { when: def ? def.when : st, text: parts ? parts[n] : label };
+        const step = { when: def ? def.when : st, at: def?.at ?? 99, text: parts ? parts[n] : label };
         for (const bucket of def?.buckets || ["other"]) add(bucket, step);
       });
       const src = (b.sources || []).map((id) => sources.get(id)).find(Boolean);
@@ -157,17 +163,25 @@ function card(p, bucketId) {
 
 function render(policies) {
   const shown = policies.filter(matches);
-  const byBucket = BUCKETS.map((b) => ({ ...b, items: shown.filter((p) => p.placements.has(b.id)) }));
+  // Periods list the earliest steps first; stages keep topics together (data order is topic order).
+  const start = (p, id) => Math.min(...p.placements.get(id).map((s) => s?.at ?? 99));
+  const byBucket = BUCKETS.map((b) => ({
+    ...b,
+    items: shown.filter((p) => p.placements.has(b.id)).sort((x, y) => start(x, b.id) - start(y, b.id)),
+  }));
   const max = Math.max(1, ...byBucket.map((b) => b.items.length));
 
-  $("#summary").innerHTML = byBucket
-    .filter((b) => b.id !== "other" || b.items.length)
-    .map(
-      (b) => `<a href="#${b.id}" class="${b.items.length ? "" : "empty"}">
-        <b>${b.items.length}</b>${esc(b.title)}
-        <div class="bar" style="width:${(b.items.length / max) * 100}%"></div></a>`
-    )
-    .join("");
+  $("#summary").innerHTML = GROUPS.map((g) => {
+    const tiles = byBucket
+      .filter((b) => b.group === g.id && (b.id !== "other" || b.items.length))
+      .map(
+        (b) => `<a href="#${b.id}" class="${b.items.length ? "" : "empty"}">
+          <b>${b.items.length}</b>${esc(b.title)}
+          <div class="bar" style="width:${(b.items.length / max) * 100}%"></div></a>`
+      )
+      .join("");
+    return `<div class="sum-group"><span class="sum-label">${esc(g.label)}</span><div class="sum-tiles">${tiles}</div></div>`;
+  }).join("");
 
   $("#timeline").innerHTML =
     byBucket
@@ -256,10 +270,19 @@ async function main() {
   };
   rerender();
   // Sections only exist after the data loads, so the browser's own #hash jump misses them.
-  if (location.hash) {
-    history.scrollRestoration = "manual";
-    requestAnimationFrame(() => document.getElementById(location.hash.slice(1))?.scrollIntoView());
-  }
+  // Old anchors (#y2027…) are rewritten to their new section, on load and on in-page hash changes.
+  const jumpToHash = () => {
+    let id = location.hash.slice(1);
+    if (!id) return;
+    if (HASH_ALIASES[id]) {
+      id = HASH_ALIASES[id];
+      history.replaceState(null, "", `#${id}`);
+    }
+    requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView());
+  };
+  if (location.hash) history.scrollRestoration = "manual";
+  jumpToHash();
+  addEventListener("hashchange", jumpToHash);
 }
 
 // Back-to-top button shows once the header has scrolled away; hidden, it's out of the tab order.

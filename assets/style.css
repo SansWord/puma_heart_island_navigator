@@ -112,11 +112,21 @@ h1 { margin: 10px 0 10px; font-size: clamp(30px, 6vw, 48px); font-weight: 900; l
   .chips button { padding: 4px 8px; }
 }
 
+/* Summary: one labelled group per metric (任期期程 / 分階段推動 / 貫穿任期), side by side on wide
+   screens. Group widths follow their tile counts so all tiles come out the same size. */
 .summary {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-  gap: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 12px;
   margin-top: 16px;
+}
+.sum-group { flex: 3 1 300px; min-width: 0; }
+.sum-group:last-child { flex: 1 1 96px; }
+.sum-label { display: block; margin-bottom: 4px; font-size: 12px; font-weight: 700; color: var(--muted); }
+.sum-tiles { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.sum-group:last-child .sum-tiles { grid-template-columns: 1fr; }
+@media (max-width: 540px) {
+  .sum-group:last-child { flex: 0 0 calc((100% - 12px) / 3); }
 }
 .summary a {
   display: block;
