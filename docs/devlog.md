@@ -14,6 +14,7 @@ Learnings from building the 沈伯洋 HEART 政策島 導航器, newest first.
 
 | Version | Summary |
 |---------|---------|
+| [v1.4.2](#v142--policy-picking-guidance-2026-10-22-0423) | Header and link tooltips tell readers to pick the policy from the island's 政策細項 list |
 | [v1.4.1](#v141--local-preview-script-2026-10-22-0417) | `scripts/serve.sh` serves the site locally and opens the browser |
 | [v1.4.0](#v140--labeled-wrapping-filters-2026-10-22-0415) | Filter groups labeled HEART 面向 / 政策主題; pills wrap and show each HEART word; mobile-friendly controls |
 | [v1.3.1](#v131--descriptive-wording-everywhere-2026-10-22-0409) | Section subtitles, identifiers, README and devlog reworded to describe policies by what they are |
@@ -22,6 +23,19 @@ Learnings from building the 沈伯洋 HEART 政策島 導航器, newest first.
 | [v1.1.0](#v110--puma-brand-theme-and-favicon-2026-10-22-0402) | Light-only theme from puma.taipei's brand tokens, orange header band, Noto Sans TC, official favicon |
 | [v1.0.1](#v101--build-time-data-fetch-2026-10-22-0400) | Pages now deploys through GitHub Actions and downloads the official JSON at build time; no more data commits |
 | [v1.0.0](#v100--initial-release-2026-10-22-0356) | Static per-year view of the 94 HEART policies, daily data sync via GitHub Actions, published on GitHub Pages |
+
+## v1.4.2 — Policy-picking guidance (2026-10-22 04:23)
+
+**Review:** not yet
+
+**What was built:**
+- The header now says that 拜訪政策島 opens the island, and the reader then picks the policy from the island panel's 「政策細項」 list.
+- Each 拜訪政策島 link has a tooltip naming the island and the policy to pick, e.g. 開啟「交通政策」後，在「政策細項」點選「通學區」.
+- A code comment at `mapUrl` in `assets/app.js` marks where to switch to a per-policy link.
+
+**Key technical learnings:**
+- `[note]` After `?focus=<islandId>`, the official page opens the island's panel on the left with a 「政策細項」 list (orange bullet, title, start year). Each policy there opens its own detail.
+- `[insight]` Next step depends on puma.taipei: if `?focus=` (or a new parameter) accepts a policy id, change `mapUrl` to use `b.id` and drop the guidance text and tooltip.
 
 ## v1.4.1 — Local preview script (2026-10-22 04:17)
 
