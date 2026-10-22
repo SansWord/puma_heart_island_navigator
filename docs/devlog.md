@@ -14,12 +14,27 @@ Learnings from building the 沈伯洋 HEART 政策島 導航器, newest first.
 
 | Version | Summary |
 |---------|---------|
+| [v1.4.0](#v140--labeled-wrapping-filters-2026-10-22-0415) | Filter groups labeled HEART 面向 / 政策主題; pills wrap and show each HEART word; mobile-friendly controls |
 | [v1.3.1](#v131--descriptive-wording-everywhere-2026-10-22-0409) | Section subtitles, identifiers, README and devlog reworded to describe policies by what they are |
 | [v1.3.0](#v130--wording-pass-2026-10-22-0407) | Card links read 拜訪政策島 / 拜訪網站政策專區; new 施政方向 section name |
 | [v1.2.0](#v120--social-share-preview-2026-10-22-0404) | Open Graph / Twitter card tags with a 1200×630 preview image; 細節 expanded by default |
 | [v1.1.0](#v110--puma-brand-theme-and-favicon-2026-10-22-0402) | Light-only theme from puma.taipei's brand tokens, orange header band, Noto Sans TC, official favicon |
 | [v1.0.1](#v101--build-time-data-fetch-2026-10-22-0400) | Pages now deploys through GitHub Actions and downloads the official JSON at build time; no more data commits |
 | [v1.0.0](#v100--initial-release-2026-10-22-0356) | Static per-year view of the 94 HEART policies, daily data sync via GitHub Actions, published on GitHub Pages |
+
+## v1.4.0 — Labeled, wrapping filters (2026-10-22 04:15)
+
+**Review:** not yet
+
+**What was built:**
+- Filter groups are labeled 「HEART 面向」 and 「政策主題」 (the official site's term for an island), as `role="group"` with `aria-labelledby`.
+- HEART pills show the letter's meaning from puma.taipei/heart: H 空間, E 機會, A 陪伴, R 韌性, T 時間.
+- Pills wrap onto more rows instead of scrolling sideways. At 540px and below, labels sit above their pills and pill spacing is tighter, so all six HEART pills fit on one row at 390px.
+- The filter bar is sticky only at 720px and wider; on phones the wrapped pills would take up too much of the screen.
+
+**Key technical learnings:**
+- `[gotcha]` A media-query override placed before the base rule loses to it (same specificity, later rule wins). Put responsive overrides after the rules they change.
+- `[gotcha]` `--window-size=390,…` in headless Chrome doesn't give a 390px viewport, because windows have a minimum width of about 500px. To check phone layout, render the page in a 390px-wide `<iframe>` and screenshot that.
 
 ## v1.3.1 — Descriptive wording everywhere (2026-10-22 04:09)
 
