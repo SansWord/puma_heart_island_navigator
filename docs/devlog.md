@@ -14,6 +14,7 @@ Learnings from building the 沈伯洋 HEART 政策島 導航器, newest first.
 
 | Version | Summary |
 |---------|---------|
+| [v1.5.1](#v151--back-to-top-button-2026-10-22-0426) | Floating 回到頂端 button once the header scrolls away |
 | [v1.5.0](#v150--heart-aware-topic-pills-2026-10-22-0424) | Selecting a HEART direction greys out topics that don't share it |
 | [v1.4.2](#v142--policy-picking-guidance-2026-10-22-0423) | Header and link tooltips tell readers to pick the policy from the island's 政策細項 list |
 | [v1.4.1](#v141--local-preview-script-2026-10-22-0417) | `scripts/serve.sh` serves the site locally and opens the browser |
@@ -24,6 +25,18 @@ Learnings from building the 沈伯洋 HEART 政策島 導航器, newest first.
 | [v1.1.0](#v110--puma-brand-theme-and-favicon-2026-10-22-0402) | Light-only theme from puma.taipei's brand tokens, orange header band, Noto Sans TC, official favicon |
 | [v1.0.1](#v101--build-time-data-fetch-2026-10-22-0400) | Pages now deploys through GitHub Actions and downloads the official JSON at build time; no more data commits |
 | [v1.0.0](#v100--initial-release-2026-10-22-0356) | Static per-year view of the 94 HEART policies, daily data sync via GitHub Actions, published on GitHub Pages |
+
+## v1.5.1 — Back-to-top button (2026-10-22 04:26)
+
+**Review:** not yet
+
+**What was built:**
+- A round brand-orange 回到頂端 button fixed at the bottom right (48px tap target, respects iPhone safe-area insets). It fades in once the orange header leaves the viewport and fades out near the top.
+- An `IntersectionObserver` on `.top-band` toggles it, so there's no scroll listener. While hidden, it's out of the tab order (`tabIndex=-1`, `aria-hidden`).
+- Smooth scroll, or an instant jump under `prefers-reduced-motion`. Clicking also clears any `#section` hash from the URL.
+
+**Key technical learnings:**
+- `[gotcha]` Browser extensions and chat widgets also like the bottom-right corner. In local testing an extension's floating icon covered the button and swallowed clicks; `document.elementFromPoint` at the button's center shows what is actually on top.
 
 ## v1.5.0 — HEART-aware topic pills (2026-10-22 04:24)
 
