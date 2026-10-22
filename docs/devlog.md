@@ -14,6 +14,7 @@ Learnings from building the 沈伯洋 HEART 政策島 導航器, newest first.
 
 | Version | Summary |
 |---------|---------|
+| [v1.5.2](#v152--footer-credit-2026-10-22-0428) | Low-key footer line: 由 SansWord 製作 · GitHub 原始碼 |
 | [v1.5.1](#v151--back-to-top-button-2026-10-22-0426) | Floating 回到頂端 button once the header scrolls away |
 | [v1.5.0](#v150--heart-aware-topic-pills-2026-10-22-0424) | Selecting a HEART direction greys out topics that don't share it |
 | [v1.4.2](#v142--policy-picking-guidance-2026-10-22-0423) | Header and link tooltips tell readers to pick the policy from the island's 政策細項 list |
@@ -25,6 +26,17 @@ Learnings from building the 沈伯洋 HEART 政策島 導航器, newest first.
 | [v1.1.0](#v110--puma-brand-theme-and-favicon-2026-10-22-0402) | Light-only theme from puma.taipei's brand tokens, orange header band, Noto Sans TC, official favicon |
 | [v1.0.1](#v101--build-time-data-fetch-2026-10-22-0400) | Pages now deploys through GitHub Actions and downloads the official JSON at build time; no more data commits |
 | [v1.0.0](#v100--initial-release-2026-10-22-0356) | Static per-year view of the 94 HEART policies, daily data sync via GitHub Actions, published on GitHub Pages |
+
+## v1.5.2 — Footer credit (2026-10-22 04:28)
+
+**Review:** not yet
+
+**What was built:**
+- The last footer line reads 「由 SansWord 製作 · GitHub 原始碼」. SansWord links to the Threads profile and GitHub 原始碼 to the repo. The links use the footer's grey and turn brand orange on hover, so the line stays quiet.
+- Footer bottom padding raised to 88px so the floating back-to-top button never covers the last line.
+
+**Key technical learnings:**
+- `[note]` Credits and source links go in the footer, below the disclaimer: that's where people look for them, and it keeps the header about the content.
 
 ## v1.5.1 — Back-to-top button (2026-10-22 04:26)
 
