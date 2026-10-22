@@ -20,9 +20,9 @@ const BUCKETS = [
   { id: "short", group: "term", title: "短期", sub: "任期第 1–2 年（約 2027–2028）" },
   { id: "mid", group: "term", title: "中期", sub: "任期第 3–4 年（約 2029–2030）" },
   { id: "long", group: "term", title: "長期", sub: "任期第 5 年起（第二任）" },
-  { id: "stage1", group: "staged", title: "第一階段", sub: "各主題內的推動順序，依主題排列" },
-  { id: "stage2", group: "staged", title: "第二階段", sub: "各主題內的推動順序，依主題排列" },
-  { id: "stage3", group: "staged", title: "第三階段", sub: "各主題內的推動順序，依主題排列" },
+  { id: "stage1", group: "staged", title: "第一階段", sub: "各主題內的推動順序" },
+  { id: "stage2", group: "staged", title: "第二階段", sub: "各主題內的推動順序" },
+  { id: "stage3", group: "staged", title: "第三階段", sub: "各主題內的推動順序" },
   { id: "direction", group: "whole", title: "施政方向", sub: "貫穿任期的方向與政策" },
   { id: "other", group: "whole", title: "其他時程", sub: "其他官方時程標記" },
 ];
