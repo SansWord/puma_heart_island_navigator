@@ -14,6 +14,7 @@ Learnings from building the 沈伯洋 HEART 政策島 導航器, newest first.
 
 | Version | Summary |
 |---------|---------|
+| [v1.5.5](#v155--feedback-invitation-2026-10-22-0438) | Footer invites feedback through GitHub issues or a Threads DM |
 | [v1.5.4](#v154--official-terminology-2026-10-22-0437) | Labels follow puma.taipei: HEART 政策願景, 政策主題 / 細項, 看政見頁 |
 | [v1.5.3](#v153--pinned-search-and-topic-reset-2026-10-22-0432) | Search bar pinned on phones too, typing jumps to results; picking a HEART direction drops topics outside it |
 | [v1.5.2](#v152--footer-credit-2026-10-22-0428) | Low-key footer line: 由 SansWord 製作 · GitHub 原始碼 |
@@ -28,6 +29,13 @@ Learnings from building the 沈伯洋 HEART 政策島 導航器, newest first.
 | [v1.1.0](#v110--puma-brand-theme-and-favicon-2026-10-22-0402) | Light-only theme from puma.taipei's brand tokens, orange header band, Noto Sans TC, official favicon |
 | [v1.0.1](#v101--build-time-data-fetch-2026-10-22-0400) | Pages now deploys through GitHub Actions and downloads the official JSON at build time; no more data commits |
 | [v1.0.0](#v100--initial-release-2026-10-22-0356) | Static per-year view of the 94 HEART policies, daily data sync via GitHub Actions, published on GitHub Pages |
+
+## v1.5.5 — Feedback invitation (2026-10-22 04:38)
+
+**Review:** not yet
+
+**What was built:**
+- New footer line below the credit: 「有想法或建議？歡迎在 GitHub 開 issue，或到 Threads 私訊我。」, linking to the repo's issues page and the Threads profile. Same grey `.credit` styling.
 
 ## v1.5.4 — Official terminology (2026-10-22 04:37)
 
