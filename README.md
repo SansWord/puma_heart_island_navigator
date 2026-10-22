@@ -18,9 +18,11 @@
 ## 本機預覽
 
 ```sh
-python3 -m http.server 8765
-# 開 http://127.0.0.1:8765/
+scripts/serve.sh          # 啟動 http://127.0.0.1:8765/ 並開啟瀏覽器，Ctrl-C 停止
+scripts/serve.sh 9000     # 改用其他 port
 ```
+
+頁面用 `fetch` 讀取 `data/`，直接用瀏覽器開 `index.html`（`file://`）無法載入資料，需透過本機伺服器。
 
 ## 網址參數
 
