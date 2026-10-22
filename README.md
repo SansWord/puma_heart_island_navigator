@@ -1,6 +1,6 @@
 # 沈伯洋 HEART 政策島 導航器
 
-非官方整理。把 [HEART 政策島](https://puma.taipei/heart-island) 的 94 項政見依任期年份排開，每項都附「拜訪政策島」連結（開啟政策島並聚焦到該主題）與政見原文連結。
+非官方整理。把 [HEART 政策島](https://puma.taipei/heart-island) 的 94 項政見依任期年份排開，每項都附「拜訪政策島」連結（開啟政策島並聚焦到該主題，再從「政策細項」點選該政策）與政見原文連結。
 
 網站：<https://sansword.github.io/puma_heart_island_navigator/>
 

@@ -94,6 +94,8 @@ function build(D) {
         heart: isl.heart || [],
         sourceUrl: src?.url || isl.url,
         sourceTitle: zh(src?.title) || "政見原文",
+        // ?focus= takes an island id only; the reader picks the policy from the island's 政策細項 list.
+        // If the official page adds a per-policy parameter, point this at b.id instead.
         mapUrl: `${MAP_URL}?focus=${encodeURIComponent(isl.id)}`,
         placements,
         haystack: [b.name?.zh, b.name?.en, zh(b.plain), zh(b.who), label, zh(isl.name), ...(b.facts || []).map(zh)]
@@ -147,7 +149,7 @@ function card(p, bucketId) {
     ${full}
     ${facts}
     <div class="links">
-      <a href="${esc(p.mapUrl)}" target="_blank" rel="noopener">拜訪政策島 ↗</a>
+      <a href="${esc(p.mapUrl)}" target="_blank" rel="noopener" title="開啟「${esc(p.islandName)}」後，在「政策細項」點選「${esc(p.name)}」">拜訪政策島 ↗</a>
       <a href="${esc(p.sourceUrl)}" target="_blank" rel="noopener">${p.sourceUrl.startsWith("https://puma.taipei/") ? "拜訪網站政策專區 - " : ""}${esc(p.sourceTitle)} ↗</a>
     </div>
   </article>`;
