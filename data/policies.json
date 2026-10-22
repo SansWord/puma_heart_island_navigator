@@ -1,0 +1,6153 @@
+{
+  "schemaVersion": "3.0",
+  "meta": {
+    "source": "https://puma.taipei/policies",
+    "verifiedAt": "2026-10-10",
+    "disclosure": "{{DISCLOSURE}}",
+    "stage": "layout_and_data_awaiting_confirmation",
+    "candidate": {
+      "zh": "沈伯洋｜2026 台北市長參選人",
+      "en": "Puma Shen | 2026 Taipei mayoral candidate"
+    },
+    "languageFallback": "zh",
+    "timePromise": {
+      "zh": "每天多增加屬於自己的 30 分鐘",
+      "en": null
+    },
+    "timePromiseSource": "heart"
+  },
+  "sources": [
+    {
+      "id": "civil",
+      "url": "https://puma.taipei/policies/公務員政策",
+      "title": {
+        "zh": "公務員政策",
+        "en": null
+      },
+      "checkedAt": "2026-10-10",
+      "status": "read_official_page",
+      "confidence": "high"
+    },
+    {
+      "id": "transport",
+      "url": "https://puma.taipei/policies/交通政策",
+      "title": {
+        "zh": "交通政策",
+        "en": null
+      },
+      "checkedAt": "2026-10-10",
+      "status": "read_official_page",
+      "confidence": "high"
+    },
+    {
+      "id": "education",
+      "url": "https://puma.taipei/policies/教育政策",
+      "title": {
+        "zh": "教育政策",
+        "en": null
+      },
+      "checkedAt": "2026-10-10",
+      "status": "read_official_page",
+      "confidence": "high"
+    },
+    {
+      "id": "lunch",
+      "url": "https://puma.taipei/policies/營養午餐",
+      "title": {
+        "zh": "營養午餐",
+        "en": null
+      },
+      "checkedAt": "2026-10-10",
+      "status": "read_official_page",
+      "confidence": "high"
+    },
+    {
+      "id": "family",
+      "url": "https://puma.taipei/policies/家庭一站通",
+      "title": {
+        "zh": "家庭一站通",
+        "en": null
+      },
+      "checkedAt": "2026-10-10",
+      "status": "read_official_page",
+      "confidence": "high"
+    },
+    {
+      "id": "card",
+      "url": "https://puma.taipei/policies/親子同行卡",
+      "title": {
+        "zh": "親子同行卡",
+        "en": null
+      },
+      "checkedAt": "2026-10-10",
+      "status": "read_official_page",
+      "confidence": "high"
+    },
+    {
+      "id": "welfare",
+      "url": "https://puma.taipei/policies/社福政策",
+      "title": {
+        "zh": "社福政策",
+        "en": null
+      },
+      "checkedAt": "2026-10-10",
+      "status": "read_official_page",
+      "confidence": "high"
+    },
+    {
+      "id": "sport",
+      "url": "https://puma.taipei/policies/運動政策",
+      "title": {
+        "zh": "運動政策",
+        "en": null
+      },
+      "checkedAt": "2026-10-10",
+      "status": "read_official_page",
+      "confidence": "high"
+    },
+    {
+      "id": "trails",
+      "url": "https://puma.taipei/policies/台北文化徑×山林徑",
+      "title": {
+        "zh": "台北文化徑×山林徑",
+        "en": null
+      },
+      "checkedAt": "2026-10-10",
+      "status": "read_official_page",
+      "confidence": "high"
+    },
+    {
+      "id": "forest",
+      "url": "https://puma.taipei/policies/都市微森林",
+      "title": {
+        "zh": "都市微森林",
+        "en": null
+      },
+      "checkedAt": "2026-10-10",
+      "status": "read_official_page",
+      "confidence": "high"
+    },
+    {
+      "id": "youth",
+      "url": "https://puma.taipei/policies/青年政策",
+      "title": {
+        "zh": "青年政策",
+        "en": null
+      },
+      "checkedAt": "2026-10-10",
+      "status": "read_official_page",
+      "confidence": "high"
+    },
+    {
+      "id": "diplomacy",
+      "url": "https://puma.taipei/policies/城市外交",
+      "title": {
+        "zh": "城市外交",
+        "en": null
+      },
+      "checkedAt": "2026-10-10",
+      "status": "read_official_page",
+      "confidence": "high"
+    },
+    {
+      "id": "heart",
+      "url": "https://puma.taipei/heart",
+      "title": {
+        "zh": "HEART 政策生態系",
+        "en": null
+      },
+      "checkedAt": "2026-10-10",
+      "status": "read_official_page"
+    },
+    {
+      "id": "overview",
+      "url": "https://puma.taipei/policies",
+      "title": {
+        "zh": "政策總覽",
+        "en": null
+      },
+      "checkedAt": "2026-10-10",
+      "status": "read_official_page"
+    },
+    {
+      "id": "appendix-a",
+      "url": null,
+      "title": {
+        "zh": "競選團隊政策資料",
+        "en": "Campaign policy notes"
+      },
+      "status": "provided_summary_compared_to_official_pages",
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "video",
+      "url": "https://www.youtube.com/watch?v=4VM4OjmVBoc",
+      "title": {
+        "zh": "李四端專訪 S1E80",
+        "en": null
+      },
+      "status": "provided_transcript_audio_unchecked",
+      "checkedAt": "2026-10-10"
+    },
+    {
+      "id": "hakka-ltn",
+      "url": "https://news.ltn.com.tw/news/Taipei/breakingnews/5610209",
+      "title": {
+        "zh": "自由時報：沈伯洋提 5 大客家政策（2026-10-18）",
+        "en": null
+      },
+      "status": "read_news_report",
+      "checkedAt": "2026-10-20"
+    },
+    {
+      "id": "hakka-nextapple",
+      "url": "https://news.nextapple.com/politics/20261018/4081FBFE8488216C5C16A7E0C13930A9",
+      "title": {
+        "zh": "壹蘋新聞網：沈伯洋拋 5 大客家政見（2026-10-18）",
+        "en": null
+      },
+      "status": "read_news_report",
+      "checkedAt": "2026-10-20"
+    }
+  ],
+  "islands": [
+    {
+      "id": "civil",
+      "number": 1,
+      "name": {
+        "zh": "市府核心（公務員政策）",
+        "en": "Civic core"
+      },
+      "summary": {
+        "zh": "從改善市府同仁的職場環境開始，提升市政服務品質",
+        "en": null
+      },
+      "heart": [
+        "T"
+      ],
+      "heartLabel": {
+        "zh": "T",
+        "en": null
+      },
+      "url": "https://puma.taipei/policies/公務員政策",
+      "sources": [
+        "civil"
+      ],
+      "sourceKind": "official_policy",
+      "axial": [
+        -1,
+        4
+      ],
+      "cells": [
+        [
+          -1,
+          4
+        ]
+      ],
+      "buildings": [
+        {
+          "id": "civil-office",
+          "name": {
+            "zh": "人性化辦公空間",
+            "en": "Human-centered offices"
+          },
+          "facts": [
+            {
+              "zh": "哺乳室、紓壓休息區、運動空間、淋浴設備",
+              "en": null
+            },
+            {
+              "zh": "先盤點所有機關空間，再分批優化",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第 1–8 個月盤點；第 8–18 個月首批空間優化完成發包",
+              "en": null
+            },
+            "stages": [
+              "m1-8",
+              "m8-18"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F2",
+            "F11",
+            "F12",
+            "F19"
+          ],
+          "sources": [
+            "civil"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "全面盤點並升級各單位的哺乳室、紓壓休息區、運動空間與淋浴設備。",
+            "en": null
+          },
+          "who": {
+            "zh": "市府同仁",
+            "en": null
+          }
+        },
+        {
+          "id": "civil-flex",
+          "name": {
+            "zh": "彈性上下班鐘塔",
+            "en": "Flexible hours"
+          },
+          "facts": [
+            {
+              "zh": "每日總工時不變",
+              "en": null
+            },
+            {
+              "zh": "擴大彈性上下班的適用範圍與時段",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第 8–18 個月擴大方案適用第一批對象",
+              "en": null
+            },
+            "stages": [
+              "m8-18"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F2",
+            "F11",
+            "F12"
+          ],
+          "sources": [
+            "civil"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "每日總工時不變，擴大彈性上下班的範圍與時段，讓同仁能從容接送小孩、照顧家人。",
+            "en": null
+          },
+          "who": {
+            "zh": "需要接送小孩、照顧家人的同仁",
+            "en": null
+          }
+        },
+        {
+          "id": "civil-eap",
+          "name": {
+            "zh": "EAP 點數自選亭",
+            "en": "EAP points"
+          },
+          "facts": [
+            {
+              "zh": "心理諮商、正念紓壓、運動課程、健康諮詢",
+              "en": null
+            },
+            {
+              "zh": "依個人需求自由組合",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第 1–8 個月建置 EAP 點數自選系統",
+              "en": null
+            },
+            "stages": [
+              "m1-8"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F2",
+            "F11",
+            "F12"
+          ],
+          "sources": [
+            "civil"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "員工協助方案升級為點數自選制，心理諮商、正念紓壓、運動課程、健康諮詢自由組合。",
+            "en": null
+          },
+          "who": {
+            "zh": "市府同仁",
+            "en": null
+          }
+        },
+        {
+          "id": "civil-award",
+          "name": {
+            "zh": "重大專案獎勵台",
+            "en": "Project rewards"
+          },
+          "facts": [
+            {
+              "zh": "實質獎金與行政獎勵",
+              "en": null
+            },
+            {
+              "zh": "活化重大專案獎勵機制",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第 1–8 個月訂定專案獎金規範細則",
+              "en": null
+            },
+            "stages": [
+              "m1-8"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F2",
+            "F11",
+            "F12"
+          ],
+          "sources": [
+            "civil"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "願意扛起艱鉅任務、完成重大專案的同仁，給予有感的實質獎金與行政獎勵。",
+            "en": null
+          },
+          "who": {
+            "zh": "承擔重大專案的同仁",
+            "en": null
+          }
+        },
+        {
+          "id": "civil-health",
+          "name": {
+            "zh": "健檢補助站",
+            "en": "Health checks"
+          },
+          "facts": [
+            {
+              "zh": "提高基層同仁健檢補助金額",
+              "en": null
+            },
+            {
+              "zh": "擴大適用對象",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第 1–8 個月盤點；第 8–18 個月完成試行",
+              "en": null
+            },
+            "stages": [
+              "m1-8",
+              "m8-18"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F2",
+            "F11",
+            "F12"
+          ],
+          "sources": [
+            "civil"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "提高基層同仁的健檢補助金額並擴大適用對象：照顧市民的人，市府先幫他照顧好身體。",
+            "en": null
+          },
+          "who": {
+            "zh": "基層同仁",
+            "en": null
+          }
+        },
+        {
+          "id": "civil-ai",
+          "name": {
+            "zh": "AI 支援小隊基地",
+            "en": "AI support team"
+          },
+          "facts": [
+            {
+              "zh": "表單填寫、數據整理、基礎行政流程自動化",
+              "en": null
+            },
+            {
+              "zh": "不增加同仁額外研習負擔",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第 1–8 個月組建 AI 派駐團隊；第 8–18 個月高重複業務啟動 AI 協作",
+              "en": null
+            },
+            "stages": [
+              "m1-8",
+              "m8-18"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F2",
+            "F11",
+            "F12"
+          ],
+          "sources": [
+            "civil"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "專業 AI 團隊進駐工作現場，把重複的填表、數據整理與基礎行政流程自動化。",
+            "en": null
+          },
+          "who": {
+            "zh": "基層同仁",
+            "en": null
+          }
+        }
+      ],
+      "referenceSummary": {
+        "zh": "公務員政策｜HEART：T\n六項：辦公空間人性化（哺乳室、紓壓休息區、運動空間、淋浴設備，目標比照頂尖科技公司）；上下班彈性自主（每日總工時不變，擴大彈性範圍與時段）；身心健康自選制（EAP 升級為點數自選：諮商、正念紓壓、運動課程、健康諮詢）；重大專案給獎勵（重啟重大專案獎勵機制，獎金與行政獎勵）；健檢補助再加碼（第一線人員，未列金額）；導入 AI 減輕負擔（專業 AI 支援團隊進駐，自動化填表、資料整理、基本行政流程）。\n推動藍圖：第 1–8 個月盤點與規劃（成立 AI 導入團隊、建 EAP 點數與專案獎勵細則）；第 8–18 個月試辦與擴大（第一批高重複性業務 AI 協作、第一批彈性工時、第一批空間改善發包、健檢補助試辦）；第 18–28 個月全面推行（年度滿意度調查與效率追蹤）。\n本人：「半年之內一定要把這件事情做完，再推其他的政策」（李四端 S1E80，26:27–26:33）。",
+        "en": null
+      },
+      "referenceSummaryProvenance": "appendix-a",
+      "unknowns": [],
+      "vision": {
+        "zh": "提升市政服務品質的第一步，就是從根本改善市府同仁的職場環境。",
+        "en": null
+      }
+    },
+    {
+      "id": "institute",
+      "number": 2,
+      "name": {
+        "zh": "台北研究院",
+        "en": "Taipei Research Institute"
+      },
+      "summary": {
+        "zh": "由專業研究團隊替市府做長期規劃研究",
+        "en": null
+      },
+      "heart": [],
+      "heartLabel": {
+        "zh": "",
+        "en": null
+      },
+      "url": "https://puma.taipei/policies/城市外交",
+      "sources": [
+        "diplomacy",
+        "welfare",
+        "youth",
+        "heart"
+      ],
+      "sourceKind": "cross_page_synthesis",
+      "axial": [
+        0,
+        3
+      ],
+      "cells": [
+        [
+          0,
+          3
+        ]
+      ],
+      "buildings": [
+        {
+          "id": "institute-child",
+          "name": {
+            "zh": "兒少安全治理中心",
+            "en": "Child safety governance"
+          },
+          "facts": [
+            {
+              "zh": "整合教育、社政與警政數據",
+              "en": null
+            },
+            {
+              "zh": "重大事故回溯與高風險預防",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "中期設立",
+              "en": null
+            },
+            "stages": [
+              "mid"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F3",
+            "F4"
+          ],
+          "sources": [
+            "diplomacy",
+            "welfare",
+            "youth",
+            "heart"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "跨局處整合教育、社政與警政數據，重大事故能回溯原因，高風險情況能提早預防。",
+            "en": null
+          },
+          "who": null
+        },
+        {
+          "id": "institute-access",
+          "name": {
+            "zh": "無障礙城市設計中心",
+            "en": "Accessible city design"
+          },
+          "facts": [
+            {
+              "zh": "系統性研究與政策建議",
+              "en": null
+            },
+            {
+              "zh": "打破局處障礙",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "中期設立",
+              "en": null
+            },
+            "stages": [
+              "mid"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F3",
+            "F4"
+          ],
+          "sources": [
+            "diplomacy",
+            "welfare",
+            "youth",
+            "heart"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "設在台北研究院轄下，針對無障礙城市設計做系統性研究與建議，打破局處障礙。",
+            "en": null
+          },
+          "who": null
+        },
+        {
+          "id": "institute-dementia",
+          "name": {
+            "zh": "失智友善中心",
+            "en": "Dementia-friendly design"
+          },
+          "facts": [
+            {
+              "zh": "系統性研究與政策建議",
+              "en": null
+            },
+            {
+              "zh": "打破局處障礙",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "中期設立",
+              "en": null
+            },
+            "stages": [
+              "mid"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F3",
+            "F4"
+          ],
+          "sources": [
+            "diplomacy",
+            "welfare",
+            "youth",
+            "heart"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "設在台北研究院轄下，針對失智友善做系統性研究與建議，打破局處障礙。",
+            "en": null
+          },
+          "who": null
+        },
+        {
+          "id": "institute-research",
+          "name": {
+            "zh": "長期規劃研究",
+            "en": "Urban governance research"
+          },
+          "facts": [
+            {
+              "zh": "支援長期性的都市發展規劃",
+              "en": null
+            },
+            {
+              "zh": "都市設計、AI 應用與產業發展、交通、社福長照、兒少安全預防",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F3",
+            "F4"
+          ],
+          "sources": [
+            "diplomacy",
+            "welfare",
+            "youth",
+            "heart"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "由專業研究團隊支援都市設計、AI 應用與產業發展、交通、社福長照、兒少安全預防等長期規劃。",
+            "en": null
+          },
+          "who": null
+        }
+      ],
+      "referenceSummary": {
+        "zh": "台北研究院（散見於城市外交、社福、青年、HEART 頁）\n研究領域：都市設計、AI 應用與產業發展、交通、社福長照、兒少安全預防（城市外交頁）。\n社福頁：中期設立無障礙城市設計、失智友善設計、兒少安全治理中心；兒少安全治理中心為跨局處，整合教育、社政與警政資料，做事件檢討與高風險預防。\n青年頁：圓夢計畫與台北研究院合作（市府實習、公共參與）。\nHEART 頁 E：以北士科為節點，引進科技新創與國家級科研團隊，設立都市研究院。",
+        "en": null
+      },
+      "referenceSummaryProvenance": "appendix-a",
+      "unknowns": [],
+      "vision": {
+        "zh": "由專業研究團隊支援長期性的都市發展規劃，讓公務體系有更多心力落實政策。",
+        "en": null
+      }
+    },
+    {
+      "id": "transport",
+      "number": 3,
+      "name": {
+        "zh": "交通政策",
+        "en": "Transport"
+      },
+      "summary": {
+        "zh": "捷運骨幹之外，把走路上學、公車、自行車與共享機車四條綠色道路補起來",
+        "en": null
+      },
+      "heart": [
+        "H",
+        "T"
+      ],
+      "heartLabel": {
+        "zh": "H、T",
+        "en": null
+      },
+      "url": "https://puma.taipei/policies/交通政策",
+      "sources": [
+        "transport"
+      ],
+      "sourceKind": "official_policy",
+      "axial": [
+        -1,
+        5
+      ],
+      "cells": [
+        [
+          -1,
+          5
+        ]
+      ],
+      "buildings": [
+        {
+          "id": "transport-school",
+          "name": {
+            "zh": "通學區",
+            "en": "School zones"
+          },
+          "facts": [
+            {
+              "zh": "學校四周 150 公尺為原則",
+              "en": null
+            },
+            {
+              "zh": "車道縮減、抬升行穿線、減速丘、行人庇護島",
+              "en": null
+            },
+            {
+              "zh": "上下學時段性速限",
+              "en": null
+            },
+            {
+              "zh": "8 年內完成全市 150 多所國小",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第 3–4 年累計 50 所；第 5–8 年完成全市 150 多所",
+              "en": null
+            },
+            "stages": [
+              "year3-4",
+              "year5-8"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F3",
+            "F5",
+            "F6",
+            "F7"
+          ],
+          "sources": [
+            "transport"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "學校四周 150 公尺用全市統一工程規格改善，先用低成本設施試辦，目標通學區零死亡。",
+            "en": null
+          },
+          "who": {
+            "zh": "國小學童與家長",
+            "en": null
+          }
+        },
+        {
+          "id": "transport-bus",
+          "name": {
+            "zh": "公車安全改革",
+            "en": "Bus driver rest stops"
+          },
+          "facts": [
+            {
+              "zh": "駕駛座告警優先序與螢幕配置重新設計",
+              "en": null
+            },
+            {
+              "zh": "折返點休息納入班表",
+              "en": null
+            },
+            {
+              "zh": "直接補貼駕駛薪資",
+              "en": null
+            },
+            {
+              "zh": "低運量路段改以需求反應式公車（DRTS）或小型巴士",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第 1–2 年人因工程與補貼修訂；第 3–4 年分區路網重整",
+              "en": null
+            },
+            "stages": [
+              "year1-2",
+              "year3-4"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F3",
+            "F5",
+            "F6",
+            "F7"
+          ],
+          "sources": [
+            "transport"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "重新設計駕駛座告警與螢幕，休息時間納入班表，補貼改看服務可靠度與勞動條件。",
+            "en": null
+          },
+          "who": {
+            "zh": "公車駕駛與乘客",
+            "en": null
+          }
+        },
+        {
+          "id": "transport-bridge",
+          "name": {
+            "zh": "迎風—港墘自行車橋",
+            "en": "Yingfeng–Gangqian cycle bridge"
+          },
+          "facts": [
+            {
+              "zh": "跨基隆河自行車專用橋",
+              "en": null
+            },
+            {
+              "zh": "銜接民生社區與內湖科技園區",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第 1–2 年細部設計與招標；第 3–4 年完工啟用",
+              "en": null
+            },
+            "stages": [
+              "year1-2",
+              "year3-4"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F3",
+            "F5",
+            "F6",
+            "F7"
+          ],
+          "sources": [
+            "transport"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "興建跨基隆河的自行車專用橋，直接銜接民生社區與內湖科技園區。",
+            "en": null
+          },
+          "who": {
+            "zh": "自行車通勤族",
+            "en": null
+          }
+        },
+        {
+          "id": "transport-bike",
+          "name": {
+            "zh": "YouBike 2.0E 尖峰免費",
+            "en": "YouBike 2.0E"
+          },
+          "facts": [
+            {
+              "zh": "08:00–10:00、17:00–19:00",
+              "en": null,
+              "tile": {
+                "zh": "尖峰時段",
+                "en": "Peak hours"
+              }
+            },
+            {
+              "zh": "前 30 分鐘免費",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第 1–2 年試辦尖峰免費",
+              "en": null
+            },
+            "stages": [
+              "year1-2"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F3",
+            "F5",
+            "F6",
+            "F7"
+          ],
+          "sources": [
+            "transport"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "尖峰時段騎 YouBike 2.0E 前 30 分鐘免費，讓自行車成為日常通勤工具。",
+            "en": null
+          },
+          "who": {
+            "zh": "自行車通勤族",
+            "en": null
+          }
+        },
+        {
+          "id": "transport-scooter",
+          "name": {
+            "zh": "TPASS 共享機車",
+            "en": "TPASS shared electric scooters"
+          },
+          "facts": [
+            {
+              "zh": "每日一定次數前 10 分鐘免費",
+              "en": null
+            },
+            {
+              "zh": "市府出資試辦 3 個月，後續與中央協商常態化",
+              "en": null
+            },
+            {
+              "zh": "所有合法業者一律適用",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第 1–2 年啟動 3 個月試辦",
+              "en": null
+            },
+            "stages": [
+              "year1-2"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F3",
+            "F5",
+            "F6",
+            "F7"
+          ],
+          "sources": [
+            "transport"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "持記名 TPASS 騎共享電動機車，每日一定次數前 10 分鐘免費，並積極媒合共享運具業者與停車場合作。",
+            "en": null
+          },
+          "who": {
+            "zh": "持記名 TPASS 的市民",
+            "en": null
+          }
+        },
+        {
+          "id": "transport-hub",
+          "name": {
+            "zh": "運動驛站",
+            "en": "Sport hub"
+          },
+          "facts": [
+            {
+              "zh": "盥洗、置物、租借",
+              "en": null
+            },
+            {
+              "zh": "鼓勵大樓增設淋浴設施",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F3",
+            "F5",
+            "F6",
+            "F7"
+          ],
+          "sources": [
+            "transport"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "提供盥洗、置物與租借服務，並以綠建築與容積獎勵鼓勵大樓增設淋浴設施。",
+            "en": null
+          },
+          "who": {
+            "zh": "騎車、運動通勤的市民",
+            "en": null
+          }
+        },
+        {
+          "id": "transport-maintain",
+          "name": {
+            "zh": "河濱車道評分",
+            "en": null
+          },
+          "facts": [
+            {
+              "zh": "5 項指標每季評分公開",
+              "en": null
+            },
+            {
+              "zh": "維護預算與評分連動",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F3",
+            "F5",
+            "F6",
+            "F7"
+          ],
+          "sources": [
+            "transport"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "鋪面、標線、照明、指標與越堤動線 5 項指標每季評分公開，維護預算跟著評分走。",
+            "en": null
+          },
+          "who": {
+            "zh": "自行車通勤族",
+            "en": null
+          }
+        }
+      ],
+      "referenceSummary": {
+        "zh": "交通政策｜HEART：H、T\n核心：「捷運骨幹之外，用安全與便利，把四條綠色道路補起來。」定位「選項 +1」。\n通學區：學校四周 150 公尺為原則；全市統一工程規格（車道縮減、抬升行穿線、減速丘、行人庇護島、縮小轉彎半徑、路口淨空）；先用油漆、塑膠桿、花台試辦再永久化；時段性速限；八年內完成全市 150 多所國小，「通學區零死亡」。背景：上午 7–9 點為全天交通死傷高峰。\n公車：駕駛座人因工程；盤點折返點休息與大車暫停空間，休息時間納入班表；低運量路段改 DRTS 或小型巴士；補貼依據由「行駛里程」改為「服務可靠度與勞動條件」，直接補貼駕駛薪資。\n自行車：迎風—港墘跨基隆河自行車專用橋（民生社區 ↔ 內湖科技園區）；五項指標每季評分並公開（鋪面平整度、標線、照明、指標、越堤動線）；YouBike 2.0E 尖峰（08:00–10:00、17:00–19:00）前 30 分鐘免費；運動驛站（盥洗、置物、租借）；綠建築與容積獎勵鼓勵大樓增設淋浴。\nTPASS 納入共享電動機車：記名 TPASS 每日一定次數前 10 分鐘免費，市府出資試辦 3 個月；積極媒合共享運具業者與停車場合作；所有合法業者適用。\n藍圖：第 1–2 年（TPASS 機車試辦、公車人因與補貼修訂、迎風—港墘橋細設與招標、YouBike 尖峰試辦）；第 3–4 年（橋完工、累計 50 所通學區、公車路網重整）；第 5–8 年（150 多所完成、完整自行車通勤路網）。",
+        "en": null
+      },
+      "referenceSummaryProvenance": "appendix-a",
+      "unknowns": [],
+      "vision": {
+        "zh": "捷運骨幹之外，用安全與便利，把四條綠色道路補起來。",
+        "en": null
+      }
+    },
+    {
+      "id": "education",
+      "number": 4,
+      "name": {
+        "zh": "教育政策",
+        "en": "Education"
+      },
+      "summary": {
+        "zh": "讓老師有心力教學、家庭有支持、校園安全有品質",
+        "en": null
+      },
+      "heart": [
+        "E",
+        "A"
+      ],
+      "heartLabel": {
+        "zh": "E、A",
+        "en": null
+      },
+      "url": "https://puma.taipei/policies/教育政策",
+      "sources": [
+        "education"
+      ],
+      "sourceKind": "official_policy",
+      "axial": [
+        -1,
+        2
+      ],
+      "cells": [
+        [
+          -1,
+          2
+        ]
+      ],
+      "buildings": [
+        {
+          "id": "education-class",
+          "name": {
+            "zh": "小班教室",
+            "en": "Smaller classes"
+          },
+          "facts": [
+            {
+              "zh": "117 學年度國小每班 24 人、國中 25 人",
+              "en": null,
+              "tile": {
+                "zh": "117 學年度",
+                "en": null
+              }
+            },
+            {
+              "zh": "減生不減師",
+              "en": null
+            },
+            {
+              "zh": "增加專任輔導教師",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "117 學年度達成班級人數目標",
+              "en": null
+            },
+            "stages": [
+              "ay117"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F3",
+            "F4",
+            "F6",
+            "F10",
+            "F11",
+            "F12",
+            "F14",
+            "F17"
+          ],
+          "sources": [
+            "education"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "以「減生不減師」為原則，把少子化釋出的空間轉成更小的班級與更好的教學。",
+            "en": null
+          },
+          "who": {
+            "zh": "國中小師生",
+            "en": null
+          }
+        },
+        {
+          "id": "education-teachers",
+          "name": {
+            "zh": "雙導師",
+            "en": "Dual teachers"
+          },
+          "facts": [
+            {
+              "zh": "國小雙導師",
+              "en": null
+            },
+            {
+              "zh": "導師行政助理",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "中期試辦",
+              "en": null
+            },
+            "stages": [
+              "mid"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F3",
+            "F4",
+            "F6",
+            "F10",
+            "F11",
+            "F12",
+            "F14"
+          ],
+          "sources": [
+            "education"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "試辦國小雙導師與導師行政助理，讓導師不再一個人扛全班。",
+            "en": null
+          },
+          "who": {
+            "zh": "國小導師",
+            "en": null
+          }
+        },
+        {
+          "id": "education-admin",
+          "name": {
+            "zh": "無痛行政",
+            "en": "Administrative support"
+          },
+          "facts": [
+            {
+              "zh": "先盤點、刪除重複與過時流程",
+              "en": null
+            },
+            {
+              "zh": "再導入數位工具與自動化",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "短期先改善行政流程",
+              "en": null
+            },
+            "stages": [
+              "short"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F3",
+            "F4",
+            "F6",
+            "F10",
+            "F11",
+            "F12",
+            "F14"
+          ],
+          "sources": [
+            "education"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "先盤點、刪除重複與過時的流程，再導入數位工具，讓老師把時間留給教學。",
+            "en": null
+          },
+          "who": {
+            "zh": "教師",
+            "en": null
+          }
+        },
+        {
+          "id": "education-mediation",
+          "name": {
+            "zh": "親師第三方機制",
+            "en": "Third-party mediation"
+          },
+          "facts": [
+            {
+              "zh": "第三方機制",
+              "en": null
+            },
+            {
+              "zh": "師生調和程序",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F3",
+            "F4",
+            "F6",
+            "F10",
+            "F11",
+            "F12",
+            "F14"
+          ],
+          "sources": [
+            "education"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "面對親師溝通與校園衝突，建立第三方機制與師生調和程序，讓家長與老師一起陪伴孩子。",
+            "en": null
+          },
+          "who": {
+            "zh": "教師、家長與學生",
+            "en": null
+          }
+        },
+        {
+          "id": "education-eap",
+          "name": {
+            "zh": "教師 EAP",
+            "en": "Teacher EAP"
+          },
+          "facts": [
+            {
+              "zh": "擴大教師協助方案（EAP）",
+              "en": null
+            },
+            {
+              "zh": "心理支持與諮商資源",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "短期啟動教師心理支持",
+              "en": null
+            },
+            "stages": [
+              "short"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F3",
+            "F4",
+            "F6",
+            "F10",
+            "F11",
+            "F12",
+            "F14"
+          ],
+          "sources": [
+            "education"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "擴大教師協助方案，增加可近的心理支持與諮商資源，壓力不必由老師獨自承擔。",
+            "en": null
+          },
+          "who": {
+            "zh": "第一線教師",
+            "en": null
+          }
+        },
+        {
+          "id": "education-preschool",
+          "name": {
+            "zh": "公幼專任主任",
+            "en": "Preschool principals"
+          },
+          "facts": [
+            {
+              "zh": "117 學年度幼幼班每班 10 人、幼兒園 24 人",
+              "en": null,
+              "tile": {
+                "zh": "117 學年度",
+                "en": null
+              }
+            },
+            {
+              "zh": "專任主任制度",
+              "en": null
+            },
+            {
+              "zh": "教保人員行政減壓",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "117 學年度班級人數目標；中期試辦專任主任",
+              "en": null
+            },
+            "stages": [
+              "ay117",
+              "mid"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F3",
+            "F4",
+            "F6",
+            "F10",
+            "F11",
+            "F12",
+            "F14"
+          ],
+          "sources": [
+            "education"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "降低幼兒園班級人數，公立幼兒園推動專任主任制度，減輕教保人員的行政負擔。",
+            "en": null
+          },
+          "who": {
+            "zh": "幼教教保人員與幼兒",
+            "en": null
+          }
+        },
+        {
+          "id": "education-special",
+          "name": {
+            "zh": "特教支持",
+            "en": "Special education"
+          },
+          "facts": [
+            {
+              "zh": "家庭教育中心串連家庭一站通、育兒解憂、心理諮商",
+              "en": null
+            },
+            {
+              "zh": "重新檢視特教助理員配置、增加特教人力",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "短期盤點特教人力；中期建立跨局處家庭支持",
+              "en": null
+            },
+            "stages": [
+              "short",
+              "mid"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F3",
+            "F4",
+            "F6",
+            "F10",
+            "F11",
+            "F12",
+            "F14"
+          ],
+          "sources": [
+            "education"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "補上特殊教育的斷點：擴大家庭教育中心串連資源，校園重新檢視特教助理員並增加人力。",
+            "en": null
+          },
+          "who": {
+            "zh": "特教學生與家庭",
+            "en": null
+          }
+        },
+        {
+          "id": "education-prevention",
+          "name": {
+            "zh": "校園反毒",
+            "en": "Drug prevention and safety"
+          },
+          "facts": [
+            {
+              "zh": "斷來源、教拒絕、轉治療、司法為輔",
+              "en": null
+            },
+            {
+              "zh": "校園周邊販售熱點與電子煙載具查緝",
+              "en": null
+            },
+            {
+              "zh": "篩檢、簡短處遇及轉介治療（SBIRT）",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F3",
+            "F4",
+            "F6",
+            "F10",
+            "F11",
+            "F12",
+            "F14"
+          ],
+          "sources": [
+            "education"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "反毒採「斷來源、教拒絕、轉治療、司法為輔」四層策略，需要協助的孩子優先進入治療與輔導。",
+            "en": null
+          },
+          "who": {
+            "zh": "學生",
+            "en": null
+          }
+        },
+        {
+          "id": "education-ai",
+          "name": {
+            "zh": "AI 教學工具",
+            "en": "Classroom AI"
+          },
+          "facts": [
+            {
+              "zh": "市立高中、國中、國小",
+              "en": null
+            },
+            {
+              "zh": "校管帳號、限定課堂時段、教師在場",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "中期建立校園 AI 工具與安全使用機制",
+              "en": null
+            },
+            "stages": [
+              "mid"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F3",
+            "F4",
+            "F6",
+            "F10",
+            "F11",
+            "F12",
+            "F14"
+          ],
+          "sources": [
+            "education"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "補助學校採購教育版 AI 工具，用校管帳號、限定課堂時段、教師在場保護孩子。",
+            "en": null
+          },
+          "who": {
+            "zh": "學生",
+            "en": null
+          }
+        },
+        {
+          "id": "education-usr",
+          "name": {
+            "zh": "大學 USR 合作",
+            "en": "University USR"
+          },
+          "facts": [
+            {
+              "zh": "結合大學社會責任（USR）機制",
+              "en": null
+            },
+            {
+              "zh": "大學以計畫模式研究市政議題",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F3",
+            "F4",
+            "F6",
+            "F10",
+            "F11",
+            "F12",
+            "F14"
+          ],
+          "sources": [
+            "education"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "市府列出市政痛點，大學透過社會責任計畫研究議題、提出市政建議。",
+            "en": null
+          },
+          "who": null
+        }
+      ],
+      "referenceSummary": {
+        "zh": "教育政策｜HEART：E、A\n背景：115 學年開學 44 個代課缺；國中缺額率六都最高。\n8 項：①教師不超載：117 學年國小每班 24 人、國中 25 人，「減生不減師」；試辦國小雙導師、導師行政助理；「無痛行政」。②親師衝突：第三方機制、師生調解；擴大教師 EAP。③幼兒：117 學年幼幼班 10 人、幼兒園 24 人；公幼專任園長。④特教：擴大家庭教育中心，串接家庭一站通、育兒解憂、諮商、職場友善；檢討特教助理人力。⑤營養：彈性餐費、保留家長自費加價彈性、食農教育、在地小農。⑥學生安全：反毒四層「斷來源、教拒絕、轉治療、司法為輔」、SBIRT；八年 150 所通學區。⑦AI：補助公立高中、國中、國小購買教育版 AI 工具（學校管理帳號、限制課堂使用、教師督導）。⑧大學 USR：市府列出市政問題，由大學研究並提建議。",
+        "en": null
+      },
+      "referenceSummaryProvenance": "appendix-a",
+      "unknowns": [],
+      "vision": {
+        "zh": "教育政策不只關乎孩子在教室裡學到什麼，也取決於老師是否有足夠心力教學、家庭能否獲得支持。",
+        "en": null
+      }
+    },
+    {
+      "id": "lunch",
+      "number": 5,
+      "name": {
+        "zh": "營養午餐",
+        "en": "School meals"
+      },
+      "summary": {
+        "zh": "免費是基本保障，品質、營養與教育一起往上提升",
+        "en": null
+      },
+      "heart": [
+        "R"
+      ],
+      "heartLabel": {
+        "zh": "R",
+        "en": null
+      },
+      "url": "https://puma.taipei/policies/營養午餐",
+      "sources": [
+        "lunch"
+      ],
+      "sourceKind": "official_policy",
+      "axial": [
+        0,
+        2
+      ],
+      "cells": [
+        [
+          0,
+          2
+        ]
+      ],
+      "buildings": [
+        {
+          "id": "lunch-farm",
+          "name": {
+            "zh": "在地小農田",
+            "en": "Local farms"
+          },
+          "facts": [
+            {
+              "zh": "借鏡東京經驗",
+              "en": null
+            },
+            {
+              "zh": "導入商業機制，促進在地小農與校園合作",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第三階段",
+              "en": null
+            },
+            "stages": [
+              "stage3"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F14"
+          ],
+          "sources": [
+            "lunch"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "借鏡東京經驗，導入商業機制促進在地小農與校園合作，讓學生享用優質的在地食材。",
+            "en": null
+          },
+          "who": null
+        },
+        {
+          "id": "lunch-literacy",
+          "name": {
+            "zh": "食農教育",
+            "en": "Food education"
+          },
+          "facts": [
+            {
+              "zh": "活化校園閒置空間作為供餐場域",
+              "en": null
+            },
+            {
+              "zh": "了解食物供應及經營管理的知識",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第三階段",
+              "en": null
+            },
+            "stages": [
+              "stage3"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F14"
+          ],
+          "sources": [
+            "lunch"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "營養午餐食農教育可借鏡東京經驗，導入商業機制促進在地小農與校園合作，並進一步活化校園閒置空間作為供餐場域，讓學生享用優質的在地食材，同時了解食物供應及經營管理的知識。",
+            "en": null
+          },
+          "who": {
+            "zh": "學生",
+            "en": null
+          }
+        },
+        {
+          "id": "lunch-price",
+          "name": {
+            "zh": "彈性餐費機制",
+            "en": "Flexible meal pricing"
+          },
+          "facts": [
+            {
+              "zh": "回應原物料價格上漲、天然災害、市場供需",
+              "en": null
+            },
+            {
+              "zh": "先盤點現行餐費與供餐成本",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第一階段盤點；第二階段建立調整機制",
+              "en": null
+            },
+            "stages": [
+              "stage1",
+              "stage2"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F14"
+          ],
+          "sources": [
+            "lunch"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "餐費能隨原物料價格、天然災害與市場供需調整，避免成本壓力影響孩子的餐食品質。",
+            "en": null
+          },
+          "who": {
+            "zh": "學生、學校與供餐業者",
+            "en": null
+          }
+        },
+        {
+          "id": "lunch-subsidy",
+          "name": {
+            "zh": "弱勢補差額",
+            "en": "Support for disadvantaged students"
+          },
+          "facts": [
+            {
+              "zh": "全校決定加價，市府補足弱勢學生價差",
+              "en": null
+            },
+            {
+              "zh": "優先補足弱勢與特殊需求學生",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F14"
+          ],
+          "sources": [
+            "lunch"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "全校決定加價提升品質時，由市府替弱勢學生補足價差，讓每個孩子一起吃得更好。",
+            "en": null
+          },
+          "who": {
+            "zh": "弱勢與特殊需求學生",
+            "en": null
+          }
+        }
+      ],
+      "referenceSummary": {
+        "zh": "營養午餐｜HEART：R\n「免費，是讓每個孩子都能吃到午餐；品質，是讓每個孩子都能吃得營養。」\n彈性餐費調整機制；在地小農與校園合作（借鏡東京經驗）；食農教育（活化校園閒置空間作為供餐場域）。\n其他：全校決定加價時市府替弱勢學生補足價差。",
+        "en": null
+      },
+      "referenceSummaryProvenance": "appendix-a",
+      "unknowns": [],
+      "vision": {
+        "zh": "免費，是讓每個孩子都能吃到午餐；品質，是讓每個孩子都能吃得營養。",
+        "en": null
+      }
+    },
+    {
+      "id": "family",
+      "number": 6,
+      "name": {
+        "zh": "家庭一站通",
+        "en": "Family support"
+      },
+      "summary": {
+        "zh": "育兒的入口網站：從一個地方開始，找到後援與喘息的出口",
+        "en": null
+      },
+      "heart": [
+        "A",
+        "R",
+        "T"
+      ],
+      "heartLabel": {
+        "zh": "A、R、T",
+        "en": null
+      },
+      "url": "https://puma.taipei/policies/家庭一站通",
+      "sources": [
+        "family"
+      ],
+      "sourceKind": "official_policy",
+      "axial": [
+        -1,
+        3
+      ],
+      "cells": [
+        [
+          -1,
+          3
+        ]
+      ],
+      "buildings": [
+        {
+          "id": "family-station",
+          "name": {
+            "zh": "擴大家庭教育中心",
+            "en": null
+          },
+          "facts": [
+            {
+              "zh": "朝每區都有據點推進",
+              "en": null
+            },
+            {
+              "zh": "階段性擴大至 0–18 歲孩子的家庭",
+              "en": null,
+              "tile": {
+                "zh": "0–18 歲",
+                "en": null
+              }
+            },
+            {
+              "zh": "孕產知識、產後情緒、職涯與育兒平衡",
+              "en": null
+            },
+            {
+              "zh": "單親及隔代育兒",
+              "en": null
+            },
+            {
+              "zh": "中小學法律、金融、心理通識",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F10",
+            "F11"
+          ],
+          "sources": [
+            "family"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "以現有家庭教育中心為基礎擴充，朝每區都有據點推進，並擴充親子館量能，開孕產、產後情緒、職涯與育兒平衡、單親及隔代育兒等課程。",
+            "en": null
+          },
+          "who": {
+            "zh": "育兒家庭與照顧者",
+            "en": null
+          }
+        },
+        {
+          "id": "family-hotline",
+          "name": {
+            "zh": "單一育兒專線",
+            "en": "Parenting hotline"
+          },
+          "facts": [
+            {
+              "zh": "整合育兒窗口電話",
+              "en": null
+            },
+            {
+              "zh": "專人協助銜接資源",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F10",
+            "F11"
+          ],
+          "sources": [
+            "family"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "整合相關窗口電話，家長打同一支電話提問，由專人協助銜接資源。",
+            "en": null
+          },
+          "who": {
+            "zh": "家長",
+            "en": null
+          }
+        },
+        {
+          "id": "family-manager",
+          "name": {
+            "zh": "育兒解憂計畫",
+            "en": "Family case managers"
+          },
+          "facts": [
+            {
+              "zh": "個案管理師到家訪視",
+              "en": null
+            },
+            {
+              "zh": "家庭教育陪伴師支持",
+              "en": null
+            },
+            {
+              "zh": "轉介政府資源",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F10",
+            "F11"
+          ],
+          "sources": [
+            "family"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "個案管理師訪視申請服務的家庭，了解需求、提供協助並轉介政府資源，搭配家庭教育陪伴師。",
+            "en": null
+          },
+          "who": {
+            "zh": "申請服務的家庭",
+            "en": null
+          }
+        },
+        {
+          "id": "family-respite",
+          "name": {
+            "zh": "每週免費臨托",
+            "en": "Weekly respite care"
+          },
+          "facts": [
+            {
+              "zh": "滿 6 個月至 6 歲",
+              "en": null,
+              "tile": {
+                "zh": "6 個月–6 歲",
+                "en": null
+              }
+            },
+            {
+              "zh": "每週固定時數免費臨托",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F10",
+            "F11"
+          ],
+          "sources": [
+            "family"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "滿 6 個月至 6 歲的孩子每週有固定時數的免費臨時托育，讓家長能休息、社交、處理自己的事。",
+            "en": null
+          },
+          "who": {
+            "zh": "家長",
+            "en": null
+          }
+        },
+        {
+          "id": "family-counsel",
+          "name": {
+            "zh": "3＋6 心理諮商",
+            "en": "3+6 counseling"
+          },
+          "facts": [
+            {
+              "zh": "中央 3 次＋市府每胎加碼 6 次",
+              "en": null,
+              "tile": {
+                "zh": "每胎加碼 6 次",
+                "en": null
+              }
+            },
+            {
+              "zh": "產後一年內的家長，無條件",
+              "en": null
+            },
+            {
+              "zh": "中央方案依其適用資格辦理",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F10",
+            "F11"
+          ],
+          "sources": [
+            "family"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "除了中央方案的 3 次服務，由市府為產後一年內的家長，無條件每胎再加碼 6 次；中央方案仍依其適用資格辦理。",
+            "en": null
+          },
+          "who": {
+            "zh": "產後家長",
+            "en": null
+          }
+        },
+        {
+          "id": "family-home",
+          "name": {
+            "zh": "到宅育兒指導",
+            "en": "Home parenting guidance"
+          },
+          "facts": [
+            {
+              "zh": "未滿 2 歲兒童家庭",
+              "en": null,
+              "tile": {
+                "zh": "未滿 2 歲",
+                "en": null
+              }
+            },
+            {
+              "zh": "免費 6 次",
+              "en": null
+            },
+            {
+              "zh": "餵奶、洗澡、居家安全",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F10",
+            "F11"
+          ],
+          "sources": [
+            "family"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "未滿 2 歲兒童家庭的免費到宅育兒指導擴充至 6 次，提供餵奶、洗澡與居家安全等實際協助。",
+            "en": null
+          },
+          "who": {
+            "zh": "新手家庭",
+            "en": null
+          }
+        }
+      ],
+      "referenceSummary": {
+        "zh": "家庭一站通｜HEART：A、R、T\n單一入口：整合育兒專線，以家庭教育中心為基礎擴大服務，陪伴 0–18 歲孩子的家庭。\n擴大家庭教育中心（含爸媽支持課程）；整合育兒專線；育兒解憂計畫（個案管理師訪視＋家庭教育陪伴師）；每週固定時數免費臨托（滿 6 個月至 6 歲）；「3＋6」免費心理諮商（市府為產後一年內家長每胎加碼 6 次）、未滿 2 歲家庭到宅育兒指導擴充至 6 次。",
+        "en": null
+      },
+      "referenceSummaryProvenance": "appendix-a",
+      "unknowns": [],
+      "vision": {
+        "zh": "育兒，也需要一個入口網站。",
+        "en": null
+      }
+    },
+    {
+      "id": "card",
+      "number": 7,
+      "name": {
+        "zh": "親子同行卡",
+        "en": "Family card"
+      },
+      "summary": {
+        "zh": "設籍台北 0–18 歲，每人每月 600 點，支持全家一起探索城市",
+        "en": null
+      },
+      "heart": [
+        "A",
+        "T"
+      ],
+      "heartLabel": {
+        "zh": "A、T",
+        "en": null
+      },
+      "url": "https://puma.taipei/policies/親子同行卡",
+      "sources": [
+        "card"
+      ],
+      "sourceKind": "official_policy",
+      "axial": [
+        -2,
+        3
+      ],
+      "cells": [
+        [
+          -2,
+          3
+        ]
+      ],
+      "buildings": [
+        {
+          "id": "card-culture",
+          "name": {
+            "zh": "文化幣",
+            "en": "Culture points"
+          },
+          "facts": [
+            {
+              "zh": "看展、劇場、讀物、兒童電影",
+              "en": null
+            },
+            {
+              "zh": "獨立書店、小劇場、在地創作者",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F9",
+            "F10"
+          ],
+          "sources": [
+            "card"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "支持家庭看展、進劇場、買讀物與看兒童電影，並把獨立書店、小劇場與在地創作者納入合作。",
+            "en": null
+          },
+          "who": {
+            "zh": "0–18 歲兒少與家人",
+            "en": null
+          }
+        },
+        {
+          "id": "card-sport",
+          "name": {
+            "zh": "運動幣",
+            "en": "Sport points"
+          },
+          "facts": [
+            {
+              "zh": "游泳、球類、舞蹈、滑冰",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F9",
+            "F10"
+          ],
+          "sources": [
+            "card"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "支持游泳、球類、舞蹈、滑冰等多元活動，讓家庭更容易走進運動空間。",
+            "en": null
+          },
+          "who": {
+            "zh": "0–18 歲兒少與家人",
+            "en": null
+          }
+        },
+        {
+          "id": "card-reading",
+          "name": {
+            "zh": "分齡閱讀禮袋",
+            "en": "Reading bags"
+          },
+          "facts": [
+            {
+              "zh": "0 歲出生閱讀袋、2 歲語言探索袋、5 歲入學準備袋",
+              "en": null,
+              "tile": {
+                "zh": "0、2、5 歲",
+                "en": null
+              }
+            },
+            {
+              "zh": "圖書館借閱證與家長共讀指南",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F9",
+            "F10"
+          ],
+          "sources": [
+            "card"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "0 歲出生閱讀袋、2 歲語言探索袋、5 歲入學準備袋，搭配圖書館借閱證與家長共讀指南。",
+            "en": null
+          },
+          "who": {
+            "zh": "0、2、5 歲的孩子與家長",
+            "en": null
+          }
+        },
+        {
+          "id": "card-learning",
+          "name": {
+            "zh": "家庭教育點數",
+            "en": "Family education points"
+          },
+          "facts": [
+            {
+              "zh": "親子共同參與課程",
+              "en": null
+            },
+            {
+              "zh": "獲得額外獎勵點數",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F9",
+            "F10"
+          ],
+          "sources": [
+            "card"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "親子一起上課可獲得額外獎勵點數，把課堂上的練習帶回日常相處。",
+            "en": null
+          },
+          "who": {
+            "zh": "親子",
+            "en": null
+          }
+        },
+        {
+          "id": "card-shops",
+          "name": {
+            "zh": "親子同行認證小店",
+            "en": "Certified local shops"
+          },
+          "facts": [
+            {
+              "zh": "獨立書店與社區小店申請加入",
+              "en": null
+            },
+            {
+              "zh": "逐步擴大可使用範圍",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F9",
+            "F10",
+            "F18"
+          ],
+          "sources": [
+            "card"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "辦理在地活動的獨立書店與社區小店可申請認證加入，逐步擴大能使用的服務與活動。",
+            "en": null
+          },
+          "who": null
+        },
+        {
+          "id": "card-elders",
+          "name": {
+            "zh": "祖孫相伴",
+            "en": "Grandparent connections"
+          },
+          "facts": [
+            {
+              "zh": "與敬老卡服務銜接",
+              "en": null
+            },
+            {
+              "zh": "增加三代共同出門的機會",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F9",
+            "F10"
+          ],
+          "sources": [
+            "card"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "與敬老卡適用服務銜接，祖父母陪孩子參加活動時，兩邊的支持資源一起發揮作用。",
+            "en": null
+          },
+          "who": {
+            "zh": "祖父母與孫輩",
+            "en": null
+          }
+        }
+      ],
+      "referenceSummary": {
+        "zh": "親子同行卡｜HEART：A、T\n設籍台北 0–18 歲，每人每月 600 點。\n文化幣、運動幣、分齡閱讀禮袋（0 歲出生閱讀袋、2 歲語言探索袋、5 歲入學準備袋）、家庭教育點數；親子同行認證（獨立書店、社區小店）；祖孫相伴（與敬老卡銜接）。",
+        "en": null
+      },
+      "referenceSummaryProvenance": "appendix-a",
+      "unknowns": [],
+      "vision": {
+        "zh": "你扶養孩子，台北為你富養每一個孩子。",
+        "en": null
+      }
+    },
+    {
+      "id": "welfare",
+      "number": 8,
+      "name": {
+        "zh": "衛福與社會照顧",
+        "en": "Health & social care"
+      },
+      "summary": {
+        "zh": "從幼童、中壯年到長者與身障朋友的全生命週期安全網",
+        "en": null
+      },
+      "heart": [
+        "E",
+        "A",
+        "R"
+      ],
+      "heartLabel": {
+        "zh": "E、A、R",
+        "en": null
+      },
+      "url": "https://puma.taipei/policies/社福政策",
+      "sources": [
+        "welfare"
+      ],
+      "sourceKind": "official_policy",
+      "axial": [
+        -2,
+        4
+      ],
+      "cells": [
+        [
+          -2,
+          4
+        ]
+      ],
+      "buildings": [
+        {
+          "id": "welfare-elder",
+          "name": {
+            "zh": "敬老卡升級",
+            "en": "Senior card"
+          },
+          "facts": [
+            {
+              "zh": "與親子同行卡對齊",
+              "en": null
+            },
+            {
+              "zh": "擴大至藝文活動、健身房等",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "初期擴增敬老卡點數及範疇",
+              "en": null
+            },
+            "stages": [
+              "short"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F8",
+            "F9",
+            "F11"
+          ],
+          "sources": [
+            "welfare"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "敬老卡與親子同行卡對齊，擴大適用場館、地點及使用範疇，例如藝文活動、健身房。",
+            "en": null
+          },
+          "who": {
+            "zh": "長者",
+            "en": null
+          }
+        },
+        {
+          "id": "welfare-respite",
+          "name": {
+            "zh": "臨時托老券",
+            "en": "Respite vouchers"
+          },
+          "facts": [
+            {
+              "zh": "彈性臨時托老券",
+              "en": null
+            },
+            {
+              "zh": "無縫接軌社區安全網",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F8",
+            "F9",
+            "F11"
+          ],
+          "sources": [
+            "welfare"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "推出彈性的臨時托老券，讓照顧長輩的家人可以喘口氣。",
+            "en": null
+          },
+          "who": {
+            "zh": "照顧長輩的家庭",
+            "en": null
+          }
+        },
+        {
+          "id": "welfare-home",
+          "name": {
+            "zh": "在宅醫療",
+            "en": "Home medical care"
+          },
+          "facts": [
+            {
+              "zh": "在宅醫療",
+              "en": null
+            },
+            {
+              "zh": "接軌社區安全網",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F8",
+            "F9",
+            "F11"
+          ],
+          "sources": [
+            "welfare"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "推動在宅醫療，讓醫療服務走進家中，與社區安全網無縫接軌。",
+            "en": null
+          },
+          "who": {
+            "zh": "長者與行動不便者",
+            "en": null
+          }
+        },
+        {
+          "id": "welfare-hourly",
+          "name": {
+            "zh": "鐘點移工",
+            "en": "Hourly migrant care"
+          },
+          "facts": [
+            {
+              "zh": "填補夜間照護人力",
+              "en": null
+            },
+            {
+              "zh": "媒合企業與學校移工訓練",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "長期媒合企業與學校移工訓練",
+              "en": null
+            },
+            "stages": [
+              "long"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F8",
+            "F9",
+            "F11"
+          ],
+          "sources": [
+            "welfare"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "規劃以鐘點移工填補夜間人力的缺口，配合中央政策媒合移工訓練。",
+            "en": null
+          },
+          "who": {
+            "zh": "需要夜間照護的家庭",
+            "en": null
+          }
+        },
+        {
+          "id": "welfare-care",
+          "name": {
+            "zh": "住宿型長照與共照據點",
+            "en": "Residential long-term care"
+          },
+          "facts": [
+            {
+              "zh": "退場學校用地",
+              "en": null
+            },
+            {
+              "zh": "住宿型機構空間",
+              "en": null
+            },
+            {
+              "zh": "實體社區共照據點",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "長期完成住宿型機構與共照據點",
+              "en": null
+            },
+            "stages": [
+              "long"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F8",
+            "F9",
+            "F11",
+            "F16"
+          ],
+          "sources": [
+            "welfare"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "藉由退場學校用地增加住宿型機構空間，並完成社區共照據點。",
+            "en": null
+          },
+          "who": {
+            "zh": "長者與家庭",
+            "en": null
+          }
+        },
+        {
+          "id": "welfare-shingles",
+          "name": {
+            "zh": "皮蛇疫苗",
+            "en": "Shingles vaccine"
+          },
+          "facts": [
+            {
+              "zh": "50 歲以上",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "初期啟動疫苗補助",
+              "en": null
+            },
+            "stages": [
+              "short"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F8",
+            "F9",
+            "F11"
+          ],
+          "sources": [
+            "welfare"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "擴大提供 50 歲以上市民皮蛇疫苗補助。",
+            "en": null
+          },
+          "who": {
+            "zh": "50 歲以上市民",
+            "en": null
+          }
+        },
+        {
+          "id": "welfare-counsel",
+          "name": {
+            "zh": "免費心理諮商",
+            "en": "Counseling"
+          },
+          "facts": [
+            {
+              "zh": "15–65 歲",
+              "en": null,
+              "tile": {
+                "zh": "15–65 歲",
+                "en": null
+              }
+            },
+            {
+              "zh": "產後媽媽額外加碼",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "初期啟動各年齡層心理諮商",
+              "en": null
+            },
+            "stages": [
+              "short"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F8",
+            "F9",
+            "F11"
+          ],
+          "sources": [
+            "welfare"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "推行涵蓋 15 至 65 歲的免費心理諮商計畫，產後媽媽另外加碼。",
+            "en": null
+          },
+          "who": {
+            "zh": "15–65 歲市民",
+            "en": null
+          }
+        },
+        {
+          "id": "welfare-work",
+          "name": {
+            "zh": "職場友善 2.0",
+            "en": "Workplace support 2.0"
+          },
+          "facts": [
+            {
+              "zh": "職代津貼：減少福利政策造成的職場排擠效應",
+              "en": null
+            },
+            {
+              "zh": "無痛行政：減少第一線社福人員、護理人員、教保人員與工會的行政工作量",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F8",
+            "F9",
+            "F11"
+          ],
+          "sources": [
+            "welfare"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "推動「職代津貼」，減少福利政策造成的職場排擠效應；推動「無痛行政」，減少第一線社福人員、護理人員、教保人員與工會的行政工作量。",
+            "en": null
+          },
+          "who": {
+            "zh": "職場與第一線工作者",
+            "en": null
+          }
+        },
+        {
+          "id": "welfare-vaccine",
+          "name": {
+            "zh": "腸病毒疫苗",
+            "en": "Enterovirus vaccine"
+          },
+          "facts": [
+            {
+              "zh": "0–6 歲免費接種",
+              "en": null,
+              "tile": {
+                "zh": "0–6 歲",
+                "en": null
+              }
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "初期啟動疫苗補助",
+              "en": null
+            },
+            "stages": [
+              "short"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F8",
+            "F9",
+            "F11"
+          ],
+          "sources": [
+            "welfare"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "推行 0 至 6 歲幼兒免費接種腸病毒疫苗，守住兒少健康防線。",
+            "en": null
+          },
+          "who": {
+            "zh": "0–6 歲幼兒",
+            "en": null
+          }
+        },
+        {
+          "id": "welfare-child",
+          "name": {
+            "zh": "兒少安全治理分析",
+            "en": null
+          },
+          "facts": [
+            {
+              "zh": "設於台北研究院",
+              "en": null
+            },
+            {
+              "zh": "整合教育、社政、衛生、警政、消防、交通及工務數據",
+              "en": null
+            },
+            {
+              "zh": "重大事故回溯分析與政策檢討",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F8",
+            "F9",
+            "F11"
+          ],
+          "sources": [
+            "welfare"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "在台北研究院設立兒少安全治理分析，整合教育、社政、衛生、警政、消防、交通及工務等數據，做重大事故回溯分析與政策檢討。",
+            "en": null
+          },
+          "who": {
+            "zh": "兒少",
+            "en": null
+          }
+        },
+        {
+          "id": "welfare-power",
+          "name": {
+            "zh": "罕病不斷電",
+            "en": "Backup power"
+          },
+          "facts": [
+            {
+              "zh": "家用不斷電系統補助",
+              "en": null
+            },
+            {
+              "zh": "保障醫療維生安全",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F8",
+            "F9",
+            "F11"
+          ],
+          "sources": [
+            "welfare"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "補助罕病患者家用不斷電系統，保障醫療維生安全。",
+            "en": null
+          },
+          "who": {
+            "zh": "罕病患者",
+            "en": null
+          }
+        },
+        {
+          "id": "welfare-safety",
+          "name": {
+            "zh": "女性安全審計",
+            "en": "Women’s safety audit"
+          },
+          "facts": [
+            {
+              "zh": "由下而上",
+              "en": null
+            },
+            {
+              "zh": "檢視公共空間",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F8",
+            "F9",
+            "F11"
+          ],
+          "sources": [
+            "welfare"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "由下而上推動女性安全審計，檢視公共空間哪裡讓人不安心。",
+            "en": null
+          },
+          "who": {
+            "zh": "女性與所有使用公共空間的市民",
+            "en": null
+          }
+        },
+        {
+          "id": "welfare-single",
+          "name": {
+            "zh": "單身不孤獨專線",
+            "en": "Single-person support hotline"
+          },
+          "facts": [
+            {
+              "zh": "單身女性專屬",
+              "en": null
+            },
+            {
+              "zh": "整合心理、社福及醫療資源",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F8",
+            "F9",
+            "F11"
+          ],
+          "sources": [
+            "welfare"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "單身女性專屬的服務專線，整合心理、社福及醫療資源，並提供一站式身心理健康支持。",
+            "en": null
+          },
+          "who": {
+            "zh": "單身女性",
+            "en": null
+          }
+        },
+        {
+          "id": "welfare-stairlift",
+          "name": {
+            "zh": "爬梯機與身障參與",
+            "en": null
+          },
+          "facts": [
+            {
+              "zh": "擴大無障礙爬梯機補助額度",
+              "en": null
+            },
+            {
+              "zh": "提高身障女性決策參與率",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F2",
+            "F3",
+            "F4",
+            "F8",
+            "F9",
+            "F11"
+          ],
+          "sources": [
+            "welfare"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "擴大無障礙爬梯機專案補助額度，並提高身障女性的決策參與率。",
+            "en": null
+          },
+          "who": {
+            "zh": "身障朋友",
+            "en": null
+          }
+        }
+      ],
+      "referenceSummary": {
+        "zh": "衛福與社會照顧｜HEART：E、A、R\n長者：敬老卡與親子同行卡對齊；臨時托老券；在宅醫療；以退場學校用地增設住宿型長照；鐘點移工填補夜間人力缺口。\n中壯年：50 歲以上皮蛇疫苗補助；15–65 歲免費心理諮商；職場友善 2.0（職代津貼、無痛行政）。\n兒少：0–6 歲腸病毒疫苗免費；親子同行卡；台北研究院兒少安全治理分析。\n身障與性別：罕病家庭不斷電系統補助；擴大無障礙爬梯機補助；提高身障女性參與決策；女性安全審計；單身不孤獨服務專線。",
+        "en": null
+      },
+      "referenceSummaryProvenance": "appendix-a",
+      "unknowns": [],
+      "listOnly": [
+        {
+          "name": {
+            "zh": "無障礙爬梯機補助上限",
+            "en": "Stair-climber assistance"
+          },
+          "facts": [
+            {
+              "zh": "擴大補助上限；不製作獨立建築",
+              "en": null
+            }
+          ],
+          "sources": [
+            "welfare"
+          ]
+        }
+      ],
+      "vision": {
+        "zh": "在一座進步的城市裡，沒有人會被拋下。",
+        "en": null
+      }
+    },
+    {
+      "id": "sport",
+      "number": 9,
+      "name": {
+        "zh": "運動政策",
+        "en": "Sport"
+      },
+      "summary": {
+        "zh": "從自家門口到國際舞台，打造包容每個市民的運動生態系",
+        "en": null
+      },
+      "heart": [
+        "H",
+        "E",
+        "T"
+      ],
+      "heartLabel": {
+        "zh": "H、E、T",
+        "en": null
+      },
+      "url": "https://puma.taipei/policies/運動政策",
+      "sources": [
+        "sport"
+      ],
+      "sourceKind": "official_policy",
+      "axial": [
+        -2,
+        6
+      ],
+      "cells": [
+        [
+          -2,
+          6
+        ]
+      ],
+      "buildings": [
+        {
+          "id": "sport-bus",
+          "name": {
+            "zh": "社區運動小巴",
+            "en": "Community sport bus"
+          },
+          "facts": [
+            {
+              "zh": "專業運動指導",
+              "en": null
+            },
+            {
+              "zh": "營養諮詢",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第 1 年試辦；第 2–3 年擴大巡迴路線",
+              "en": null
+            },
+            "stages": [
+              "year1",
+              "year2-3"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F7",
+            "F8",
+            "F13"
+          ],
+          "sources": [
+            "sport"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "運動小巴開到家門口，優先照顧因距離或行動不便而放棄運動的人，並提供運動指導與營養諮詢。",
+            "en": null
+          },
+          "who": {
+            "zh": "因距離或行動不便放棄運動的市民",
+            "en": null
+          }
+        },
+        {
+          "id": "sport-spots",
+          "name": {
+            "zh": "巷口運動據點",
+            "en": "Neighborhood sport spaces"
+          },
+          "facts": [
+            {
+              "zh": "每區 3–5 處特色運動據點",
+              "en": null,
+              "tile": {
+                "zh": "每區 3–5 處",
+                "en": null
+              }
+            },
+            {
+              "zh": "畸零地設置口袋公園",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第 1 年盤點畸零地；第 2–3 年完成 10 項社區微型運動場所改造",
+              "en": null
+            },
+            "stages": [
+              "year1",
+              "year2-3"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F7",
+            "F8",
+            "F13"
+          ],
+          "sources": [
+            "sport"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "盤點公有閒置空間，每區新增 3–5 處特色運動據點，畸零地設口袋公園。",
+            "en": null
+          },
+          "who": {
+            "zh": "社區居民",
+            "en": null
+          }
+        },
+        {
+          "id": "sport-river",
+          "name": {
+            "zh": "河濱公園改善",
+            "en": "Riverside improvements"
+          },
+          "facts": [
+            {
+              "zh": "照明、人車動線",
+              "en": null
+            },
+            {
+              "zh": "休憩、急救設備",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F7",
+            "F8",
+            "F13"
+          ],
+          "sources": [
+            "sport"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "改善河濱公園的照明、人車動線，以及休憩、急救等設備，成為安全便利的運動場域。",
+            "en": null
+          },
+          "who": {
+            "zh": "河濱運動的市民",
+            "en": null
+          }
+        },
+        {
+          "id": "sport-hub",
+          "name": {
+            "zh": "運動驛站",
+            "en": "Sport hub"
+          },
+          "facts": [
+            {
+              "zh": "重點捷運站旁、登山口",
+              "en": null
+            },
+            {
+              "zh": "利用零碎時間運動",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第 1 年盤點捷運站旁與登山口",
+              "en": null
+            },
+            "stages": [
+              "year1"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F7",
+            "F8",
+            "F13"
+          ],
+          "sources": [
+            "sport"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "在重點捷運站旁與登山口設運動驛站，讓運動能排進行程的空檔。",
+            "en": null
+          },
+          "who": {
+            "zh": "通勤族與登山客",
+            "en": null
+          }
+        },
+        {
+          "id": "sport-football",
+          "name": {
+            "zh": "關渡國際足球場",
+            "en": "Guandu international football stadium"
+          },
+          "facts": [
+            {
+              "zh": "符合國際賽事",
+              "en": null
+            },
+            {
+              "zh": "城市主場",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第 1 年啟動、第 2–3 年完成可行性評估",
+              "en": null
+            },
+            "stages": [
+              "year1",
+              "year2-3"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F7",
+            "F8",
+            "F13"
+          ],
+          "sources": [
+            "sport"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "規劃符合國際賽事的關渡國際足球場，建立台北的城市主場。",
+            "en": null
+          },
+          "who": null
+        },
+        {
+          "id": "sport-huabo",
+          "name": {
+            "zh": "花博旗艦運動中心",
+            "en": "Huabo flagship sport center"
+          },
+          "facts": [
+            {
+              "zh": "補足大眾運動需求",
+              "en": null
+            },
+            {
+              "zh": "新興與適應運動",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第 1 年啟動、第 2–3 年完成改建可行性評估",
+              "en": null
+            },
+            "stages": [
+              "year1",
+              "year2-3"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F7",
+            "F8",
+            "F13"
+          ],
+          "sources": [
+            "sport"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "改建花博旗艦運動中心，補足大眾運動需求，並增設新興與適應運動空間。",
+            "en": null
+          },
+          "who": null
+        },
+        {
+          "id": "sport-intern",
+          "name": {
+            "zh": "國際舞台",
+            "en": "Overseas sport internships"
+          },
+          "facts": [
+            {
+              "zh": "青年體育海外實習",
+              "en": null
+            },
+            {
+              "zh": "國際社區型運動賽事",
+              "en": null
+            },
+            {
+              "zh": "運動平權、運動外交",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第 1 年擴大實習、試辦賽事；第 2–3 年擴大舉辦",
+              "en": null
+            },
+            "stages": [
+              "year1",
+              "year2-3"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F7",
+            "F8",
+            "F13"
+          ],
+          "sources": [
+            "sport"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "市府帶頭推動青年體育海外實習，並舉辦國際社區型運動賽事，讓運動交流常態化。",
+            "en": null
+          },
+          "who": {
+            "zh": "台北青年",
+            "en": null
+          }
+        },
+        {
+          "id": "sport-access",
+          "name": {
+            "zh": "場館無障礙與性別友善",
+            "en": null
+          },
+          "facts": [
+            {
+              "zh": "全面盤點現有場館",
+              "en": null
+            },
+            {
+              "zh": "無障礙與性別友善",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第 1 年啟動檢討；第 2–3 年完成空間改善",
+              "en": null
+            },
+            "stages": [
+              "year1",
+              "year2-3"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F7",
+            "F8",
+            "F13"
+          ],
+          "sources": [
+            "sport"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "全面盤點並改善現有運動場館的無障礙與性別友善措施，全齡都能參與。",
+            "en": null
+          },
+          "who": {
+            "zh": "所有市民",
+            "en": null
+          }
+        }
+      ],
+      "referenceSummary": {
+        "zh": "運動政策｜HEART：H、E、T\n四層：社區運動小巴（到市民身邊，專業運動指導與營養諮詢）；巷口到河濱（每區新增 3–5 處特色運動據點、畸零地改口袋公園、河濱照明動線急救、重點捷運站旁與登山口設運動驛站）；城市主場（關渡國際足球場、花博旗艦運動中心、場館無障礙與性別友善）；國際舞台（運動外交、青年體育海外實習）。\n藍圖：第 1 年盤點、行動健身小巴試辦、場館檢討、足球場與花博中心可行性評估啟動；第 2–3 年完成 10 項社區微型運動場所改造、擴大小巴路線、完成可行性評估；第 4 年起全市運動生態系啟動。",
+        "en": null
+      },
+      "referenceSummaryProvenance": "appendix-a",
+      "unknowns": [],
+      "vision": {
+        "zh": "運動應該能夠包容每一個台北市民，並帶領台北走向國際。",
+        "en": null
+      }
+    },
+    {
+      "id": "trails",
+      "number": 10,
+      "name": {
+        "zh": "台北文化徑×山林徑",
+        "en": "Culture and mountain trails"
+      },
+      "summary": {
+        "zh": "四大文化徑（城市歷史記憶、產業文化遺跡、多元族群、人權）與三大登山觀光中心，把城市歷史與山林串成一體",
+        "en": null
+      },
+      "heart": [
+        "H",
+        "A"
+      ],
+      "heartLabel": {
+        "zh": "H、A",
+        "en": null
+      },
+      "url": "https://puma.taipei/policies/台北文化徑×山林徑",
+      "sources": [
+        "trails"
+      ],
+      "sourceKind": "official_policy",
+      "axial": [
+        1,
+        0
+      ],
+      "cells": [
+        [
+          1,
+          0
+        ]
+      ],
+      "buildings": [
+        {
+          "id": "trails-north",
+          "name": {
+            "zh": "劍潭登山觀光中心",
+            "en": "Jiantan visitor centre"
+          },
+          "facts": [
+            {
+              "zh": "串聯士林夜市與故宮",
+              "en": null
+            },
+            {
+              "zh": "裝備租借、置物櫃、更衣室、洗鞋區",
+              "en": null
+            },
+            {
+              "zh": "中英日韓四語導覽、即時步道狀態、生態季節導覽預約",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F7"
+          ],
+          "sources": [
+            "trails"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "整合登山服務的據點，串聯士林夜市與故宮，提供裝備租借、置物更衣與洗鞋，以及四語導覽、即時步道狀態與生態季節導覽預約。",
+            "en": null
+          },
+          "who": {
+            "zh": "登山客與旅客",
+            "en": null
+          }
+        },
+        {
+          "id": "trails-east",
+          "name": {
+            "zh": "象山登山觀光中心",
+            "en": "Xiangshan visitor centre"
+          },
+          "facts": [
+            {
+              "zh": "串聯信義商圈與台北 101",
+              "en": null,
+              "tile": {
+                "zh": "",
+                "en": null
+              }
+            },
+            {
+              "zh": "裝備租借、置物櫃、更衣室、洗鞋區",
+              "en": null
+            },
+            {
+              "zh": "中英日韓四語導覽、即時步道狀態、生態季節導覽預約",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F7"
+          ],
+          "sources": [
+            "trails"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "整合登山服務的據點，串聯信義商圈與台北 101，提供裝備租借、置物更衣與洗鞋，以及四語導覽、即時步道狀態與生態季節導覽預約。",
+            "en": null
+          },
+          "who": {
+            "zh": "登山客與旅客",
+            "en": null
+          }
+        },
+        {
+          "id": "trails-south",
+          "name": {
+            "zh": "貓空登山觀光中心",
+            "en": "Maokong visitor centre"
+          },
+          "facts": [
+            {
+              "zh": "串聯木柵茶園與動物園",
+              "en": null
+            },
+            {
+              "zh": "裝備租借、置物櫃、更衣室、洗鞋區",
+              "en": null
+            },
+            {
+              "zh": "中英日韓四語導覽、即時步道狀態、生態季節導覽預約",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F7"
+          ],
+          "sources": [
+            "trails"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "整合登山服務的據點，串聯木柵茶園與動物園，提供裝備租借、置物更衣與洗鞋，以及四語導覽、即時步道狀態與生態季節導覽預約。",
+            "en": null
+          },
+          "who": {
+            "zh": "登山客與旅客",
+            "en": null
+          }
+        },
+        {
+          "id": "trails-history",
+          "name": {
+            "zh": "城市歷史記憶徑",
+            "en": "City history trail"
+          },
+          "facts": [
+            {
+              "zh": "涵蓋「今日台北」",
+              "en": null
+            },
+            {
+              "zh": "代表案例：艋舺、大稻埕、城內三市街",
+              "en": null
+            },
+            {
+              "zh": "剝皮寮、龍山寺、清水祖師廟、大稻埕碼頭、霞海城隍廟、北門、中山堂廣場、二二八紀念公園",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F7"
+          ],
+          "sources": [
+            "trails"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "串起台北不同年代的城市記憶，也包含「今日台北」。艋舺、大稻埕、城內三市街是其中的代表案例，可走過剝皮寮、龍山寺、大稻埕碼頭、北門等節點。",
+            "en": null
+          },
+          "who": null
+        },
+        {
+          "id": "trails-industry",
+          "name": {
+            "zh": "產業文化遺跡徑",
+            "en": "Industrial heritage trail"
+          },
+          "facts": [
+            {
+              "zh": "茶葉、糖業、煤礦、打石、溫泉",
+              "en": null
+            },
+            {
+              "zh": "茶葉路徑連結大稻埕、南港與文山",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F7"
+          ],
+          "sources": [
+            "trails"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "把茶葉、糖業、煤礦、打石與溫泉等產業記憶寫進路線，例如從北投街區走進溫泉山徑。",
+            "en": null
+          },
+          "who": null
+        },
+        {
+          "id": "trails-diverse",
+          "name": {
+            "zh": "多元族群徑",
+            "en": "Diverse communities trail"
+          },
+          "facts": [
+            {
+              "zh": "凱達格蘭文化館、原住民文化主題公園、臺北市客家文化主題公園",
+              "en": null
+            },
+            {
+              "zh": "四四南村、中心新村、蟾蜍山煥民新村",
+              "en": null
+            },
+            {
+              "zh": "台北車站方格大廳、台北清真寺",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F7",
+            "F18"
+          ],
+          "sources": [
+            "trails"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "把原住民、眷村與國宅、客家與新移民的記憶納入文化徑。",
+            "en": null
+          },
+          "who": null
+        },
+        {
+          "id": "trails-rights",
+          "name": {
+            "zh": "人權記憶徑",
+            "en": "Human rights trail"
+          },
+          "facts": [
+            {
+              "zh": "馬場町紀念公園、陳文成紀念廣場",
+              "en": null
+            },
+            {
+              "zh": "二二八相關場域",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F7"
+          ],
+          "sources": [
+            "trails"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "把台北的人權記憶串成一條獨立的文化徑，走過紀念公園與相關場域。",
+            "en": null
+          },
+          "who": null
+        },
+        {
+          "id": "trails-card",
+          "name": {
+            "zh": "親子同行卡",
+            "en": "Family card"
+          },
+          "facts": [
+            {
+              "zh": "設籍台北 0–18 歲，每人每月 600 點",
+              "en": null,
+              "tile": {
+                "zh": "每月 600 點",
+                "en": null
+              }
+            },
+            {
+              "zh": "文化幣、運動幣、分齡閱讀禮袋",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F7"
+          ],
+          "sources": [
+            "trails",
+            "card"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "文化徑與山林徑和親子同行卡串聯，支持全家一起探索城市。",
+            "en": null
+          },
+          "who": {
+            "zh": "0–18 歲孩子與家長",
+            "en": null
+          }
+        },
+        {
+          "id": "trails-shuttle",
+          "name": {
+            "zh": "最後一哩接駁",
+            "en": "Metro shuttles"
+          },
+          "facts": [
+            {
+              "zh": "捷運站到登山口接駁",
+              "en": null
+            },
+            {
+              "zh": "步道分級與安全資訊",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F7"
+          ],
+          "sources": [
+            "trails"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "從捷運站到登山口補上最後一哩路，增開接駁並重新檢視步道分級與安全資訊。",
+            "en": null
+          },
+          "who": {
+            "zh": "長者、行動不便者、不開車的市民",
+            "en": null
+          }
+        }
+      ],
+      "referenceSummary": {
+        "zh": "台北文化徑×山林徑｜HEART：H、A\n目標：亞洲第一觀光登山城。\n四大文化徑：城市歷史記憶（含今日台北；三市街為代表案例）；產業文化遺跡（茶葉、煤礦、溫泉路徑）；多元族群（原住民、眷村與國宅、客家、新移民）；人權。\n三大登山觀光中心：劍潭（士林夜市、故宮）、象山（信義商圈、台北 101）、貓空（木柵茶園、動物園）；裝備租借、置物更衣洗鞋、四語導覽、即時步道狀態。\n捷運站到登山口接駁；步道分級；長者、行動不便者、不開車市民友善。",
+        "en": null
+      },
+      "referenceSummaryProvenance": "appendix-a",
+      "unknowns": [],
+      "vision": {
+        "zh": "台北是被群山環抱的盆地，城區歷史與山林地景實際上應該為一體。",
+        "en": null
+      }
+    },
+    {
+      "id": "forest",
+      "number": 11,
+      "name": {
+        "zh": "都市微森林",
+        "en": "Urban forest"
+      },
+      "summary": {
+        "zh": "不只是多種樹，而是讓台北升級成一座能「養出森林」的城市",
+        "en": null
+      },
+      "heart": [
+        "H",
+        "R"
+      ],
+      "heartLabel": {
+        "zh": "H、R",
+        "en": null
+      },
+      "url": "https://puma.taipei/policies/都市微森林",
+      "sources": [
+        "forest"
+      ],
+      "sourceKind": "official_policy",
+      "axial": [
+        0,
+        1
+      ],
+      "cells": [
+        [
+          0,
+          1
+        ]
+      ],
+      "buildings": [
+        {
+          "id": "forest-law",
+          "name": {
+            "zh": "都市林自治條例",
+            "en": "Urban forest ordinance"
+          },
+          "facts": [
+            {
+              "zh": "專責、專法、專款、專業",
+              "en": null
+            },
+            {
+              "zh": "先有根域，才准種樹",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第一階段完成條例草案",
+              "en": null
+            },
+            "stages": [
+              "stage1"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F5",
+            "F13"
+          ],
+          "sources": [
+            "forest"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "制定台北都市林自治條例，讓種樹、養樹、管樹有專法依循。",
+            "en": null
+          },
+          "who": null
+        },
+        {
+          "id": "forest-committee",
+          "name": {
+            "zh": "都市森林委員會",
+            "en": "Urban forest committee"
+          },
+          "facts": [
+            {
+              "zh": "副市長層級統籌",
+              "en": null
+            },
+            {
+              "zh": "整合都發、教育、文化、工務、公燈、大地",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第一階段完成委員會分工",
+              "en": null
+            },
+            "stages": [
+              "stage1"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F5",
+            "F13"
+          ],
+          "sources": [
+            "forest"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "副市長層級統籌，整合都發、教育、文化、工務、公燈、大地等業務。",
+            "en": null
+          },
+          "who": null
+        },
+        {
+          "id": "forest-fund",
+          "name": {
+            "zh": "維運基金與綠領人才",
+            "en": "Maintenance fund"
+          },
+          "facts": [
+            {
+              "zh": "10 億元基金規模、年營運 5 億元",
+              "en": null
+            },
+            {
+              "zh": "培育樹醫生等綠領人才",
+              "en": null
+            },
+            {
+              "zh": "改革採購評選",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第一階段完成基金設計",
+              "en": null
+            },
+            "stages": [
+              "stage1"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F5",
+            "F13"
+          ],
+          "sources": [
+            "forest"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "設置都市森林維運基金，並培育樹醫生、園藝工程與園藝經理等綠領人才。",
+            "en": null
+          },
+          "who": null
+        },
+        {
+          "id": "forest-parks",
+          "name": {
+            "zh": "口袋公園",
+            "en": "Pocket parks"
+          },
+          "facts": [
+            {
+              "zh": "運用閒置土地規劃口袋公園",
+              "en": null
+            },
+            {
+              "zh": "3-30-300：窗前 3 棵樹、綠覆率 30%、300 公尺內有公園",
+              "en": null,
+              "tile": {
+                "zh": "3-30-300",
+                "en": null
+              }
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第二階段示範改造",
+              "en": null
+            },
+            "stages": [
+              "stage2"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F5",
+            "F13"
+          ],
+          "sources": [
+            "forest"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "運用閒置土地規劃口袋公園，讓每位市民 300 公尺內都能走到有綠蔭的公園。",
+            "en": null
+          },
+          "who": {
+            "zh": "所有市民",
+            "en": null
+          }
+        },
+        {
+          "id": "forest-twin",
+          "name": {
+            "zh": "路樹數位雙生",
+            "en": "Street-tree digital twins"
+          },
+          "facts": [
+            {
+              "zh": "數位雙生、監控系統、動態健康履歷",
+              "en": null
+            },
+            {
+              "zh": "改善、更新、移除三級分類，分三年處理",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第二階段，分三年逐步處理",
+              "en": null
+            },
+            "stages": [
+              "stage2"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F5",
+            "F13"
+          ],
+          "sources": [
+            "forest"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "用數位雙生、監控系統與動態健康履歷管理路樹，現有路樹分「改善、更新、移除」三級處理。",
+            "en": null
+          },
+          "who": null
+        },
+        {
+          "id": "forest-cool",
+          "name": {
+            "zh": "涼感地圖",
+            "en": "Cooling map"
+          },
+          "facts": [
+            {
+              "zh": "與中央合作升級",
+              "en": null
+            },
+            {
+              "zh": "市民回報",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第三階段擴大",
+              "en": null
+            },
+            "stages": [
+              "stage3"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F5",
+            "F13"
+          ],
+          "sources": [
+            "forest"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "與中央合作升級涼感地圖，整合樹籍、氣象與市民回報資料。",
+            "en": null
+          },
+          "who": {
+            "zh": "所有市民",
+            "en": null
+          }
+        },
+        {
+          "id": "forest-consult",
+          "name": {
+            "zh": "移除前五方溝通",
+            "en": "Five-party consultation"
+          },
+          "facts": [
+            {
+              "zh": "至少五方代表",
+              "en": null
+            },
+            {
+              "zh": "市府、居民、樹木專家、保險業者、都計或樹管委員",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第三階段建立",
+              "en": null
+            },
+            "stages": [
+              "stage3"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F5",
+            "F13"
+          ],
+          "sources": [
+            "forest"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "移除路樹前，市府、居民、樹木專家、保險業者、都計或樹管委員至少五方一起討論。",
+            "en": null
+          },
+          "who": null
+        },
+        {
+          "id": "forest-wood",
+          "name": {
+            "zh": "廢木料銀行",
+            "en": "Reclaimed wood bank"
+          },
+          "facts": [
+            {
+              "zh": "優先公共設施再製",
+              "en": null
+            },
+            {
+              "zh": "高值產品、生物炭、土壤改良、建材",
+              "en": null
+            },
+            {
+              "zh": "生質能發電為最後處理方式",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第三階段建立",
+              "en": null
+            },
+            "stages": [
+              "stage3"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F5",
+            "F13"
+          ],
+          "sources": [
+            "forest"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "廢木料優先做成公共設施，再發展高值產品、生物炭、土壤改良與建材，最後才發電。",
+            "en": null
+          },
+          "who": null
+        }
+      ],
+      "referenceSummary": {
+        "zh": "都市微森林｜HEART：H、R\n四大支柱：專責制度、智慧管理、公民參與、循環再生。\n3-30-300：窗前看見 3 棵樹、樹木覆蓋率 20%、綠覆率 30%、300 公尺內有綠蔭公園。背景：綠覆率約 18%（林試所 2021）。\n台北都市林自治條例；副市長層級都市森林委員會（整合都發、教育、文化、工務、公燈、大地）；維運基金規模 10 億元、年營運 5 億元；樹醫生等綠領人才。\n樹木版都市計畫；「先有根域，才准種樹」；口袋公園；路樹數位雙生與健康履歷；改善、更新、移除三級分類，分三年處理。\n涼感地圖（與中央合作）；移除樹木前至少五方溝通（市府、居民、樹木專家、保險業者、都計或樹管委員）。\n廢木料銀行：公共設施再製、生物炭、土壤改良、建材，生質能發電為最後手段。",
+        "en": null
+      },
+      "referenceSummaryProvenance": "appendix-a",
+      "unknowns": [],
+      "targets": [
+        {
+          "zh": "窗前看見 3 棵樹",
+          "en": null
+        },
+        {
+          "zh": "樹木覆蓋率 20%",
+          "en": null
+        },
+        {
+          "zh": "綠覆率 30%",
+          "en": null
+        },
+        {
+          "zh": "300 公尺內有綠蔭公園",
+          "en": null
+        }
+      ],
+      "vision": {
+        "zh": "都市微森林的核心，不是「多種樹」這麼簡單，而是讓台北升級成一座能「養出森林」的城市。",
+        "en": null
+      }
+    },
+    {
+      "id": "youth",
+      "number": 12,
+      "name": {
+        "zh": "青年政策",
+        "en": "Youth"
+      },
+      "summary": {
+        "zh": "本金、工具、舞台：讓青年留在台北的支持系統",
+        "en": null
+      },
+      "heart": [
+        "E",
+        "T"
+      ],
+      "heartLabel": {
+        "zh": "E、T",
+        "en": null
+      },
+      "url": "https://puma.taipei/policies/青年政策",
+      "sources": [
+        "youth"
+      ],
+      "sourceKind": "official_policy",
+      "axial": [
+        0,
+        4
+      ],
+      "cells": [
+        [
+          0,
+          4
+        ]
+      ],
+      "buildings": [
+        {
+          "id": "youth-fund",
+          "name": {
+            "zh": "城市青年基金",
+            "en": "City youth fund"
+          },
+          "facts": [
+            {
+              "zh": "18–22 歲，鼓勵每月自存 1,500 元，市府配合 1,500 元",
+              "en": null,
+              "tile": {
+                "zh": "每月 1,500 元",
+                "en": null
+              }
+            },
+            {
+              "zh": "弱勢每月 3,000 元",
+              "en": null
+            },
+            {
+              "zh": "23 歲可領近 50 萬元",
+              "en": null
+            },
+            {
+              "zh": "每年約 10 萬名青年",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F12",
+            "F15"
+          ],
+          "sources": [
+            "youth"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "18–22 歲這四年，鼓勵每月自存 1,500 元、市府配合 1,500 元，加上中央兒少政策 36 萬元，23 歲可領近 50 萬元。",
+            "en": null
+          },
+          "who": {
+            "zh": "18–22 歲台北青年",
+            "en": null
+          }
+        },
+        {
+          "id": "youth-ai",
+          "name": {
+            "zh": "AI 教育錢包",
+            "en": "AI education wallet"
+          },
+          "facts": [
+            {
+              "zh": "18–25 歲學生每月 300 元基本額度",
+              "en": null,
+              "tile": {
+                "zh": "每月 300 元",
+                "en": null
+              }
+            },
+            {
+              "zh": "專業課程 500 至 1,000 元、專題競賽 2,000 至 1 萬元",
+              "en": null,
+              "tile": {
+                "zh": "500–1,000 元",
+                "en": null
+              }
+            },
+            {
+              "zh": "第二期延伸至 45 歲以下",
+              "en": null
+            }
+          ],
+          "phase": {
+            "label": {
+              "zh": "第一期 18–25 歲學生；第二期擴大至 45 歲以下",
+              "en": null
+            },
+            "stages": [
+              "stage1",
+              "stage2"
+            ],
+            "basis": "official"
+          },
+          "flows": [
+            "F1",
+            "F12",
+            "F15"
+          ],
+          "sources": [
+            "youth"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "免先墊款、按量結算、可跨模型使用的 AI 錢包，第二期延伸到 45 歲以下的創業、求職、轉職者。",
+            "en": null
+          },
+          "who": {
+            "zh": "18–25 歲學生",
+            "en": null
+          }
+        },
+        {
+          "id": "youth-dream",
+          "name": {
+            "zh": "台北青年圓夢計畫",
+            "en": "Taipei youth dreams program"
+          },
+          "facts": [
+            {
+              "zh": "8 年共 20 億元",
+              "en": null
+            },
+            {
+              "zh": "市政實習、公共參與、與台北研究院合作",
+              "en": null
+            },
+            {
+              "zh": "培養市民外交官，擴大「無限城」網絡",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F12",
+            "F15"
+          ],
+          "sources": [
+            "youth"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "銜接中央海外圓夢基金，支持青年提案出國實踐，也投入市政實習、創業與國際交流。",
+            "en": null
+          },
+          "who": {
+            "zh": "台北青年",
+            "en": null
+          }
+        }
+      ],
+      "referenceSummary": {
+        "zh": "青年政策｜HEART：E、T\n城市青年基金：18–22 歲，鼓勵自存每月 1,500 元、市府配合 1,500 元（弱勢 3,000 元）；四年市府 7.2 萬＋自存 7.2 萬＋中央 36 萬，23 歲時近 50 萬元；每年 18–19 億元、約 10 萬名青年。\n青年 AI 使用支持方案：AI 教育錢包，18–25 歲學生每月 300 元基本額度、專業課程 500 至 1,000 元、專題競賽 2,000 至 1 萬元；第二階段擴及 45 歲以下；兩階段約 9 億元。\n台北青年圓夢計畫：銜接中央海外圓夢基金；市府實習、公共參與、與台北研究院合作；公民外交官、無限城論壇網絡；8 年 20 億元。\n三項合計每年約 29 億元。",
+        "en": null
+      },
+      "referenceSummaryProvenance": "appendix-a",
+      "unknowns": [],
+      "vision": {
+        "zh": "年輕人，是台北最重要的投資。",
+        "en": null
+      }
+    },
+    {
+      "id": "diplomacy",
+      "number": 13,
+      "name": {
+        "zh": "城市外交",
+        "en": "City diplomacy"
+      },
+      "summary": {
+        "zh": "加強基層參與，把台北的問題帶出去，把世界的經驗帶回來",
+        "en": null
+      },
+      "heart": [
+        "E",
+        "R"
+      ],
+      "heartLabel": {
+        "zh": "E、R",
+        "en": null
+      },
+      "url": "https://puma.taipei/policies/城市外交",
+      "sources": [
+        "diplomacy"
+      ],
+      "sourceKind": "official_policy",
+      "axial": [
+        1,
+        1
+      ],
+      "cells": [
+        [
+          1,
+          1
+        ]
+      ],
+      "buildings": [
+        {
+          "id": "diplomacy-forum",
+          "name": {
+            "zh": "無限城合作網絡",
+            "en": "Infinite Cities forum"
+          },
+          "facts": [
+            {
+              "zh": "地方首長、議員、智庫、企業、僑界",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F5",
+            "F6",
+            "F15",
+            "F20"
+          ],
+          "sources": [
+            "diplomacy"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "以國際城市的連結為基礎，拓展與地方首長、議員、智庫、企業及僑界的合作。",
+            "en": null
+          },
+          "who": null
+        },
+        {
+          "id": "diplomacy-exchange",
+          "name": {
+            "zh": "基層公務員半年互換",
+            "en": "Six-month staff exchange"
+          },
+          "facts": [
+            {
+              "zh": "長達半年的互換交流",
+              "en": null
+            },
+            {
+              "zh": "基層人員參與",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F5",
+            "F6",
+            "F15"
+          ],
+          "sources": [
+            "diplomacy"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "不只首長出訪，執行層面的基層公務員也能進行長達半年的互換交流。",
+            "en": null
+          },
+          "who": {
+            "zh": "基層公務員",
+            "en": null
+          }
+        },
+        {
+          "id": "diplomacy-hoboken",
+          "name": {
+            "zh": "霍博肯通學路經驗",
+            "en": "Hoboken school safety"
+          },
+          "facts": [
+            {
+              "zh": "路口改善與居民參與",
+              "en": null
+            },
+            {
+              "zh": "以小學通學路為核心",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F5",
+            "F6",
+            "F15"
+          ],
+          "sources": [
+            "diplomacy"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "借鏡霍博肯的路口改善與居民參與，以小學通學路為核心推動交通零死亡示範。",
+            "en": null
+          },
+          "who": null
+        },
+        {
+          "id": "diplomacy-talent",
+          "name": {
+            "zh": "人才與產業帶回台北",
+            "en": "Overseas talent and industry"
+          },
+          "facts": [
+            {
+              "zh": "人才互換、產業投資、可負擔住宅",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F5",
+            "F6",
+            "F15"
+          ],
+          "sources": [
+            "diplomacy"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "訪美期間已與紐澤西州長討論人才互換、產業投資及可負擔住宅，把經驗帶回台北。",
+            "en": null
+          },
+          "who": null
+        }
+      ],
+      "referenceSummary": {
+        "zh": "城市外交｜HEART：E、R\n三步驟：拓展「無限城」合作網絡 → 研究團隊與基層公務員深入交流（半年互換） → 把治理經驗、人才與產業資源帶回台北。\n以市政問題推動合作：都市林（科學風險評估、保險機制）、交通安全（霍博肯路口改善與居民參與，以小學通學路為核心）。\n已完成：訪美期間與紐澤西州長討論人才互換、產業投資、可負擔住宅。\nHEART 頁額外提及（無獨立政見頁，只放清單、不做建築）\nH：婚育宅、青年宅、老宅改善。\nA：老宅延壽行動服務團、家長喘息服務、家長版 1999、社區共照。\nR：跨局處詐騙應變機制、住宅思考儲能綠化與排水。\nT：減少折返與等待，讓市民每天多出約 30 分鐘。",
+        "en": null
+      },
+      "referenceSummaryProvenance": "appendix-a",
+      "unknowns": [],
+      "vision": {
+        "zh": "國際交流，不能只是首長帶團出訪，應該加強基層人員參與，把台北的問題帶出去，把世界的經驗帶回來。",
+        "en": null
+      }
+    },
+    {
+      "id": "hakka",
+      "number": 14,
+      "name": {
+        "zh": "客家",
+        "en": "Hakka"
+      },
+      "summary": {
+        "zh": "從社區、校園、商圈、市府到國際論壇，讓客家在台北被看見",
+        "en": null
+      },
+      "heart": [],
+      "heartLabel": {
+        "zh": "",
+        "en": null
+      },
+      "url": "https://news.ltn.com.tw/news/Taipei/breakingnews/5610209",
+      "sources": [
+        "hakka-ltn",
+        "hakka-nextapple"
+      ],
+      "sourceKind": "campaign_event_news",
+      "axial": [
+        -3,
+        4
+      ],
+      "cells": [
+        [
+          -3,
+          4
+        ]
+      ],
+      "buildings": [
+        {
+          "id": "hakka-elders",
+          "name": {
+            "zh": "長輩有據點",
+            "en": null
+          },
+          "facts": [
+            {
+              "zh": "都會伯公照護站",
+              "en": null
+            },
+            {
+              "zh": "長輩照顧據點結合學生交流",
+              "en": null
+            },
+            {
+              "zh": "連結客家社團據點，長幼共學",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F16"
+          ],
+          "sources": [
+            "hakka-ltn",
+            "hakka-nextapple"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "設立結合長輩照顧據點與學生交流的社區共照中心「都會伯公照護站」，連結客家社團據點，促進長幼共學。",
+            "en": null
+          },
+          "who": {
+            "zh": "長輩與孩子",
+            "en": null
+          }
+        },
+        {
+          "id": "hakka-schools",
+          "name": {
+            "zh": "兒童有互訪",
+            "en": null
+          },
+          "facts": [
+            {
+              "zh": "北市與客庄中小學結盟計畫",
+              "en": null
+            },
+            {
+              "zh": "寒暑假互訪常態化",
+              "en": null
+            },
+            {
+              "zh": "桃竹苗與六堆客庄文化體驗",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F17"
+          ],
+          "sources": [
+            "hakka-ltn",
+            "hakka-nextapple"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "推動「北市與客庄中小學結盟計畫」，寒暑假互訪常態化，讓孩子到桃竹苗與六堆客庄文化體驗。",
+            "en": null
+          },
+          "who": {
+            "zh": "國中小學生",
+            "en": null
+          }
+        },
+        {
+          "id": "hakka-points",
+          "name": {
+            "zh": "出門講客語",
+            "en": null
+          },
+          "facts": [
+            {
+              "zh": "台北通客語學習集點",
+              "en": null
+            },
+            {
+              "zh": "客家廊帶與商圈使用",
+              "en": null
+            },
+            {
+              "zh": "支持客家友善店家",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F18"
+          ],
+          "sources": [
+            "hakka-ltn",
+            "hakka-nextapple"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "整合「台北通App」發行數位幣，學習客語可累積點數至客家商圈折抵消費。",
+            "en": null
+          },
+          "who": {
+            "zh": "市民",
+            "en": null
+          }
+        },
+        {
+          "id": "hakka-hiring",
+          "name": {
+            "zh": "約聘有加分",
+            "en": null
+          },
+          "facts": [
+            {
+              "zh": "約聘、櫃台與 1999 熱線甄選",
+              "en": null
+            },
+            {
+              "zh": "客語中級認證加分",
+              "en": null
+            },
+            {
+              "zh": "市府帶頭提升客語職場價值",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F19"
+          ],
+          "sources": [
+            "hakka-ltn",
+            "hakka-nextapple"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "修訂市府約聘、櫃台與 1999 市民熱線人員的甄選規則，客語中級認證列為加分，由市府帶頭提升客語職場價值。",
+            "en": null
+          },
+          "who": {
+            "zh": "市民",
+            "en": null
+          }
+        },
+        {
+          "id": "hakka-forum",
+          "name": {
+            "zh": "世界有客家",
+            "en": null
+          },
+          "facts": [
+            {
+              "zh": "無限城國際論壇",
+              "en": null
+            },
+            {
+              "zh": "全球客家樞紐",
+              "en": null
+            }
+          ],
+          "phase": null,
+          "flows": [
+            "F1",
+            "F20"
+          ],
+          "sources": [
+            "hakka-ltn",
+            "hakka-nextapple"
+          ],
+          "status": {
+            "zh": "政見",
+            "en": "Proposal"
+          },
+          "plain": {
+            "zh": "把客家精神帶進「無限城」國際論壇，讓國際看見客家的勤奮與人和自然共存，推動台北成為全球客家樞紐。",
+            "en": null
+          },
+          "who": {
+            "zh": "國際交流",
+            "en": null
+          }
+        }
+      ],
+      "referenceSummary": {
+        "zh": "客家｜2026-10-18 台北客家之友後援會成立大會\n五個層級：國中小、社區、商圈、台北市政府、無限城國際論壇。\n長輩有據點（都會伯公照護站）；兒童有互訪（北市與客庄中小學結盟計畫）；出門講客語（台北通客語學習集點）；約聘有加分（客語中級認證）；世界有客家（無限城國際論壇）。",
+        "en": null
+      },
+      "referenceSummaryProvenance": "hakka-ltn",
+      "unknowns": [],
+      "vision": {
+        "zh": "以後辦論壇，就不是我們去別的城市，是人家來台北，那個驕傲感就變得完全不一樣。",
+        "en": null
+      }
+    }
+  ],
+  "ports": [
+    {
+      "id": "police",
+      "name": {
+        "zh": "警政資料",
+        "en": "Police data"
+      },
+      "isIsland": false,
+      "sources": [
+        "welfare"
+      ],
+      "state": "official"
+    },
+    {
+      "id": "community",
+      "name": {
+        "zh": "社區",
+        "en": "Community"
+      },
+      "isIsland": false,
+      "sources": [
+        "sport"
+      ],
+      "state": "thematic"
+    },
+    {
+      "id": "farm",
+      "name": {
+        "zh": "在地小農",
+        "en": "Local farmers"
+      },
+      "isIsland": false,
+      "sources": [
+        "lunch"
+      ],
+      "state": "official"
+    }
+  ],
+  "flows": [
+    {
+      "id": "F1",
+      "from": [
+        "civil"
+      ],
+      "to": [
+        "institute",
+        "transport",
+        "education",
+        "lunch",
+        "family",
+        "card",
+        "welfare",
+        "sport",
+        "trails",
+        "forest",
+        "youth",
+        "diplomacy",
+        "hakka"
+      ],
+      "carry": "energy",
+      "walker": "civil-servant",
+      "text": {
+        "zh": "先替公務員減壓，再推動各項政策",
+        "en": null
+      },
+      "evidenceTier": "transcript_pending",
+      "sources": [
+        "civil",
+        "video"
+      ],
+      "quotes": [
+        "Q4",
+        "Q7"
+      ],
+      "bidirectional": false,
+      "excludedEdges": [],
+      "edgeNotes": []
+    },
+    {
+      "id": "F2",
+      "from": [
+        "civil"
+      ],
+      "to": [
+        "welfare"
+      ],
+      "carry": "clock",
+      "walker": "civil-servant",
+      "text": {
+        "zh": "市府帶頭推彈性工時，帶動職場友善",
+        "en": null
+      },
+      "evidenceTier": "transcript_pending",
+      "sources": [
+        "civil",
+        "welfare",
+        "video"
+      ],
+      "quotes": [
+        "Q5"
+      ],
+      "bidirectional": false,
+      "excludedEdges": [],
+      "edgeNotes": []
+    },
+    {
+      "id": "F3",
+      "from": [
+        "institute"
+      ],
+      "to": [
+        "welfare",
+        "transport",
+        "education"
+      ],
+      "carry": "blueprint",
+      "walker": "researcher",
+      "text": {
+        "zh": "台北研究院支援社福、交通與教育的長期規劃",
+        "en": null
+      },
+      "evidenceTier": "mixed",
+      "sources": [
+        "diplomacy",
+        "welfare",
+        "education"
+      ],
+      "quotes": [],
+      "bidirectional": false,
+      "excludedEdges": [],
+      "edgeNotes": [
+        {
+          "to": "welfare",
+          "tier": "official_explicit"
+        },
+        {
+          "to": "transport",
+          "tier": "official_explicit"
+        },
+        {
+          "to": "education",
+          "tier": "official_thematic"
+        }
+      ]
+    },
+    {
+      "id": "F4",
+      "from": [
+        "education",
+        "welfare",
+        "police"
+      ],
+      "to": [
+        "institute"
+      ],
+      "carry": "folder",
+      "walker": "researcher",
+      "text": {
+        "zh": "整合教育、社政與警政資料，支援兒少安全治理中心",
+        "en": null
+      },
+      "evidenceTier": "official_explicit",
+      "sources": [
+        "welfare"
+      ],
+      "quotes": [],
+      "bidirectional": false,
+      "excludedEdges": [],
+      "edgeNotes": []
+    },
+    {
+      "id": "F5",
+      "from": [
+        "diplomacy"
+      ],
+      "to": [
+        "transport",
+        "forest"
+      ],
+      "carry": "globe",
+      "walker": "researcher",
+      "text": {
+        "zh": "把交通、都市林與可負擔住宅的國際經驗帶回台北",
+        "en": null
+      },
+      "evidenceTier": "official_explicit",
+      "sources": [
+        "diplomacy"
+      ],
+      "quotes": [],
+      "bidirectional": false,
+      "excludedEdges": [],
+      "edgeNotes": []
+    },
+    {
+      "id": "F6",
+      "from": [
+        "transport",
+        "education"
+      ],
+      "to": [
+        "diplomacy"
+      ],
+      "carry": "schoolbag",
+      "walker": "child",
+      "text": {
+        "zh": "通學路安全與霍博肯經驗雙向交流",
+        "en": null
+      },
+      "evidenceTier": "official_thematic",
+      "sources": [
+        "transport",
+        "education",
+        "diplomacy"
+      ],
+      "quotes": [],
+      "bidirectional": true,
+      "excludedEdges": [],
+      "edgeNotes": []
+    },
+    {
+      "id": "F7",
+      "from": [
+        "transport"
+      ],
+      "to": [
+        "sport",
+        "trails"
+      ],
+      "carry": "towel",
+      "walker": "cyclist",
+      "text": {
+        "zh": "運動驛站串起通勤、運動與登山",
+        "en": null
+      },
+      "evidenceTier": "official_explicit",
+      "sources": [
+        "transport",
+        "sport",
+        "trails"
+      ],
+      "quotes": [],
+      "bidirectional": true,
+      "excludedEdges": [],
+      "edgeNotes": []
+    },
+    {
+      "id": "F8",
+      "from": [
+        "sport"
+      ],
+      "to": [
+        "welfare",
+        "community"
+      ],
+      "carry": "dumbbell",
+      "walker": "elder",
+      "text": {
+        "zh": "社區運動，陪伴熟齡生活",
+        "en": null
+      },
+      "evidenceTier": "official_thematic",
+      "sources": [
+        "sport",
+        "welfare"
+      ],
+      "quotes": [],
+      "bidirectional": false,
+      "excludedEdges": [],
+      "edgeNotes": []
+    },
+    {
+      "id": "F9",
+      "from": [
+        "card"
+      ],
+      "to": [
+        "welfare"
+      ],
+      "carry": "cards",
+      "walker": "elder",
+      "text": {
+        "zh": "親子同行卡與敬老卡銜接，祖孫一起出門",
+        "en": null
+      },
+      "evidenceTier": "official_explicit",
+      "sources": [
+        "card",
+        "welfare"
+      ],
+      "quotes": [],
+      "bidirectional": true,
+      "excludedEdges": [],
+      "edgeNotes": []
+    },
+    {
+      "id": "F10",
+      "from": [
+        "family"
+      ],
+      "to": [
+        "education",
+        "card"
+      ],
+      "carry": "book-heart",
+      "walker": "parent",
+      "text": {
+        "zh": "家庭教育、育兒支持與親子學習一起推動",
+        "en": null
+      },
+      "evidenceTier": "official_explicit",
+      "sources": [
+        "family",
+        "education",
+        "card"
+      ],
+      "quotes": [],
+      "bidirectional": true,
+      "excludedEdges": [],
+      "edgeNotes": []
+    },
+    {
+      "id": "F11",
+      "from": [
+        "welfare",
+        "family"
+      ],
+      "to": [
+        "civil",
+        "education"
+      ],
+      "carry": "counseling",
+      "walker": "parent",
+      "text": {
+        "zh": "心理支持從家庭、校園到市府職場",
+        "en": null
+      },
+      "evidenceTier": "official_thematic",
+      "sources": [
+        "welfare",
+        "family",
+        "civil",
+        "education"
+      ],
+      "quotes": [],
+      "bidirectional": true,
+      "excludedEdges": [],
+      "edgeNotes": []
+    },
+    {
+      "id": "F12",
+      "from": [
+        "civil"
+      ],
+      "to": [
+        "youth",
+        "education"
+      ],
+      "carry": "chip",
+      "walker": "civil-servant",
+      "text": {
+        "zh": "AI 支持服務青年、校園與市府同仁",
+        "en": null
+      },
+      "evidenceTier": "official_thematic",
+      "sources": [
+        "civil",
+        "youth",
+        "education"
+      ],
+      "quotes": [],
+      "bidirectional": true,
+      "excludedEdges": [],
+      "edgeNotes": []
+    },
+    {
+      "id": "F13",
+      "from": [
+        "forest"
+      ],
+      "to": [
+        "sport"
+      ],
+      "carry": "sapling",
+      "walker": "citizen",
+      "text": {
+        "zh": "都市微森林與運動空間，把綠蔭帶進社區",
+        "en": null
+      },
+      "evidenceTier": "official_thematic",
+      "sources": [
+        "forest",
+        "sport"
+      ],
+      "quotes": [],
+      "bidirectional": true,
+      "excludedEdges": [],
+      "edgeNotes": []
+    },
+    {
+      "id": "F14",
+      "from": [
+        "farm"
+      ],
+      "to": [
+        "lunch",
+        "education"
+      ],
+      "carry": "basket",
+      "walker": "farmer",
+      "text": {
+        "zh": "在地小農走進校園午餐與食農教育",
+        "en": null
+      },
+      "evidenceTier": "official_explicit",
+      "sources": [
+        "lunch",
+        "education"
+      ],
+      "quotes": [],
+      "bidirectional": false,
+      "excludedEdges": [],
+      "edgeNotes": []
+    },
+    {
+      "id": "F15",
+      "from": [
+        "diplomacy"
+      ],
+      "to": [
+        "youth"
+      ],
+      "carry": "passport",
+      "walker": "citizen",
+      "text": {
+        "zh": "青年圓夢接軌無限城網絡，培養市民外交官",
+        "en": null
+      },
+      "evidenceTier": "official_explicit",
+      "sources": [
+        "youth",
+        "diplomacy"
+      ],
+      "quotes": [],
+      "bidirectional": true,
+      "excludedEdges": [],
+      "edgeNotes": []
+    },
+    {
+      "id": "F16",
+      "from": [
+        "hakka"
+      ],
+      "to": [
+        "welfare"
+      ],
+      "carry": "book-heart",
+      "walker": "elder",
+      "text": {
+        "zh": "長輩據點接軌社區共照，長幼一起學",
+        "en": null
+      },
+      "evidenceTier": "official_thematic",
+      "sources": [
+        "hakka-ltn",
+        "hakka-nextapple"
+      ],
+      "quotes": [],
+      "bidirectional": false,
+      "excludedEdges": [],
+      "edgeNotes": []
+    },
+    {
+      "id": "F17",
+      "from": [
+        "hakka"
+      ],
+      "to": [
+        "education"
+      ],
+      "carry": "schoolbag",
+      "walker": "child",
+      "text": {
+        "zh": "台北與客庄中小學結盟，寒暑假互訪",
+        "en": null
+      },
+      "evidenceTier": "official_thematic",
+      "sources": [
+        "hakka-ltn",
+        "hakka-nextapple"
+      ],
+      "quotes": [],
+      "bidirectional": false,
+      "excludedEdges": [],
+      "edgeNotes": []
+    },
+    {
+      "id": "F18",
+      "from": [
+        "hakka"
+      ],
+      "to": [
+        "card",
+        "trails"
+      ],
+      "carry": "cards",
+      "walker": "citizen",
+      "text": {
+        "zh": "台北通客語點數，走進客家廊帶與商圈",
+        "en": null
+      },
+      "evidenceTier": "official_thematic",
+      "sources": [
+        "hakka-ltn",
+        "hakka-nextapple"
+      ],
+      "quotes": [],
+      "bidirectional": false,
+      "excludedEdges": [],
+      "edgeNotes": []
+    },
+    {
+      "id": "F19",
+      "from": [
+        "hakka"
+      ],
+      "to": [
+        "civil"
+      ],
+      "carry": "folder",
+      "walker": "civil-servant",
+      "text": {
+        "zh": "約聘、櫃台與 1999 客語加分，市府帶頭",
+        "en": null
+      },
+      "evidenceTier": "official_thematic",
+      "sources": [
+        "hakka-ltn",
+        "hakka-nextapple"
+      ],
+      "quotes": [],
+      "bidirectional": false,
+      "excludedEdges": [],
+      "edgeNotes": []
+    },
+    {
+      "id": "F20",
+      "from": [
+        "hakka"
+      ],
+      "to": [
+        "diplomacy"
+      ],
+      "carry": "globe",
+      "walker": "researcher",
+      "text": {
+        "zh": "客家精神走進無限城國際論壇",
+        "en": null
+      },
+      "evidenceTier": "official_thematic",
+      "sources": [
+        "hakka-ltn",
+        "hakka-nextapple"
+      ],
+      "quotes": [],
+      "bidirectional": false,
+      "excludedEdges": [],
+      "edgeNotes": []
+    }
+  ],
+  "quotes": [
+    {
+      "id": "Q4",
+      "text": {
+        "zh": "我都說第一個，因為公務人員，你不先想辦法減壓，後面什麼事都做不了",
+        "en": null
+      },
+      "program": {
+        "zh": "李四端專訪 S1E80",
+        "en": null
+      },
+      "timecode": "24:41–24:45",
+      "url": "https://www.youtube.com/watch?v=4VM4OjmVBoc&t=1481s",
+      "verification": "provided_transcript_audio_unchecked",
+      "excerpt": false,
+      "readyToPublish": false
+    },
+    {
+      "id": "Q5",
+      "text": {
+        "zh": "市政府要帶頭做……做成功了以後……就會跟著做",
+        "en": null
+      },
+      "program": {
+        "zh": "李四端專訪 S1E80",
+        "en": null
+      },
+      "timecode": "24:50–25:17",
+      "url": "https://www.youtube.com/watch?v=4VM4OjmVBoc&t=1490s",
+      "verification": "provided_transcript_audio_unchecked",
+      "excerpt": true,
+      "readyToPublish": false
+    },
+    {
+      "id": "Q7",
+      "text": {
+        "zh": "半年之內一定要把這件事情做完，再推其他的政策",
+        "en": null
+      },
+      "program": {
+        "zh": "李四端專訪 S1E80",
+        "en": null
+      },
+      "timecode": "26:27–26:33",
+      "url": "https://www.youtube.com/watch?v=4VM4OjmVBoc&t=1587s",
+      "verification": "provided_transcript_audio_unchecked",
+      "excerpt": false,
+      "readyToPublish": false
+    }
+  ],
+  "dayCycle": [
+    {
+      "from": "05:30",
+      "to": "07:00",
+      "lights": [
+        "trails-north",
+        "trails-east",
+        "trails-south",
+        "forest-parks",
+        "sport-river"
+      ],
+      "scene": "hikers",
+      "label": {
+        "zh": "清晨登山",
+        "en": null
+      },
+      "timingKind": "illustrative_scene_not_service_hours"
+    },
+    {
+      "from": "07:00",
+      "to": "09:00",
+      "lights": [
+        "transport-school",
+        "transport-bus"
+      ],
+      "scene": "kids-walk",
+      "label": {
+        "zh": "通學與公車",
+        "en": null
+      },
+      "timingKind": "illustrative_scene_not_service_hours"
+    },
+    {
+      "from": "08:00",
+      "to": "10:00",
+      "lights": [
+        "transport-bike",
+        "transport-bridge",
+        "transport-hub"
+      ],
+      "scene": "bike-commute",
+      "label": {
+        "zh": "自行車通勤",
+        "en": null
+      },
+      "timingKind": "illustrative_scene_not_service_hours"
+    },
+    {
+      "from": "12:00",
+      "to": "12:01",
+      "lights": [
+        "lunch-farm"
+      ],
+      "scene": "school-meals",
+      "label": {
+        "zh": "午餐場景",
+        "en": null
+      },
+      "timingKind": "illustrative_scene_not_service_hours"
+    },
+    {
+      "from": "14:00",
+      "to": "17:00",
+      "lights": [
+        "card-culture",
+        "welfare-elder",
+        "sport-bus",
+        "family-station"
+      ],
+      "scene": "community",
+      "label": {
+        "zh": "祖孫與社區",
+        "en": null
+      },
+      "timingKind": "illustrative_scene_not_service_hours"
+    },
+    {
+      "from": "17:00",
+      "to": "19:00",
+      "lights": [
+        "transport-bike",
+        "sport-spots"
+      ],
+      "scene": "evening-sport",
+      "label": {
+        "zh": "下班與運動",
+        "en": null
+      },
+      "timingKind": "illustrative_scene_not_service_hours"
+    },
+    {
+      "from": "19:00",
+      "to": "22:00",
+      "lights": [
+        "family-respite"
+      ],
+      "scene": "night-childcare",
+      "label": {
+        "zh": "親子與家庭",
+        "en": null
+      },
+      "timingKind": "illustrative_scene_not_service_hours"
+    },
+    {
+      "from": "22:00",
+      "to": "24:00",
+      "lights": [
+        "transport-scooter",
+        "welfare-hourly"
+      ],
+      "scene": "night-support",
+      "label": {
+        "zh": "夜間照顧",
+        "en": null
+      },
+      "timingKind": "illustrative_scene_not_service_hours"
+    }
+  ],
+  "termTimeline": [
+    {
+      "id": "inauguration",
+      "label": {
+        "zh": "就任",
+        "en": null
+      }
+    },
+    {
+      "id": "0-6m",
+      "label": {
+        "zh": "6 個月",
+        "en": null
+      }
+    },
+    {
+      "id": "1-2",
+      "label": {
+        "zh": "第 1–2 年",
+        "en": null
+      }
+    },
+    {
+      "id": "3-4",
+      "label": {
+        "zh": "第 3–4 年",
+        "en": null
+      }
+    },
+    {
+      "id": "5-8",
+      "label": {
+        "zh": "第 5–8 年",
+        "en": null
+      }
+    }
+  ],
+  "termRules": {
+    "firstSixMonths": {
+      "focus": [
+        "civil"
+      ],
+      "quote": "Q7"
+    },
+    "unknownTimeline": "hidden"
+  },
+  "tour": {
+    "durationSeconds": 78,
+    "status": "storyboard_only",
+    "cues": [
+      {
+        "from": 0,
+        "to": 3,
+        "target": "all",
+        "caption": {
+          "zh": "把政見，連成一座城",
+          "en": null
+        },
+        "quotes": [],
+        "flows": []
+      },
+      {
+        "from": 3,
+        "to": 9,
+        "target": "civil",
+        "caption": {
+          "zh": "先幫公務員減壓",
+          "en": null
+        },
+        "quotes": [],
+        "flows": [
+          "F1"
+        ]
+      },
+      {
+        "from": 9,
+        "to": 12,
+        "target": "civil",
+        "caption": {
+          "zh": "",
+          "en": null
+        },
+        "quotes": [
+          "Q4"
+        ],
+        "flows": []
+      },
+      {
+        "from": 12,
+        "to": 22,
+        "target": "welfare",
+        "caption": {
+          "zh": "",
+          "en": null
+        },
+        "quotes": [],
+        "flows": []
+      },
+      {
+        "from": 22,
+        "to": 32,
+        "target": "transport",
+        "caption": {
+          "zh": "通學區，朝零死亡前進",
+          "en": null
+        },
+        "quotes": [],
+        "flows": [
+          "F6"
+        ]
+      },
+      {
+        "from": 32,
+        "to": 40,
+        "target": "sport",
+        "caption": {
+          "zh": "通勤、運動、登山相連",
+          "en": null
+        },
+        "quotes": [],
+        "flows": [
+          "F7"
+        ]
+      },
+      {
+        "from": 40,
+        "to": 48,
+        "target": "lunch",
+        "caption": {
+          "zh": "在地小農，走進校園",
+          "en": null
+        },
+        "quotes": [],
+        "flows": [
+          "F14"
+        ]
+      },
+      {
+        "from": 48,
+        "to": 56,
+        "target": "card",
+        "caption": {
+          "zh": "祖孫相伴，服務相銜接",
+          "en": null
+        },
+        "quotes": [],
+        "flows": [
+          "F9"
+        ]
+      },
+      {
+        "from": 56,
+        "to": 64,
+        "target": "family",
+        "caption": {
+          "zh": "家庭教育，就近支持",
+          "en": null
+        },
+        "quotes": [],
+        "flows": []
+      },
+      {
+        "from": 64,
+        "to": 72,
+        "target": "all",
+        "caption": {
+          "zh": "一項改變，帶動下一項",
+          "en": null
+        },
+        "quotes": [],
+        "flows": [
+          "F1",
+          "F2",
+          "F3",
+          "F4",
+          "F5",
+          "F6",
+          "F7",
+          "F8",
+          "F9",
+          "F10",
+          "F11",
+          "F12",
+          "F13",
+          "F14",
+          "F15"
+        ]
+      },
+      {
+        "from": 72,
+        "to": 78,
+        "target": "all",
+        "caption": {
+          "zh": "台北順起來",
+          "en": null
+        },
+        "quotes": [],
+        "flows": []
+      }
+    ]
+  },
+  "renderPlan": {
+    "walkers": 60,
+    "geometry": "original_procedural",
+    "filterUnknownHeart": "retain_original_color",
+    "hexOrientation": "pointy",
+    "palette": {
+      "coral": "#DB6A41",
+      "ink": "#211D1D",
+      "cream": "#FFF8F4",
+      "yellow": "#FCEA8B"
+    },
+    "paletteSource": "專案競選 CI：Claude outputs/沈伯洋_TA-B_B3-GROWN_v2/交付說明_README.md；依 puma.taipei 主視覺",
+    "layoutShape": "taipei_city_hex_silhouette",
+    "cellsPerPolicy": 1,
+    "flowVisibility": "on_selection",
+    "geographyReference": "https://www.gov.taipei/cp.aspx?n=1F076481DD9E556B"
+  },
+  "ui": {
+    "search": {
+      "zh": "搜尋政策",
+      "en": "Search policies"
+    },
+    "proposal": {
+      "zh": "政見",
+      "en": "Proposal"
+    },
+    "unknown": {
+      "zh": "",
+      "en": ""
+    },
+    "source": {
+      "zh": "看政見原文",
+      "en": "View source"
+    },
+    "connections": {
+      "zh": "看它連到哪",
+      "en": "View connections"
+    },
+    "day": {
+      "zh": "台北人的一天",
+      "en": "A day in Taipei"
+    },
+    "term": {
+      "zh": "任期時間軸位置",
+      "en": "Term timeline position"
+    },
+    "intro": {
+      "zh": "每塊島是一個政策主題",
+      "en": "Each island is a policy theme"
+    }
+  }
+}

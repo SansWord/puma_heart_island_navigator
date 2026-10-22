@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>沈伯洋 HEART 政策島 導航器</title>
+<meta name="description" content="把沈伯洋 HEART 政策島的 94 項政見，依任期年份整理成時程表（非官方整理）。">
+<link rel="canonical" href="https://sansword.github.io/puma_heart_island_navigator/">
+<!-- Social preview (Threads, Facebook, LINE, X). og:image must be absolute; regenerate with scripts/og.sh. -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="zh_TW">
+<meta property="og:site_name" content="沈伯洋 HEART 政策島 導航器">
+<meta property="og:title" content="沈伯洋 HEART 政策島 導航器">
+<meta property="og:description" content="把沈伯洋 HEART 政策島的每一項政見，依任期年份整理成時程表（非官方整理）。">
+<meta property="og:url" content="https://sansword.github.io/puma_heart_island_navigator/">
+<meta property="og:image" content="https://sansword.github.io/puma_heart_island_navigator/assets/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="沈伯洋 HEART 政策島 導航器：每一項政見，依承諾的年份排開">
+<meta name="twitter:card" content="summary_large_image">
+<!-- Official puma.taipei favicon (32x32 .ico). -->
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<meta name="theme-color" content="#db6a41">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="top-band">
+<header class="top">
+  <p class="eyebrow">非官方整理 · Unofficial</p>
+  <h1>沈伯洋 HEART 政策島 導航器</h1>
+  <p class="lede">把 <a href="https://puma.taipei/heart-island" target="_blank" rel="noopener">HEART 政策島</a> 的每一項政見，依承諾的年份排開。點「拜訪政策島」會開啟政策島並聚焦到該主題。</p>
+  <p class="meta" id="meta">載入中…</p>
+</header>
+</div>
+
+<section class="controls" aria-label="篩選">
+  <input id="q" type="search" placeholder="搜尋政策、關鍵字…" aria-label="搜尋政策">
+  <div class="chips" id="heart-chips" aria-label="依 HEART 字母篩選"></div>
+  <div class="chips" id="island-chips" aria-label="依政策主題篩選"></div>
+</section>
+
+<nav class="summary" id="summary" aria-label="各時段政策數"></nav>
+
+<main id="timeline"></main>
+
+<footer class="foot">
+  <p>資料來源：<a href="https://puma.taipei/heart-island-assets/policies.json" target="_blank" rel="noopener">puma.taipei 政策島資料</a>，每日自動同步。年份換算假設任期自 2026-12-25 起算（任期第 1 年 ≈ 2027）；「短期／中期／長期」與「階段」依官方原文的期程獨立列出。</p>
+  <p>本頁為個人整理，非競選團隊官方網站。</p>
+</footer>
+
+<script type="module" src="assets/app.js"></script>
+</body>
+</html>
