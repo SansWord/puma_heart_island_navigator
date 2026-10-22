@@ -11,7 +11,7 @@ if lsof -iTCP:"$PORT" -sTCP:LISTEN >/dev/null 2>&1; then
   exit 1
 fi
 
-# Share pages (p/<id>/) without preview images; deploy renders those.
+# Share pages (p/<id>/); preview images come from assets/share/ (share_pages.py --images).
 python3 scripts/share_pages.py
 
 echo "Serving $URL  (Ctrl-C to stop)"

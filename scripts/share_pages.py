@@ -9,11 +9,16 @@ followed by crawlers, which would then read the main page's generic tags instead
 The ids come from the official data (islands[].buildings[].id, e.g. "transport-bus"). The
 official island page keys its 3D buildings on them, so they're expected to stay stable.
 
-    python3 scripts/share_pages.py             # pages; previews from .cache/og, else assets/og.png
-    python3 scripts/share_pages.py --images    # also render uncached previews with headless Chrome
-    python3 scripts/share_pages.py --missing   # print how many previews aren't cached yet
+Preview images are rendered locally and committed to assets/share/, so they can be reviewed
+before a push deploys them; the deploy only writes the pages:
 
-p/ and .cache/ are generated (deploy runs --images) and git-ignored.
+    python3 scripts/share_pages.py --images    # render new/changed previews into assets/share/
+    python3 scripts/share_pages.py             # pages only (deploy, scripts/serve.sh)
+    python3 scripts/share_pages.py --stale     # list previews that need rendering
+
+assets/share/manifest.json maps each id to the hash of the card HTML (policy text + template) its
+image was rendered from. A preview whose hash no longer matches is stale: the page falls back to
+assets/og.png until it's re-rendered, rather than showing outdated text. p/ is git-ignored.
 """
 import hashlib
 import html
@@ -30,7 +35,8 @@ from pathlib import Path
 SITE = "https://sansword.github.io/puma_heart_island_navigator/"
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "p"
-CACHE = ROOT / ".cache/og"  # rendered previews by content hash; deploy keeps it with actions/cache
+SHARE = ROOT / "assets/share"  # committed preview images, <id>.png
+MANIFEST = SHARE / "manifest.json"
 CHROMES = [
     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
     "google-chrome",
@@ -59,10 +65,11 @@ def policies(data):
             }
 
 
-def page(p, has_image):
+def page(p, fresh):
     e = lambda s: html.escape(s, quote=True)
     url = f"{SITE}p/{p['id']}/"
-    image = f"{url}og.png" if has_image else f"{SITE}assets/og.png"
+    # ?v= changes with the image, so platforms that cache previews by image URL fetch the new one.
+    image = f"{SITE}assets/share/{p['id']}.png?v={p['hash'][:8]}" if fresh else f"{SITE}assets/og.png"
     title = f"{p['name']}｜沈伯洋 HEART 政策島 導覽器"
     desc = p["desc"] or f"{p['island']}的政見，依承諾的期程整理（非官方整理）。"
     target = f"../../?p={p['id']}"
@@ -98,11 +105,20 @@ def page(p, has_image):
 
 
 def card(p):
-    """1200x630 preview image source, in the style of scripts/og-card.html."""
+    """1200x630 preview image source, in the style of scripts/og-card.html.
+
+    Chat apps show this at about a third of its size, so everything is set large: the name first,
+    then the summary (two lines at most), topic and timing.
+    """
     e = html.escape
     n = len(p["name"])
-    size = 84 if n <= 10 else 68 if n <= 14 else 58
-    when = f'<div class="when">{e(p["when"])}</div>' if p["when"] else ""
+    size = 112 if n <= 7 else 100 if n <= 9 else 88
+    # A name too wide for one line (≈1080px usable; Latin glyphs about half a CJK one) leaves room
+    # for only one line of summary.
+    wide = sum(0.55 if ord(c) < 0x2E80 else 1 for c in p["name"]) * size > 1080
+    # Clamped text sits in an inner span: -webkit-line-clamp on a padded box lets the next line
+    # show through the padding.
+    when = f'<div class="when"><span>{e(p["when"])}</span></div>' if p["when"] else ""
     return f"""<!doctype html>
 <html lang="zh-Hant-TW">
 <head>
@@ -115,40 +131,40 @@ def card(p):
     background: #db6a41;
     color: #211d1d;
     font-family: "Noto Sans TC", "Noto Sans CJK TC", "PingFang TC", sans-serif;
-    padding: 56px 72px;
+    padding: 44px 60px;
     display: flex;
     flex-direction: column;
   }}
-  .top {{ display: flex; justify-content: space-between; align-items: center; }}
+  .top {{ flex: none; display: flex; justify-content: space-between; align-items: center; }}
   .eyebrow {{
-    padding: 6px 18px;
+    padding: 6px 20px;
     border-radius: 999px;
     background: #fff;
     color: #ad4d2a;
-    font-size: 24px;
-    font-weight: 700;
-    letter-spacing: .08em;
+    font-size: 30px;
+    font-weight: 900;
+    letter-spacing: .06em;
   }}
-  .heart {{ font-size: 30px; font-weight: 900; letter-spacing: .15em; color: #fff; }}
-  .island {{ margin-top: 30px; font-size: 32px; font-weight: 700; }}
+  .heart {{ font-size: 40px; font-weight: 900; letter-spacing: .15em; color: #fff; }}
+  .island {{ flex: none; margin-top: 18px; font-size: 40px; font-weight: 900; }}
   h1 {{
-    margin: 6px 0 0; color: #fff; font-size: {size}px; font-weight: 900; line-height: 1.15;
+    flex: none; margin: 2px 0 0; color: #fff; font-size: {size}px; font-weight: 900; line-height: 1.1;
+    word-break: keep-all; overflow-wrap: anywhere;
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
   }}
   .desc {{
-    margin: 18px 0 0; font-size: 30px; font-weight: 500; line-height: 1.5;
+    flex: none; margin: 14px 0 0; font-size: 40px; font-weight: 700; line-height: 1.4;
+    display: -webkit-box; -webkit-line-clamp: {1 if wide else 2}; -webkit-box-orient: vertical; overflow: hidden;
+  }}
+  .foot {{ flex: none; margin-top: auto; padding-top: 16px; display: flex; align-items: flex-end; gap: 24px; }}
+  .when {{ min-width: 0; padding: 8px 20px; border-radius: 14px; background: #fcea8b; }}
+  .when span {{
+    font-size: 34px; font-weight: 900; line-height: 1.3;
     display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
   }}
-  .foot {{ margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; }}
-  .when {{
-    padding: 10px 18px;
-    border-radius: 12px;
-    background: #fcea8b;
-    font-size: 28px;
-    font-weight: 700;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }}
-  .site {{ flex: none; margin-left: auto; font-size: 24px; font-weight: 700; color: #fff8f4; }}
+  .site {{ flex: none; margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
+    font-size: 28px; font-weight: 900; color: #fff8f4; }}
+  .more {{ padding: 6px 18px; border-radius: 999px; background: #211d1d; color: #fff; font-size: 28px; }}
 </style>
 </head>
 <body>
@@ -156,7 +172,7 @@ def card(p):
   <div class="island">{e(p["island"])}</div>
   <h1>{e(p["name"])}</h1>
   <p class="desc">{e(p["desc"])}</p>
-  <div class="foot">{when}<span class="site">HEART 政策島 導覽器</span></div>
+  <div class="foot">{when}<div class="site"><span>HEART 政策島 導覽器</span><span class="more">點入看更多，並分享最觸動你的政策 →</span></div></div>
 </body>
 </html>
 """
@@ -188,48 +204,53 @@ def render(chrome, src, dest):
 def main():
     args = sys.argv[1:]
     data = json.loads((ROOT / "data/policies.json").read_text(encoding="utf-8"))
-    # Ids become directory names; skip anything that isn't a plain slug.
+    # Ids become file and directory names; skip anything that isn't a plain slug.
     items = [p for p in policies(data) if re.fullmatch(r"[a-z0-9][a-z0-9-]*", p["id"])]
-    # An image is fully determined by its card HTML (policy text + template), so that hash names
-    # it in the cache: unchanged policies reuse their image, and a template change redoes them all.
+    manifest = json.loads(MANIFEST.read_text()) if MANIFEST.exists() else {}
     for p in items:
         p["html"] = card(p)
-        p["cached"] = CACHE / f"{hashlib.sha256(p['html'].encode()).hexdigest()[:16]}.png"
-    todo = [p for p in items if not p["cached"].exists()]
-    if "--missing" in args:  # deploy checks this to skip installing fonts when nothing renders
-        print(len(todo))
+        p["hash"] = hashlib.sha256(p["html"].encode()).hexdigest()[:16]
+        p["image"] = SHARE / f"{p['id']}.png"
+    fresh = lambda p: manifest.get(p["id"]) == p["hash"] and p["image"].exists()
+    stale = [p for p in items if not fresh(p)]
+    if "--stale" in args:
+        for p in stale:
+            print(f"{p['id']}  {p['name']}")
         return
 
-    if "--images" in args and todo:
+    if "--images" in args:
         chrome = find_chrome()
-        if not chrome:
-            print("share_pages: Chrome not found; uncached previews fall back to assets/og.png", file=sys.stderr)
-        else:
-            CACHE.mkdir(parents=True, exist_ok=True)
+        if stale and not chrome:
+            sys.exit("share_pages: Chrome not found (set CHROME=/path/to/chrome)")
+        SHARE.mkdir(parents=True, exist_ok=True)
+        if stale:
             with tempfile.TemporaryDirectory() as tmp:
-                for p in todo:
+                for p in stale:
                     p["src"] = Path(tmp) / f"{p['id']}.html"
                     p["src"].write_text(p["html"], encoding="utf-8")
                 with ThreadPoolExecutor(max_workers=6) as pool:
-                    ok = list(pool.map(lambda p: render(chrome, p["src"], p["cached"]), todo))
-            print(f"share_pages: rendered {sum(ok)} of {len(todo)} uncached images", file=sys.stderr)
-        # Drop images no current policy uses, so the cache doesn't grow forever.
-        keep = {p["cached"] for p in items}
-        for f in CACHE.glob("*.png"):
-            if f not in keep:
+                    ok = list(pool.map(lambda p: render(chrome, p["src"], p["image"]), stale))
+            for p, good in zip(stale, ok):
+                if good:
+                    manifest[p["id"]] = p["hash"]
+            print(f"share_pages: rendered {sum(ok)} of {len(stale)} previews into {SHARE.relative_to(ROOT)}/")
+        # Policies no longer in the data lose their image.
+        ids = {p["id"] for p in items}
+        for f in SHARE.glob("*.png"):
+            if f.stem not in ids:
                 f.unlink()
+        manifest = {k: v for k, v in sorted(manifest.items()) if k in ids}
+        MANIFEST.write_text(json.dumps(manifest, indent=2) + "\n")
+        stale = [p for p in items if not fresh(p)]
 
+    if stale:
+        msg = f"{len(stale)} previews need rendering (python3 scripts/share_pages.py --images); they use assets/og.png"
+        print(f"::warning::{msg}" if os.environ.get("GITHUB_ACTIONS") else f"share_pages: {msg}", file=sys.stderr)
     shutil.rmtree(OUT, ignore_errors=True)
-    images = 0
     for p in items:
-        d = OUT / p["id"]
-        d.mkdir(parents=True)
-        has_image = p["cached"].exists()
-        if has_image:
-            shutil.copyfile(p["cached"], d / "og.png")
-            images += 1
-        (d / "index.html").write_text(page(p, has_image), encoding="utf-8")
-    print(f"share_pages: {len(items)} pages, {images} images → {OUT.relative_to(ROOT)}/")
+        (OUT / p["id"]).mkdir(parents=True)
+        (OUT / p["id"] / "index.html").write_text(page(p, fresh(p)), encoding="utf-8")
+    print(f"share_pages: {len(items)} pages → {OUT.relative_to(ROOT)}/")
 
 
 if __name__ == "__main__":

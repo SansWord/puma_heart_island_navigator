@@ -9,9 +9,9 @@
 | 路徑 | 用途 |
 |---|---|
 | `index.html`, `assets/` | 靜態頁面，無建置步驟 |
-| `scripts/share_pages.py` | 產生每項政見的分享頁 `p/<id>/` 與預覽圖（見下方「分享連結」）；`p/`、`.cache/` 不進 git |
+| `scripts/share_pages.py` | 在本機畫預覽圖到 `assets/share/`（commit 進 repo 供檢查），部署時產生分享頁 `p/<id>/`（不進 git）；見下方「分享連結」 |
 | `404.html` | 找不到的路徑（例如已下架政見的分享連結）導回首頁 |
-| `data/policies.json` | `https://puma.taipei/heart-island-assets/policies.json` 的快照，供本機預覽與部署時的備援 |
+| `data/policies.json` | `https://puma.taipei/heart-island-assets/policies.json` 的快照；網站只用這份 |
 | `data/sync.json` | 資料下載時間 |
 | `scripts/sync.py` | 手動同步：下載官方資料並列出新增、移除、修改的政見，檢查後再 commit |
 | `.github/workflows/pages.yml` | push 到 `main`（或在 Actions 手動執行）時部署 repo 內的 `data/`；部署時不下載官方資料 |
@@ -23,9 +23,10 @@
 目前不自動同步：官方資料先在本機檢查，再手動上線。
 
 ```sh
-python3 scripts/sync.py   # 下載到 data/，列出新增 (+)、移除 (-)、修改 (~) 的政見
-git diff data/            # 需要時看完整差異
-git commit -am "Sync policies.json" && git push   # push 後部署，分享頁與預覽圖隨之更新
+python3 scripts/sync.py                  # 下載到 data/，列出新增 (+)、移除 (-)、修改 (~) 的政見
+git diff data/                           # 需要時看完整差異
+python3 scripts/share_pages.py --images  # 重畫有變動的政見預覽圖到 assets/share/，打開檢查
+git add data assets/share && git commit -m "Sync policies.json" && git push   # push 後部署
 ```
 
 下載失敗時 `data/` 保持不變。不想上線就 `git checkout data/` 還原。
@@ -58,7 +59,9 @@ scripts/serve.sh 9000     # 改用其他 port
 
 ## 分享連結
 
-每張卡片的「分享」選單有 Threads、LINE、Facebook、複製連結（手機另有「其他…」開啟系統分享）。分享出去的網址是每項政見自己的頁面：
+每張卡片的「分享」選單有 Threads、LINE、複製連結（手機另有「其他…」開啟系統分享）。Threads 與 LINE 會預填文字（政見名稱、主題，以及「點入看更多，並分享最觸動你的政策 — HEART 政策島 導覽器」）；Facebook 不接受預填文字，同樣的字樣放在分享頁的 `og:title`。
+
+Facebook 分享目前隱藏（除錯中）：`assets/app.js` 的 `FACEBOOK_SHARE` 改成 `true` 即恢復；網址加 `?fb=1` 可不改程式、直接在線上測試。分享出去的網址是每項政見自己的頁面：
 
 ```
 https://sansword.github.io/puma_heart_island_navigator/p/transport-bus/
@@ -67,9 +70,10 @@ https://sansword.github.io/puma_heart_island_navigator/p/transport-bus/
 - **為什麼另做頁面**：Threads、LINE、Facebook 產生預覽卡時只讀 HTML 的 `og:` 標籤、不執行 JavaScript，`?p=` 拿到的是同一份 `index.html`，每項政見的預覽會一模一樣。所以每項政見有自己的 `p/<id>/index.html`，帶該政見的標題、說明與預覽圖。
 - **導回主頁**：分享頁只用 JavaScript `location.replace("../../?p=<id>")` 導向主頁並標示該卡片。刻意不用 `<meta http-equiv="refresh">`：爬蟲可能會跟著它跳到主頁、讀到通用的預覽；`og:url`、`canonical` 也指向分享頁本身，理由相同。
 - **id 從哪來**：官方資料 `islands[].buildings[].id`（例如 `transport-bus`）。官方政策島的 3D 建築也用這些 id 對應，預期不會隨資料更新改變。新增的政見下次部署就有分享頁；已移除的政見連結會 404，由 `404.html` 導回首頁。
-- **何時產生**：部署時由 `scripts/share_pages.py --images` 依 repo 內的資料產生 94 個頁面，並用 headless Chrome 畫出每項的 1200×630 預覽圖。畫圖失敗的政見改用 `assets/og.png`。
-- **預覽圖快取**：每張圖完全由它的卡片 HTML（政見文字＋版型）決定，所以用該 HTML 的 hash 當檔名存在 `.cache/og/`，部署時以 `actions/cache` 保留。資料沒變的政見直接沿用舊圖，只有新增或改過的政見重畫；改了版型則全部重畫。全部重畫約 2 分鐘，沒變動時幾秒。沒有要畫的圖時，部署也會略過安裝中文字型。`p/`、`.cache/` 都不進 git。
-- **本機**：`scripts/serve.sh` 會先產生分享頁（有快取的圖就用，沒有就用 `assets/og.png`）；要畫圖可手動跑 `python3 scripts/share_pages.py --images`。
+- **預覽圖在本機產生、進 repo**：`python3 scripts/share_pages.py --images` 用 headless Chrome 畫出每項的 1200×630 預覽圖到 `assets/share/<id>.png`，commit 前可以逐張檢查。圖上有政見名稱、說明、主題、時程，以及「點入看更多，並分享最觸動你的政策 →」。`--stale` 列出需要重畫的政見。
+- **哪些圖需要重畫**：每張圖完全由它的卡片 HTML（政見文字＋版型）決定。`assets/share/manifest.json` 記錄每張圖畫的是哪個 hash；資料或版型改了，hash 對不上就重畫，只畫有變的。已移除的政見，圖也會刪掉。
+- **部署**：只跑 `scripts/share_pages.py`（不畫圖）產生 `p/<id>/` 頁面。圖過期或缺圖的政見改用 `assets/og.png`，部署記錄會出現警告，不會顯示舊文字的圖。圖片網址帶 `?v=<hash>`，換圖後平台會抓新圖。
+- **本機預覽**：`scripts/serve.sh` 會先產生分享頁。
 - **平台快取**：各平台會快取第一次抓到的預覽。改過文字後，舊的分享可能仍顯示舊版；可用 Meta 的 [Sharing Debugger](https://developers.facebook.com/tools/debug/) 重新抓取。
 
 ## 到政策島找找 Puma

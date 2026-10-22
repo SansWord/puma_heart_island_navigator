@@ -11,6 +11,12 @@ const SHARE_TARGETS = [
   { label: "LINE", href: (url, text) => `https://social-plugins.line.me/lineit/share?${new URLSearchParams({ url, text })}` },
   { label: "Facebook", href: (url) => `https://www.facebook.com/sharer/sharer.php?${new URLSearchParams({ u: url })}` },
 ];
+// Facebook sharing is hidden while it's being debugged. Flip this to bring it back, or add ?fb=1
+// to the page URL to show it for testing (read once on load; the URL is rewritten afterwards).
+const FACEBOOK_SHARE = false;
+if (!FACEBOOK_SHARE && !new URLSearchParams(location.search).has("fb")) {
+  SHARE_TARGETS.splice(SHARE_TARGETS.findIndex((t) => t.label === "Facebook"), 1);
+}
 // Phones get one more item for the system share sheet (Messenger, IG, mail…).
 const nativeShare = !!navigator.share && matchMedia("(pointer: coarse)").matches;
 
@@ -151,7 +157,7 @@ function matches(p) {
 // policy's own preview tags and redirects people to ?p=<id> on this page.
 const shareUrl = (p) => new URL(`p/${encodeURIComponent(p.id)}/`, location.href).href;
 const shareText = (p) =>
-  `沈伯洋的政見：「${p.name}」（${String(p.island.number).padStart(2, "0")} ${p.islandName}）\n— HEART 政策島 導覽器`;
+  `沈伯洋的政見：「${p.name}」（${String(p.island.number).padStart(2, "0")} ${p.islandName}）\n點入看更多，並分享最觸動你的政策 — HEART 政策島 導覽器`;
 
 function card(p, bucketId) {
   const steps = p.placements.get(bucketId).filter(Boolean);
