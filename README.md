@@ -59,7 +59,7 @@ scripts/serve.sh 9000     # 改用其他 port
 
 ## 分享連結
 
-每張卡片的「分享」選單有 Threads、LINE、複製連結（手機另有「其他…」開啟系統分享）。Threads 與 LINE 會預填文字（政見名稱、主題，以及「點入看更多，並分享最觸動你的政策 — HEART 政策島 導覽器」）；Facebook 不接受預填文字，同樣的字樣放在分享頁的 `og:title`。
+每張卡片的「分享」選單有 Threads、LINE、複製連結（手機另有「其他…」開啟系統分享）。Threads 與 LINE 會預填文字：「沈伯洋的政見：「政見名稱」」、說明，空一行後接「點入看更多，並分享最觸動你的政策 — HEART 政策島 導覽器」；Facebook 不接受預填文字，同樣的字樣放在分享頁的 `og:title`。
 
 Facebook 分享目前隱藏（除錯中）：`assets/app.js` 的 `FACEBOOK_SHARE` 改成 `true` 即恢復；網址加 `?fb=1` 可不改程式、直接在線上測試。分享出去的網址是每項政見自己的頁面：
 

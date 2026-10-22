@@ -156,8 +156,11 @@ function matches(p) {
 // Per-policy share page (p/<id>/, generated at deploy by scripts/share_pages.py). It carries the
 // policy's own preview tags and redirects people to ?p=<id> on this page.
 const shareUrl = (p) => new URL(`p/${encodeURIComponent(p.id)}/`, location.href).href;
+// Name, then the summary, then a blank line before the call to action.
 const shareText = (p) =>
-  `沈伯洋的政見：「${p.name}」（${String(p.island.number).padStart(2, "0")} ${p.islandName}）\n點入看更多，並分享最觸動你的政策 — HEART 政策島 導覽器`;
+  [`沈伯洋的政見：「${p.name}」`, p.desc, "", "點入看更多，並分享最觸動你的政策 — HEART 政策島 導覽器"]
+    .filter((line, i) => i !== 1 || line)
+    .join("\n");
 
 function card(p, bucketId) {
   const steps = p.placements.get(bucketId).filter(Boolean);
