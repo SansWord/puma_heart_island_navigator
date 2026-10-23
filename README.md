@@ -78,6 +78,14 @@ https://sansword.github.io/puma_heart_island_navigator/p/transport-bus/
 - **本機預覽**：`scripts/serve.sh` 會先產生分享頁。
 - **平台快取**：各平台會快取第一次抓到的預覽。改過文字後，舊的分享可能仍顯示舊版；可用 Meta 的 [Sharing Debugger](https://developers.facebook.com/tools/debug/) 重新抓取。
 
+## 瀏覽統計
+
+用 [GoatCounter](https://www.goatcounter.com/)（不用 cookie）統計，報表在 <https://puma-heart-island-nav.goatcounter.com/>。只有主頁載入 `count.js`：分享頁一載入就導走，來不及計數，而且爬蟲不跑 JavaScript，本來就不會被算到。
+
+- **頁面瀏覽**：主頁記為 `/puma_heart_island_navigator/`。從分享連結進來（`?p=<id>`）記為該分享頁的路徑 `…/p/<id>/`，可以看出哪些政見的分享連結有人點。`count.js` 會用 `canonical` 的路徑而丟掉 `?p=`，所以 `index.html` 先讀出 id 改寫路徑。
+- **點擊事件**：`copy-share/<id>`（複製並分享）、`visit/<id>`（拜訪政策島）、`puma/header` 與 `puma/footer`（找找 Puma 的兩個位置）。連結用 `data-count` 標記，由 `assets/app.js` 送出。
+- 本機（localhost、127.0.0.1）不計數；擋廣告的外掛會擋掉 `gc.zgo.at`，桌機數字會偏低。
+
 ## 到政策島找找 Puma
 
 頁首按鈕與頁尾連到 `https://puma.taipei/heart-island?focus=civil`。官方政策島上有個彩蛋角色 Puma，從 01 市府核心出發、依序走訪 14 座島並在每座島停一下；政策島的 `?focus=` 只接受島的 id，沒有直接聚焦到 Puma 的參數，所以連到他的出發點。

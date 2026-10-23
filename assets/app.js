@@ -50,6 +50,15 @@ async function copyText(text) {
   return ok;
 }
 
+// Click counts on GoatCounter (loaded in index.html). Missing when count.js is blocked or hasn't
+// loaded yet; it also skips localhost.
+const count = (path) => window.goatcounter?.count?.({ path, event: true });
+// Links marked data-count="<name>": the 找找 Puma links and each card's 拜訪政策島.
+document.addEventListener("click", (e) => {
+  const el = e.target.closest("[data-count]");
+  if (el) count(el.dataset.count);
+});
+
 let toastTimer;
 function toast(message) {
   const el = $("#toast");
@@ -231,7 +240,7 @@ function card(p, bucketId) {
     ${full}
     ${facts}
     <div class="links">
-      <a href="${esc(p.mapUrl)}" target="_blank" rel="noopener" title="開啟「${esc(p.islandName)}」後，在「政策細項」點選「${esc(p.name)}」">拜訪政策島 ↗</a>
+      <a href="${esc(p.mapUrl)}" target="_blank" rel="noopener" data-count="visit/${esc(p.id)}" title="開啟「${esc(p.islandName)}」後，在「政策細項」點選「${esc(p.name)}」">拜訪政策島 ↗</a>
       <a href="${esc(p.sourceUrl)}" target="_blank" rel="noopener">${p.sourceUrl.startsWith("https://puma.taipei/") ? "看政見頁 - " : ""}${esc(p.sourceTitle)} ↗</a>
       ${share}
     </div>
@@ -431,6 +440,7 @@ async function main() {
     const btn = e.target.closest("button.share-copy");
     if (!btn) return;
     const p = policies.find((x) => x.id === btn.dataset.share);
+    count(`copy-share/${p.id}`);
     if (await copyText(`${shareText(p)}\n${shareUrl(p)}`)) {
       toast("已複製！貼到 Threads 回覆、LINE 或任何地方分享吧");
       btn.textContent = "已複製 ✓";
