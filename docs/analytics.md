@@ -22,7 +22,7 @@ How the site counts visits and clicks, how to read the numbers, and how to keep 
 | 拜訪政策島 click | events `visit/<id>` and `visit` | How many readers go on to the official island, and from which policy |
 | 找找 Puma click | event `puma/header` or `puma/footer` | Whether the header button or the footer link sends more people to the island |
 
-Policy clicks are sent twice, with and without the id: the id-less `copy-share` and `visit` are site-wide totals, readable in one counter lookup (see [Showing the numbers on the page](#showing-the-numbers-on-the-page)). They shipped a few hours after the per-policy events (both on 2026-10-23), so clicks from those first hours only exist per policy.
+Policy clicks are sent twice, with and without the id: the id-less `copy-share` and `visit` are site-wide totals, readable in one counter lookup (see [Showing the numbers on the page](#showing-the-numbers-on-the-page)). They shipped about half an hour after the per-policy events (both on 2026-10-23), so the earliest clicks only exist per policy.
 
 Page views and events appear in separate lists on the dashboard. GoatCounter also reports referrers, browser, screen size and country for page views.
 

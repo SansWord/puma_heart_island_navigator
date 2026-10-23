@@ -14,6 +14,7 @@ Learnings from building the 沈伯洋 HEART 政策島 導覽器, newest first.
 
 | Version | Summary |
 |---------|---------|
+| [v1.8.0](#v180--goatcounter-analytics-2026-10-23-0051) | GoatCounter on the main page: shared-link visits per policy, click events with site-wide totals, `docs/analytics.md`; 細節 console-error fix |
 | [v1.7.0](#v170--share-links-and-preview-cards-2026-10-22-1029) | Per-policy share pages and preview images, 複製並分享 button, 找找 Puma, rename to 導覽器, manual data sync |
 | [v1.6.1](#v161--threads-screenshots-2026-10-22-0449) | Shorter 階段 subtitle; phone screenshots for sharing on Threads |
 | [v1.6.0](#v160--two-timeline-metrics-2026-10-22-0445) | Timeline regrouped: 任期期程 短期／中期／長期 (years absorbed) · 分階段推動 第一–三階段 · 施政方向 |
@@ -32,6 +33,27 @@ Learnings from building the 沈伯洋 HEART 政策島 導覽器, newest first.
 | [v1.1.0](#v110--puma-brand-theme-and-favicon-2026-10-22-0402) | Light-only theme from puma.taipei's brand tokens, orange header band, Noto Sans TC, official favicon |
 | [v1.0.1](#v101--build-time-data-fetch-2026-10-22-0400) | Pages now deploys through GitHub Actions and downloads the official JSON at build time; no more data commits |
 | [v1.0.0](#v100--initial-release-2026-10-22-0356) | Static per-year view of the 94 HEART policies, daily data sync via GitHub Actions, published on GitHub Pages |
+
+## v1.8.0 — GoatCounter analytics (2026-10-23 00:51)
+
+**Review:** not yet
+
+**What was built:**
+- GoatCounter on the main page only, reporting to its own site (`puma-heart-island-nav`), separate from the other site on the same account; footer line says it's cookieless.
+- Shared-link visits (`?p=<id>`) are recorded at the share page's path, `/puma_heart_island_navigator/p/<id>/`.
+- Click events: `copy-share/<id>` (複製並分享), `visit/<id>` (拜訪政策島), `puma/header` and `puma/footer` (找找 Puma). The two policy events also go out without the id (`copy-share`, `visit`) as site-wide totals.
+- [`analytics.md`](analytics.md): what's counted and why, excluding your own visits per browser with `#toggle-goatcounter`, reading the numbers, and the parked idea of showing the numbers on the page.
+- Fix: the share-menu `toggle` listener threw for every card's 細節 on every render (111 console errors per load and search).
+
+**Key technical learnings:**
+- `[gotcha]` GoatCounter's `count.js` takes the page path from `<link rel="canonical">` when one exists, dropping the query string, so every `?p=<id>` visit would have been counted as the home page. The fix sets `window.goatcounter.path` from an inline script that reads `?p=` before `app.js` rewrites the URL.
+- `[insight]` Don't put the counter on a page that redirects immediately: the async script loses the race, and the destination page can count the visit instead with a path that says where it came from.
+- `[note]` `count.js` skips localhost, private addresses, `file:`, headless browsers, and any browser with `localStorage.skipgc = "t"`. `#toggle-goatcounter` sets that flag, but per browser, so each in-app browser (Threads, LINE) needs it separately.
+- `[insight]` GoatCounter's public counter (`/counter/<path>.json`) answers one path per request, so per-policy numbers on the page cost about 290 requests. Sending each policy event a second time without its id makes a site-wide total one request. Ship such events before you need them: totals only count from the day they start.
+- `[gotcha]` A capture-phase `toggle` listener on a container catches every `<details>` inside it, and `toggle` also fires when a `<details open>` is rendered. Check `e.target.matches(...)` first. The bug stayed hidden while every card had a share menu, and surfaced once the menu was hidden.
+
+**Process learnings:**
+- `[insight]` Counting data is cheap; showing it is the decision. Collect now and watch the dashboard, and decide later whether the numbers go public. Hiding numbers on a page doesn't make them private once the counter or a stats file is readable.
 
 ## v1.7.0 — Share links and preview cards (2026-10-22 10:29)
 
