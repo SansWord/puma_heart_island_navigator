@@ -69,3 +69,26 @@ A separate prefix (say `/me/...`) is possible: `count.js`'s path callback can re
 - **Are we sending people to the island?** Compare `visit/…` plus `puma/…` events with main page views.
 - **Header or footer?** Compare `puma/header` with `puma/footer`.
 - **Where do visitors come from?** Check referrers on page views. In-app browsers often send no referrer, and links clicked on Threads may show its link redirect (`l.threads.com`), so take these numbers loosely.
+
+## Ideas not built yet
+
+### Showing the numbers on the page
+
+The idea: counts on the main page, per policy on each card and site-wide in the header. They'd be hidden by default and shown only in browsers with a `localStorage` flag, set from the dev console. That way you can look at them before deciding whether to make them public. Parked on 2026-10-23; the dashboard is enough for now.
+
+- **Source.** GoatCounter's public counter, `https://puma-heart-island-nav.goatcounter.com/counter/<path>.json` (path URL-encoded). It needs **"allow using the visitor counter"** turned on in the site settings; until then it answers 403.
+- **One path per request.** The counter can't return several paths at once.
+  - Per-card numbers: 94 policies × 3 (`/p/<id>/`, `copy-share/<id>`, `visit/<id>`) = 282 requests.
+  - Header numbers: 3 more (main page, `puma/header`, `puma/footer`).
+  - That's about 290 per page load: fine while only you see them, too heavy once every visitor does.
+- **Header numbers only: 3–6 requests.**
+  - Main page views.
+  - `TOTAL`, the special path for the whole site's page views. Main page and shared links are the only page views here, so shared-link visits = `TOTAL` − main page views.
+  - 找找 Puma clicks, header and footer.
+  - Optional site-wide 複製並分享 and 拜訪政策島 totals. These need each click to also send an id-less event (`copy-share`, `visit`); they'd only count clicks after that change ships.
+- **Check first, once the setting is on:**
+  - Does `TOTAL` include click events? If it does, the subtraction is wrong; instead, send a `shared` event on each shared-link arrival and count that.
+  - Are counts returned as display text (`"1,234"`)? Then the commas need stripping before doing math.
+- **Middle ground for per-card numbers.** Fetch each card's numbers when it scrolls into view and cache them for the browser session: about 10–20 requests at a time.
+- **Alternative.** A local script with a GoatCounter API token writes `data/stats.json`, reviewed and committed like `scripts/sync.py`. One request per visit, but the numbers are only as fresh as the last run.
+- **Privacy.** Hiding numbers on the page doesn't make them private. With the counter setting on, anyone can query any path. A committed `stats.json` is public too.

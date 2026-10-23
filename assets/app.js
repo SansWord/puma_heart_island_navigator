@@ -396,11 +396,12 @@ async function main() {
   const closeMenus = (except) => {
     for (const d of document.querySelectorAll("details.share[open]")) if (d !== except) d.open = false;
   };
-  // `toggle` doesn't bubble, so listen in the capture phase.
+  // `toggle` doesn't bubble, so listen in the capture phase. It also fires for each card's 細節
+  // <details>, including when cards render with it open; only share menus are handled here.
   $("#timeline").addEventListener(
     "toggle",
     (e) => {
-      if (!e.target.open) return;
+      if (!e.target.matches("details.share") || !e.target.open) return;
       closeMenus(e.target);
       // Open leftward when the menu would run past the right edge (right-hand column, phones).
       const menu = e.target.querySelector(".share-menu");
