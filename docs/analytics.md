@@ -16,8 +16,8 @@ How the site counts visits and clicks, how to read the numbers, and how to keep 
 
 | What | Recorded as | Answers |
 |---|---|---|
-| Main page visit | `/puma_heart_island_navigator/` | How many people look at the timeline |
-| Visit from a shared link (`?p=<id>`) | `/puma_heart_island_navigator/p/<id>/` | Which policies' shared links get opened |
+| Main page visit, opened directly | `/puma_heart_island_navigator/` | How many people come to the timeline on their own |
+| Visit from a shared link (`?p=<id>`) | `/puma_heart_island_navigator/p/<id>/` and event `shared` | How many visits shared links bring, and for which policies |
 | 複製並分享 click | events `copy-share/<id>` and `copy-share` | Does anyone use the copy button, and for which policies |
 | 拜訪政策島 click | events `visit/<id>` and `visit` | How many readers go on to the official island, and from which policy |
 | 找找 Puma click | event `puma/header` or `puma/footer` | Whether the header button or the footer link sends more people to the island |
@@ -29,7 +29,8 @@ Page views and events appear in separate lists on the dashboard. GoatCounter als
 ## How it works
 
 - **Main page only.** The share pages (`p/<id>/`) send visitors to the main page right away, before a counting script would load. Link-preview crawlers don't run JavaScript, so they're never counted either way.
-- **Shared-link paths.** `count.js` takes the page path from `<link rel="canonical">`, which points at the site root and drops `?p=`. An inline script in `index.html` reads `?p=<id>` at load time, before `app.js` removes it from the address bar, and sets `window.goatcounter.path` so the visit is recorded at the share page's path.
+- **Shared-link paths.** `count.js` takes the page path from `<link rel="canonical">`, which points at the site root and drops `?p=`. An inline script in `index.html` reads `?p=<id>` at load time, before `app.js` removes it from the address bar, and sets `window.goatcounter.path` so the visit is recorded at the share page's path, and only there: it doesn't also count as a main page view. Main page views are direct visits; main page plus all `p/` paths is every visit.
+- **`shared` event.** `app.js` also sends an id-less `shared` event on each shared-link arrival, as the site-wide total (since 2026-10-23, shortly after the per-policy page views). It's sent at load, so it waits for the async `count.js` (the `load` event of `<script id="goatcounter">`) if that hasn't run yet; clicks happen later and don't need to wait.
 - **Click events.**
   - Links with `data-count="<name>"` are counted by one click listener in `assets/app.js`. The 找找 Puma links have the attribute in `index.html`.
   - Each card's 拜訪政策島 link also has `data-policy="<id>"`, which makes the listener call `countPolicy()`: `visit/<id>` and `visit`.
@@ -86,11 +87,10 @@ The idea: counts on the main page, per policy on each card and site-wide in the 
   - That's about 290 per page load: fine while only you see them, too heavy once every visitor does.
 - **Header numbers only: 3–6 requests.**
   - Main page views.
-  - `TOTAL`, the special path for the whole site's page views. Main page and shared links are the only page views here, so shared-link visits = `TOTAL` − main page views.
+  - The `shared` event for shared-link visits overall. (`TOTAL`, the special path for the whole site's page views, would also work as `TOTAL` − main page views, since those are the only page views here.)
   - 找找 Puma clicks, header and footer.
   - Site-wide 複製並分享 and 拜訪政策島 totals: the id-less `copy-share` and `visit` events, counted since 2026-10-23.
 - **Check first, once the setting is on:**
-  - Does `TOTAL` include click events? If it does, the subtraction is wrong; instead, send a `shared` event on each shared-link arrival and count that.
   - Are counts returned as display text (`"1,234"`)? Then the commas need stripping before doing math.
 - **Middle ground for per-card numbers.** Fetch each card's numbers when it scrolls into view and cache them for the browser session: about 10–20 requests at a time.
 - **Alternative.** A local script with a GoatCounter API token writes `data/stats.json`, reviewed and committed like `scripts/sync.py`. One request per visit, but the numbers are only as fresh as the last run.
