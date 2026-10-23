@@ -26,15 +26,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
 <link rel="stylesheet" href="assets/style.css">
 <!-- GoatCounter: cookieless page counts (dashboard: puma-heart-island-nav.goatcounter.com).
-     count.js takes the path from the canonical link, which drops ?p=<id>; a shared visit is counted
-     at its share page's path (…/p/<id>/) instead. Read here, before app.js drops ?p= from the URL.
-     count.js skips localhost on its own. -->
-<script>
-  {
-    const id = new URLSearchParams(location.search).get("p");
-    window.goatcounter = id ? { path: (p) => `${p}p/${encodeURIComponent(id)}/` } : {};
-  }
-</script>
+     Every load counts at the canonical path (the main page); assets/app.js adds the shared-link
+     counts and click events. count.js skips localhost on its own. -->
 <script id="goatcounter" data-goatcounter="https://puma-heart-island-nav.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>

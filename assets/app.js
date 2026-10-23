@@ -59,12 +59,19 @@ const countPolicy = (name, id) => {
   count(`${name}/${id}`);
   count(name);
 };
-// A shared-link arrival (?p=<id>) is a page view at its share page's path (set in index.html), plus
-// an id-less `shared` event as the site-wide total. That one is sent on load, so it waits for the
-// async count.js; clicks come later and don't need to. Read ?p= now, before writeState() drops it.
-if (new URLSearchParams(location.search).has("p")) {
-  if (window.goatcounter?.count) count("shared");
-  else document.getElementById("goatcounter")?.addEventListener("load", () => count("shared"));
+// A shared-link arrival (?p=<id>) counts twice as a page view: the main page, like every load, and
+// its share page's path (…/p/<id>/), plus an id-less `shared` event as the site-wide total. These go
+// out on load, so they wait for the async count.js; clicks come later and don't need to. Read ?p=
+// now, before writeState() drops it.
+const sharedId = new URLSearchParams(location.search).get("p");
+if (sharedId) {
+  const countShared = () => {
+    const canonical = document.querySelector('link[rel="canonical"]').href;
+    window.goatcounter.count({ path: new URL(`p/${encodeURIComponent(sharedId)}/`, canonical).pathname });
+    count("shared");
+  };
+  if (window.goatcounter?.count) countShared();
+  else document.getElementById("goatcounter")?.addEventListener("load", countShared);
 }
 // Links marked data-count="<name>" (the 找找 Puma links), or data-count plus data-policy="<id>"
 // (each card's 拜訪政策島).

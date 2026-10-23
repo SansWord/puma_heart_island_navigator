@@ -82,7 +82,7 @@ https://sansword.github.io/puma_heart_island_navigator/p/transport-bus/
 
 用 [GoatCounter](https://www.goatcounter.com/)（不用 cookie）統計，報表在 <https://puma-heart-island-nav.goatcounter.com/>。只有主頁載入 `count.js`：分享頁一載入就導走，來不及計數，而且爬蟲不跑 JavaScript，本來就不會被算到。
 
-- **頁面瀏覽**：主頁記為 `/puma_heart_island_navigator/`。從分享連結進來（`?p=<id>`）記為該分享頁的路徑 `…/p/<id>/`，可以看出哪些政見的分享連結有人點；只記在分享頁的路徑，不會同時算一次主頁。另外送一次不帶 id 的 `shared` 事件當全站總數。`count.js` 會用 `canonical` 的路徑而丟掉 `?p=`，所以 `index.html` 先讀出 id 改寫路徑。
+- **頁面瀏覽**：每次載入都記為主頁 `/puma_heart_island_navigator/`。從分享連結進來（`?p=<id>`）另外記一次該分享頁的路徑 `…/p/<id>/`，並送一個不帶 id 的 `shared` 事件當全站總數；所以主頁數字包含分享連結的瀏覽，直接進站 = 主頁 − `shared`。
 - **點擊事件**：`copy-share/<id>`（複製並分享）、`visit/<id>`（拜訪政策島），這兩種另外送一次不帶 id 的 `copy-share`、`visit` 當全站總數；`puma/header` 與 `puma/footer`（找找 Puma 的兩個位置）。連結用 `data-count` 標記，由 `assets/app.js` 送出。
 - 本機（localhost、127.0.0.1）不計數；擋廣告的外掛會擋掉 `gc.zgo.at`，桌機數字會偏低。
 - 排除自己的瀏覽：在每個瀏覽器開一次 `…/#toggle-goatcounter`。細節與如何解讀數字見 [`docs/analytics.md`](docs/analytics.md)。
