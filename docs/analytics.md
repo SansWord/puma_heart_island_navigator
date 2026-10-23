@@ -18,9 +18,11 @@ How the site counts visits and clicks, how to read the numbers, and how to keep 
 |---|---|---|
 | Main page visit | `/puma_heart_island_navigator/` | How many people look at the timeline |
 | Visit from a shared link (`?p=<id>`) | `/puma_heart_island_navigator/p/<id>/` | Which policies' shared links get opened |
-| 複製並分享 click | event `copy-share/<id>` | Does anyone use the copy button, and for which policies |
-| 拜訪政策島 click | event `visit/<id>` | How many readers go on to the official island, and from which policy |
+| 複製並分享 click | events `copy-share/<id>` and `copy-share` | Does anyone use the copy button, and for which policies |
+| 拜訪政策島 click | events `visit/<id>` and `visit` | How many readers go on to the official island, and from which policy |
 | 找找 Puma click | event `puma/header` or `puma/footer` | Whether the header button or the footer link sends more people to the island |
+
+Policy clicks are sent twice, with and without the id: the id-less `copy-share` and `visit` are site-wide totals, readable in one counter lookup (see [Showing the numbers on the page](#showing-the-numbers-on-the-page)). They shipped a few hours after the per-policy events (both on 2026-10-23), so clicks from those first hours only exist per policy.
 
 Page views and events appear in separate lists on the dashboard. GoatCounter also reports referrers, browser, screen size and country for page views.
 
@@ -29,10 +31,11 @@ Page views and events appear in separate lists on the dashboard. GoatCounter als
 - **Main page only.** The share pages (`p/<id>/`) send visitors to the main page right away, before a counting script would load. Link-preview crawlers don't run JavaScript, so they're never counted either way.
 - **Shared-link paths.** `count.js` takes the page path from `<link rel="canonical">`, which points at the site root and drops `?p=`. An inline script in `index.html` reads `?p=<id>` at load time, before `app.js` removes it from the address bar, and sets `window.goatcounter.path` so the visit is recorded at the share page's path.
 - **Click events.**
-  - Links with `data-count="<name>"` are counted by one click listener in `assets/app.js`. The 找找 Puma links have the attribute in `index.html`; each card's 拜訪政策島 link gets it when the card is rendered.
-  - The 複製並分享 handler calls `count()` directly.
+  - Links with `data-count="<name>"` are counted by one click listener in `assets/app.js`. The 找找 Puma links have the attribute in `index.html`.
+  - Each card's 拜訪政策島 link also has `data-policy="<id>"`, which makes the listener call `countPolicy()`: `visit/<id>` and `visit`.
+  - The 複製並分享 handler calls `countPolicy("copy-share", id)` directly.
   - `count.js` sends events with `navigator.sendBeacon`, so links that open in a new tab are still counted.
-- **Adding an event.** Put `data-count="<name>"` on a link or button. In a click handler, call `count("<name>")` instead.
+- **Adding an event.** Put `data-count="<name>"` on a link or button, plus `data-policy="<id>"` for a per-policy event. In a click handler, call `count("<name>")` or `countPolicy("<name>", id)` instead.
 
 ## Not counted
 
@@ -65,8 +68,8 @@ A separate prefix (say `/me/...`) is possible: `count.js`'s path callback can re
 
 ## Reading the numbers
 
-- **Is 複製並分享 used?** Look for `copy-share/…` events. A copy followed by `/p/<id>/` page views for the same policy means the shared link was opened.
-- **Are we sending people to the island?** Compare `visit/…` plus `puma/…` events with main page views.
+- **Is 複製並分享 used?** `copy-share` is the total; `copy-share/…` events show which policies. A copy followed by `/p/<id>/` page views for the same policy means the shared link was opened.
+- **Are we sending people to the island?** Compare `visit` plus `puma/…` events with main page views.
 - **Header or footer?** Compare `puma/header` with `puma/footer`.
 - **Where do visitors come from?** Check referrers on page views. In-app browsers often send no referrer, and links clicked on Threads may show its link redirect (`l.threads.com`), so take these numbers loosely.
 
@@ -85,7 +88,7 @@ The idea: counts on the main page, per policy on each card and site-wide in the 
   - Main page views.
   - `TOTAL`, the special path for the whole site's page views. Main page and shared links are the only page views here, so shared-link visits = `TOTAL` − main page views.
   - 找找 Puma clicks, header and footer.
-  - Optional site-wide 複製並分享 and 拜訪政策島 totals. These need each click to also send an id-less event (`copy-share`, `visit`); they'd only count clicks after that change ships.
+  - Site-wide 複製並分享 and 拜訪政策島 totals: the id-less `copy-share` and `visit` events, counted since 2026-10-23.
 - **Check first, once the setting is on:**
   - Does `TOTAL` include click events? If it does, the subtraction is wrong; instead, send a `shared` event on each shared-link arrival and count that.
   - Are counts returned as display text (`"1,234"`)? Then the commas need stripping before doing math.
