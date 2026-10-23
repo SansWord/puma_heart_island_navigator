@@ -14,6 +14,7 @@ Learnings from building the 沈伯洋 HEART 政策島 導覽器, newest first.
 
 | Version | Summary |
 |---------|---------|
+| [v1.8.1](#v181--shared-link-counting-2026-10-23-0102) | `shared` event; shared-link visits count at the main page and at `p/<id>/`, overlap documented |
 | [v1.8.0](#v180--goatcounter-analytics-2026-10-23-0051) | GoatCounter on the main page: shared-link visits per policy, click events with site-wide totals, `docs/analytics.md`; 細節 console-error fix |
 | [v1.7.0](#v170--share-links-and-preview-cards-2026-10-22-1029) | Per-policy share pages and preview images, 複製並分享 button, 找找 Puma, rename to 導覽器, manual data sync |
 | [v1.6.1](#v161--threads-screenshots-2026-10-22-0449) | Shorter 階段 subtitle; phone screenshots for sharing on Threads |
@@ -34,19 +35,34 @@ Learnings from building the 沈伯洋 HEART 政策島 導覽器, newest first.
 | [v1.0.1](#v101--build-time-data-fetch-2026-10-22-0400) | Pages now deploys through GitHub Actions and downloads the official JSON at build time; no more data commits |
 | [v1.0.0](#v100--initial-release-2026-10-22-0356) | Static per-year view of the 94 HEART policies, daily data sync via GitHub Actions, published on GitHub Pages |
 
+## v1.8.1 — Shared-link counting (2026-10-23 01:02)
+
+**Review:** not yet
+
+**What was built:**
+- An id-less `shared` event on each shared-link arrival, so shared visits overall are one counter lookup.
+- Shared-link visits now also count as main page views. One visit through `/p/<id>/` adds a page view at `/puma_heart_island_navigator/`, a page view at `…/p/<id>/` and the `shared` event. Main page views are all visits; direct visits = main page − `shared`.
+- The inline path-rewriting script in `index.html` is gone; `app.js` reads `?p=` at module load and sends the extra page view and event.
+- [`analytics.md`](analytics.md) and the README describe the overlap and how to subtract it.
+
+**Key technical learnings:**
+- `[gotcha]` Counts sent at page load can run before an async analytics script has loaded, and `window.goatcounter?.count?.()` then drops them without a word. Check for `count`, else wait for the script tag's `load` event. Clicks happen later, so they don't need this.
+- `[insight]` Overlapping counts are fine when they're deliberate and documented: one extra page view per shared visit keeps the main page number simple (all visits), and the `shared` event makes the overlap easy to subtract. `TOTAL` stops being a visit count, though.
+- `[gotcha]` Testing analytics locally: GoatCounter skips localhost, so serve under a fake hostname (Chrome's `--host-resolver-rules=MAP navigator.test 127.0.0.1`) and block the endpoint to log what would be sent. Blocking makes `count.js` retry as an image request, so count only the `Ping` (beacon) requests, or every hit looks doubled. Locally, the canonical link points at another host, so `count.js` uses the address bar path (`/`, sometimes with `?p=`); only the live site shows the real paths.
+
 ## v1.8.0 — GoatCounter analytics (2026-10-23 00:51)
 
 **Review:** not yet
 
 **What was built:**
 - GoatCounter on the main page only, reporting to its own site (`puma-heart-island-nav`), separate from the other site on the same account; footer line says it's cookieless.
-- Shared-link visits (`?p=<id>`) are recorded at the share page's path, `/puma_heart_island_navigator/p/<id>/`.
+- Shared-link visits (`?p=<id>`) are recorded at the share page's path, `/puma_heart_island_navigator/p/<id>/`. (Changed in [v1.8.1](#v181--shared-link-counting-2026-10-23-0102): they now count at the main page too.)
 - Click events: `copy-share/<id>` (複製並分享), `visit/<id>` (拜訪政策島), `puma/header` and `puma/footer` (找找 Puma). The two policy events also go out without the id (`copy-share`, `visit`) as site-wide totals.
 - [`analytics.md`](analytics.md): what's counted and why, excluding your own visits per browser with `#toggle-goatcounter`, reading the numbers, and the parked idea of showing the numbers on the page.
 - Fix: the share-menu `toggle` listener threw for every card's 細節 on every render (111 console errors per load and search).
 
 **Key technical learnings:**
-- `[gotcha]` GoatCounter's `count.js` takes the page path from `<link rel="canonical">` when one exists, dropping the query string, so every `?p=<id>` visit would have been counted as the home page. The fix sets `window.goatcounter.path` from an inline script that reads `?p=` before `app.js` rewrites the URL.
+- `[gotcha]` GoatCounter's `count.js` takes the page path from `<link rel="canonical">` when one exists, dropping the query string, so every `?p=<id>` visit would have been counted as the home page. The fix sets `window.goatcounter.path` from an inline script that reads `?p=` before `app.js` rewrites the URL. (Replaced in [v1.8.1](#v181--shared-link-counting-2026-10-23-0102): the main page view is kept, and `app.js` sends the `p/<id>/` view separately.)
 - `[insight]` Don't put the counter on a page that redirects immediately: the async script loses the race, and the destination page can count the visit instead with a path that says where it came from.
 - `[note]` `count.js` skips localhost, private addresses, `file:`, headless browsers, and any browser with `localStorage.skipgc = "t"`. `#toggle-goatcounter` sets that flag, but per browser, so each in-app browser (Threads, LINE) needs it separately.
 - `[insight]` GoatCounter's public counter (`/counter/<path>.json`) answers one path per request, so per-policy numbers on the page cost about 290 requests. Sending each policy event a second time without its id makes a site-wide total one request. Ship such events before you need them: totals only count from the day they start.
