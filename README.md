@@ -85,6 +85,7 @@ https://sansword.github.io/puma_heart_island_navigator/p/transport-bus/
 - **頁面瀏覽**：主頁記為 `/puma_heart_island_navigator/`。從分享連結進來（`?p=<id>`）記為該分享頁的路徑 `…/p/<id>/`，可以看出哪些政見的分享連結有人點。`count.js` 會用 `canonical` 的路徑而丟掉 `?p=`，所以 `index.html` 先讀出 id 改寫路徑。
 - **點擊事件**：`copy-share/<id>`（複製並分享）、`visit/<id>`（拜訪政策島）、`puma/header` 與 `puma/footer`（找找 Puma 的兩個位置）。連結用 `data-count` 標記，由 `assets/app.js` 送出。
 - 本機（localhost、127.0.0.1）不計數；擋廣告的外掛會擋掉 `gc.zgo.at`，桌機數字會偏低。
+- 排除自己的瀏覽：在每個瀏覽器開一次 `…/#toggle-goatcounter`。細節與如何解讀數字見 [`docs/analytics.md`](docs/analytics.md)。
 
 ## 到政策島找找 Puma
 
