@@ -12,8 +12,8 @@
 | `scripts/share_pages.py` | 在本機畫預覽圖到 `assets/share/`（commit 進 repo 供檢查），部署時產生分享頁 `p/<id>/`（不進 git）；見下方「分享連結」 |
 | `404.html` | 找不到的路徑（例如已下架政見的分享連結）導回首頁 |
 | `data/policies.json` | `https://puma.taipei/heart-island-assets/policies.json` 的快照；網站只用這份 |
-| `data/sync.json` | 資料下載時間 |
-| `scripts/sync.py` | 手動同步：下載官方資料並列出新增、移除、修改的政見，檢查後再 commit |
+| `data/sync.json` | 資料下載時間（`fetchedAt`，頁面「本站資料更新」）與最後檢查時間（`checkedAt`，頁面「最後檢查」） |
+| `scripts/sync.py` | 手動同步：下載官方資料並列出新增、移除、修改的政見，檢查後再 commit；`--check` 只比較不下載 |
 | `.github/workflows/pages.yml` | push 到 `main`（或在 Actions 手動執行）時部署 repo 內的 `data/`；部署時不下載官方資料 |
 
 官方 JSON 供 puma.taipei 自身頁面使用（不開放跨站讀取），所以頁面只讀同站的 `data/`。
@@ -23,7 +23,8 @@
 目前不自動同步：官方資料先在本機檢查，再手動上線。
 
 ```sh
-python3 scripts/sync.py                  # 下載到 data/，列出新增 (+)、移除 (-)、修改 (~) 的政見
+python3 scripts/sync.py --check          # 只檢查：列出新增 (+)、移除 (-)、修改 (~) 的政見與主題，附新舊內容，不寫入 data/；沒有變動時只更新 `data/sync.json` 的 checkedAt
+python3 scripts/sync.py                  # 下載到 data/，列出同樣的變動
 git diff data/                           # 需要時看完整差異
 python3 scripts/share_pages.py --images  # 重畫有變動的政見預覽圖到 assets/share/，打開檢查
 git add data assets/share && git commit -m "Sync policies.json" && git push   # push 後部署

@@ -351,8 +351,10 @@ async function main() {
     fetch("data/sync.json").then((r) => r.json()).catch(() => ({})),
   ]);
   const policies = build(D);
-  const synced = sync.fetchedAt ? new Date(sync.fetchedAt).toLocaleDateString("zh-TW") : "—";
-  $("#meta").textContent = `${D.islands.length} 項政策主題 · ${policies.length} 個細項 · 官方資料核對日 ${D.meta?.verifiedAt || "—"} · 本站資料更新 ${synced}`;
+  const day = (t) => (t ? new Date(t).toLocaleDateString("zh-TW") : "—");
+  // 最後檢查: the last time scripts/sync.py confirmed data/ matches the official data (checkedAt).
+  const checked = sync.checkedAt ? ` · 最後檢查 ${day(sync.checkedAt)}` : "";
+  $("#meta").textContent = `${D.islands.length} 項政策主題 · ${policies.length} 個細項 · 官方資料核對日 ${D.meta?.verifiedAt || "—"} · 本站資料更新 ${day(sync.fetchedAt)}${checked}`;
 
   readState();
   // ?p=<id> (from a shared p/<id>/ link) points at one policy. writeState() drops it from the URL
