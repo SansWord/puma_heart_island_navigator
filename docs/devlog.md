@@ -14,7 +14,7 @@ Learnings from building the 沈伯洋 HEART 政策島 導覽器, newest first.
 
 | Version | Summary |
 |---------|---------|
-| [v1.9.0](#v190--heart-pillar-colors-2026-10-23-2301) | HEART pillar colors: official-style HEART pills, colored letter-and-name badges on cards and share previews, numbered topic pills |
+| [v1.9.0](#v190--heart-pillar-colors-2026-10-23-2306) | HEART pillar colors: official-style HEART pills, colored letter-and-name badges on cards, share previews and the site preview, numbered topic pills |
 | [v1.8.1](#v181--shared-link-counting-2026-10-23-0102) | `shared` event; shared-link visits count at the main page and at `p/<id>/`, overlap documented |
 | [v1.8.0](#v180--goatcounter-analytics-2026-10-23-0051) | GoatCounter on the main page: shared-link visits per policy, click events with site-wide totals, `docs/analytics.md`; 細節 console-error fix |
 | [v1.7.0](#v170--share-links-and-preview-cards-2026-10-22-1029) | Per-policy share pages and preview images, 複製並分享 button, 找找 Puma, rename to 導覽器, manual data sync |
@@ -36,7 +36,7 @@ Learnings from building the 沈伯洋 HEART 政策島 導覽器, newest first.
 | [v1.0.1](#v101--build-time-data-fetch-2026-10-22-0400) | Pages now deploys through GitHub Actions and downloads the official JSON at build time; no more data commits |
 | [v1.0.0](#v100--initial-release-2026-10-22-0356) | Static per-year view of the 94 HEART policies, daily data sync via GitHub Actions, published on GitHub Pages |
 
-## v1.9.0 — HEART pillar colors (2026-10-23 23:01)
+## v1.9.0 — HEART pillar colors (2026-10-23 23:06)
 
 **Review:** not yet
 
@@ -46,6 +46,7 @@ Learnings from building the 沈伯洋 HEART 政策島 導覽器, newest first.
 - **Card badges**: one per HEART letter with its name (**E** 機會), white on the pillar color, in place of the plain orange letters. The tag row wraps if a narrow card runs out of room; three badges still fit beside the topic name at 328px.
 - **Topic pills** lead with the island number (01 市府核心 … 14 客家), the way the official map tells topics apart. Cards and pills share one `islandNo()` format.
 - **Share previews**: the same badges replace the white "HT" letters in the top-right corner; all 94 images re-rendered.
+- **Site preview** (`assets/og.png`): the five badges (H 空間 … T 時間) sit in the top row across from the 非官方 label, matching the per-policy previews. A badge row under the subtitle crowded the timing tiles at 1200×630.
 - Work happens on the `visual-refresh` branch so `main` stays the "before" for comparison. Before/after images for Threads (page and share preview, using `transport-bike`) are in `media/before-after/`, not committed.
 
 **Key technical learnings:**

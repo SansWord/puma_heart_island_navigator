@@ -39,10 +39,20 @@
     font-weight: 900;
     color: #ad4d2a;
   }
+  .top { display: flex; justify-content: space-between; align-items: center; }
+  .top .eyebrow { align-self: auto; }
+  .heart { display: flex; gap: 8px; }
+  .heart span { padding: 4px 14px; border-radius: 10px; color: #fff; font-size: 28px; font-weight: 900; line-height: 1.3; }
 </style>
 </head>
 <body>
-  <div class="eyebrow">非官方 · 小水滴自主整理</div>
+  <div class="top">
+    <div class="eyebrow">非官方 · 小水滴自主整理</div>
+    <!-- HEART pillar colors, as --heart-h … --heart-t in assets/style.css. -->
+    <div class="heart">
+      <span style="background:#b00201">H 空間</span><span style="background:#5d3188">E 機會</span><span style="background:#0753a7">A 陪伴</span><span style="background:#21586c">R 韌性</span><span style="background:#13744b">T 時間</span>
+    </div>
+  </div>
   <h1>沈伯洋 HEART 政策島<br>導覽器</h1>
   <p class="lede">每一項政見，依承諾的期程排開</p>
   <div class="years"><span>短期</span><span>中期</span><span>長期</span><span>分階段</span><span>施政方向</span></div>
