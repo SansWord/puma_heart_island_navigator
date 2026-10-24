@@ -13,8 +13,9 @@
 | `404.html` | 找不到的路徑（例如已下架政見的分享連結）導回首頁 |
 | `data/policies.json` | `https://puma.taipei/heart-island-assets/policies.json` 的快照；網站只用這份 |
 | `data/sync.json` | 資料下載時間（`fetchedAt`，頁面「本站資料更新」）與最後檢查時間（`checkedAt`，頁面「最後檢查」） |
+| `.githooks/pre-push` | push 到 `main` 前檢查官方資料，有變動就擋下（啟用：`git config core.hooksPath .githooks`） |
 | `scripts/sync.py` | 手動同步：下載官方資料並列出新增、移除、修改的政見，檢查後再 commit；`--check` 只比較不下載 |
-| `.github/workflows/pages.yml` | push 到 `main`（或在 Actions 手動執行）時部署 repo 內的 `data/`；部署時不下載官方資料 |
+| `.github/workflows/pages.yml` | push 到 `main`（或在 Actions 手動執行）時部署 repo 內的 `data/`；部署時只比對官方資料，沒變就更新上線版的 `checkedAt`，不會改用官方資料 |
 
 官方 JSON 供 puma.taipei 自身頁面使用（不開放跨站讀取），所以頁面只讀同站的 `data/`。
 
@@ -31,6 +32,18 @@ git add data assets/share && git commit -m "Sync policies.json" && git push   # 
 ```
 
 下載失敗時 `data/` 保持不變。不想上線就 `git checkout data/` 還原。
+
+### push 前自動檢查
+
+`.githooks/pre-push` 在 push 到 `main`（會部署）前跑 `sync.py --check --no-stamp`。每個 clone 啟用一次：
+
+```sh
+git config core.hooksPath .githooks
+```
+
+- 官方資料沒變：照常 push。部署時再檢查一次，把 `checkedAt` 寫進上線的 `data/sync.json`（頁面「最後檢查」），不用另外 commit。
+- 官方資料有變動：擋下 push 並列出變動。要更新就跑 `sync.py`、檢查後 commit 再 push；要照舊上線就 `git push --no-verify`（部署不會更新 checkedAt）。
+- 檢查失敗（下載不到）：同樣擋下，可重試或用 `--no-verify`。
 
 ## 本機預覽
 

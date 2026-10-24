@@ -23,6 +23,11 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - uses: actions/checkout@v4
+      # Publishes 最後檢查: stamps checkedAt into the deployed data/sync.json when the committed data
+      # still matches the official data. Never fails the deploy; .githooks/pre-push stops pushes when
+      # the data changed.
+      - name: Check official data
+        run: python3 scripts/sync.py --check || echo "::warning::official data check exited $? (10 = official data changed); checkedAt not updated"
       # One link-preview page per policy (p/<id>/). Preview images are rendered locally and
       # committed to assets/share/ for review; stale or missing ones fall back to assets/og.png.
       - name: Generate share pages

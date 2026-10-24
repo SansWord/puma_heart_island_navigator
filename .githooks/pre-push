@@ -1,0 +1,42 @@
+#!/bin/sh
+# Before a push to main (which deploys), checks the official data with scripts/sync.py --check.
+# Changed: the push stops. Update first (python3 scripts/sync.py), or push the committed data as is
+# with git push --no-verify. Unchanged: the push goes ahead, and the deploy stamps checkedAt (最後檢查).
+# Enable once per clone: git config core.hooksPath .githooks
+deploys=0
+while read -r local_ref local_sha remote_ref remote_sha; do
+  # A deleted ref arrives as an all-zero sha.
+  [ "$remote_ref" = "refs/heads/main" ] && [ "${local_sha#0000000}" = "$local_sha" ] && deploys=1
+done
+[ "$deploys" = 1 ] || exit 0
+
+cd "$(git rev-parse --show-toplevel)" || exit 1
+status=0
+python3 scripts/sync.py --check --no-stamp || status=$?
+case $status in
+  0) exit 0 ;;
+  10)
+    cat >&2 <<'MSG'
+
+pre-push: stopped. The official data changed (listed above), so nothing was pushed.
+
+Not handling the update now? Push your commits with the data you already have:
+  git push --no-verify
+  (the site keeps its current data; 最後檢查 isn't updated)
+
+Including the update:
+  1. python3 scripts/sync.py                    download the new data into data/
+  2. git diff data/                             review the changes
+  3. python3 scripts/share_pages.py --stale     list policies whose preview needs re-rendering
+     python3 scripts/share_pages.py --images    re-render them (run again if a few fail)
+  4. git add data assets/share
+     git commit -m "Sync policies.json"
+  5. git push                                   this check runs again and should pass
+MSG
+    exit 1
+    ;;
+  *)
+    echo "pre-push: stopped, couldn't check the official data. Retry, or push without the check: git push --no-verify" >&2
+    exit 1
+    ;;
+esac

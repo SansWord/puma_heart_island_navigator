@@ -4,7 +4,8 @@
 Deploys publish only the committed data/, so a sync goes live when it's committed and pushed:
 
     python3 scripts/sync.py --check   # only look: summary and old → new values; data/ untouched,
-                                      # except checkedAt when nothing changed
+                                      # except checkedAt when nothing changed; exits 10 if anything did
+    python3 scripts/sync.py --check --no-stamp   # same, never writes (.githooks/pre-push)
     python3 scripts/sync.py           # download into data/ + the same summary
     git diff data/                    # full diff, if the summary needs a closer look
     git commit -am "Sync policies.json" && git push
@@ -24,6 +25,9 @@ DATA = ROOT / "data/policies.json"
 SYNC = ROOT / "data/sync.json"
 # Fields shown on the page; a change in any of them is listed per policy.
 FIELDS = ["name", "plain", "who", "facts", "phase", "sources"]
+# --check exit status when the official data differs (1 is a failed download); .githooks/pre-push and
+# the deploy read it.
+CHANGED = 10
 # Topic fields the page uses (name and number on cards and pills, heart for the HEART badges).
 ISLAND_FIELDS = ["name", "number", "heart"]
 
@@ -64,6 +68,7 @@ def stamp(**fields):
 
 def main():
     check = "--check" in sys.argv[1:]
+    no_stamp = "--no-stamp" in sys.argv[1:]
     try:
         raw = subprocess.run(["curl", "-fsSL", f"{URL}?t={int(time.time())}"],
                              check=True, capture_output=True, timeout=60).stdout
@@ -88,7 +93,7 @@ def main():
     if not check:
         DATA.write_bytes(raw)  # byte-for-byte, so git diff shows only the official changes
         stamp(fetchedAt=True, checkedAt=True)
-    elif old == new:
+    elif old == new and not no_stamp:
         stamp(checkedAt=True)  # a check that finds nothing new still confirms the data is current
 
     print(f"官方資料核對日 {old['meta'].get('verifiedAt')} → {new['meta'].get('verifiedAt')}")
@@ -109,9 +114,10 @@ def main():
     if other:
         print(f"  Other fields differ: {', '.join(other)}" + ("" if check else " (see git diff data/)."))
     if old == new:
-        print("  No changes." + (" checkedAt updated in data/sync.json." if check else ""))
+        print("  No changes." + (" checkedAt updated in data/sync.json." if check and not no_stamp else ""))
     elif check:
         print("Only checked; data/ unchanged. Run python3 scripts/sync.py to download.")
+        sys.exit(CHANGED)
 
 
 if __name__ == "__main__":
