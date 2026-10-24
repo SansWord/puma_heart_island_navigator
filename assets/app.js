@@ -93,6 +93,12 @@ function toast(message) {
 
 // HEART 政策願景 letters as named on https://puma.taipei/heart.
 const HEART = { H: "空間", E: "機會", A: "陪伴", R: "韌性", T: "時間" };
+// One letter in its pillar color (--heart-h … --heart-t in style.css).
+const heartLetter = (h) => `<span class="heart-l" data-h="${esc(h)}">${esc(h)}</span>`;
+// Island numbers read 01–14, as on the official island labels.
+const islandNo = (n) => String(n).padStart(2, "0");
+// Card badge: letter and name, white on the pillar color.
+const heartBadge = (h) => `<span class="heart-b" data-h="${esc(h)}"><b>${esc(h)}</b>${esc(HEART[h] || "")}</span>`;
 
 // Two ways the official data describes timing, kept as two metrics:
 // - 任期期程: term years and the official 短期／中期／長期, on one scale.
@@ -255,7 +261,7 @@ function card(p, bucketId) {
       </div>
     </details>`;
   return `<article class="card" data-id="${esc(p.id)}">
-    <div class="tag"><span>${String(p.island.number).padStart(2, "0")} ${esc(p.islandName)}</span><span class="heart">${esc(p.heart.join(""))}</span></div>
+    <div class="tag"><span>${islandNo(p.island.number)} ${esc(p.islandName)}</span><span class="heart">${p.heart.map(heartBadge).join("")}</span></div>
     <h3>${esc(p.name)}</h3>
     ${stepsHtml}
     ${p.desc ? `<p class="desc">${esc(p.desc)}</p>` : ""}
@@ -311,9 +317,14 @@ function chips(el, items, set, rerender, available = () => true) {
   const all = document.createElement("button");
   all.textContent = "全部";
   el.append(all);
-  const buttons = items.map(({ value, label }) => {
+  const buttons = items.map(({ value, label, heart, num }) => {
     const btn = document.createElement("button");
-    btn.textContent = label;
+    // A HEART pill shows its letter in the pillar color, a topic pill its island number, ahead of the label.
+    if (heart) {
+      btn.dataset.h = heart;
+      btn.innerHTML = `${heartLetter(heart)} ${esc(label)}`;
+    } else if (num) btn.innerHTML = `<span class="num">${islandNo(num)}</span> ${esc(label)}`;
+    else btn.textContent = label;
     btn.onclick = () => {
       set.has(value) ? set.delete(value) : set.add(value);
       rerender();
@@ -367,13 +378,13 @@ async function main() {
   };
   syncHeart = chips(
     $("#heart-chips"),
-    Object.entries(HEART).map(([h, word]) => ({ value: h, label: `${h} ${word}` })),
+    Object.entries(HEART).map(([h, word]) => ({ value: h, label: word, heart: h })),
     state.heart,
     rerender
   );
   syncIsland = chips(
     $("#island-chips"),
-    D.islands.map((i) => ({ value: i.id, label: zh(i.name) })),
+    D.islands.map((i) => ({ value: i.id, label: zh(i.name), num: i.number })),
     state.island,
     rerender,
     sharesHeart

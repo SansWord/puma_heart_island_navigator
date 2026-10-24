@@ -11,6 +11,12 @@
   --accent-ink: #ffffff;
   --highlight: #fcea8b;   /* brand-yellow */
   --chip: #fdeee5;
+  /* HEART pillar colors, as on puma.taipei/heart. All pass AA as text on our light surfaces. */
+  --heart-h: #b00201;
+  --heart-e: #5d3188;
+  --heart-a: #0753a7;
+  --heart-r: #21586c;
+  --heart-t: #13744b;
   --radius: 12px;
   color-scheme: light;
   font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
@@ -121,6 +127,20 @@ h1 { margin: 10px 0 10px; font-size: clamp(30px, 6vw, 48px); font-weight: 900; l
   border-color: var(--accent);
   color: var(--accent-ink);
 }
+/* HEART pills follow the official site's HEART cards: white, letter and word in the pillar color;
+   selected fills with it. */
+[data-h="H"] { --heart: var(--heart-h); }
+[data-h="E"] { --heart: var(--heart-e); }
+[data-h="A"] { --heart: var(--heart-a); }
+[data-h="R"] { --heart: var(--heart-r); }
+[data-h="T"] { --heart: var(--heart-t); }
+.chips button[data-h] { background: var(--surface); color: var(--heart); font-weight: 700; }
+.chips button[data-h] .heart-l { font-weight: 900; }
+.chips button[data-h]:hover:enabled { border-color: var(--heart); }
+.chips button[data-h][aria-pressed="true"] { background: var(--heart); border-color: var(--heart); color: #fff; }
+/* Topic pills lead with the island number, like the official map labels. */
+.chips .num { font-weight: 700; color: var(--accent); }
+.chips button[aria-pressed="true"] .num { color: inherit; }
 @media (max-width: 540px) {
   .chips { gap: 4px; }
   .chips button { padding: 4px 8px; }
@@ -185,8 +205,23 @@ h1 { margin: 10px 0 10px; font-size: clamp(30px, 6vw, 48px); font-weight: 900; l
   border: 1px solid var(--line);
   box-shadow: 0 -4px 0 0 var(--brand);
 }
-.card .tag { display: flex; justify-content: space-between; gap: 8px; font-size: 12px; color: var(--muted); }
-.card .heart { font-weight: 700; letter-spacing: .1em; color: var(--accent); }
+/* Wraps so a card with three HEART badges keeps its topic name on narrow cards. */
+.card .tag { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 4px 8px; font-size: 12px; color: var(--muted); }
+/* One badge per HEART letter: letter and name, white on the pillar color. */
+.card .heart { display: inline-flex; flex-wrap: wrap; gap: 3px; margin-left: auto; }
+.card .heart-b {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: 4px;
+  background: var(--heart);
+  color: #fff;
+  font-size: 11px;
+  line-height: 1;
+}
+.card .heart-b b { font-weight: 900; }
 .card h3 { margin: 0; font-size: 17px; font-weight: 700; }
 .card .steps { margin: 0; padding: 0; list-style: none; }
 .card .steps li { font-size: 14px; }
