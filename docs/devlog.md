@@ -14,6 +14,7 @@ Learnings from building the 沈伯洋 HEART 政策島 導覽器, newest first.
 
 | Version | Summary |
 |---------|---------|
+| [v1.9.0](#v190--heart-pillar-colors-2026-10-23-2301) | HEART pillar colors: official-style HEART pills, colored letter-and-name badges on cards and share previews, numbered topic pills |
 | [v1.8.1](#v181--shared-link-counting-2026-10-23-0102) | `shared` event; shared-link visits count at the main page and at `p/<id>/`, overlap documented |
 | [v1.8.0](#v180--goatcounter-analytics-2026-10-23-0051) | GoatCounter on the main page: shared-link visits per policy, click events with site-wide totals, `docs/analytics.md`; 細節 console-error fix |
 | [v1.7.0](#v170--share-links-and-preview-cards-2026-10-22-1029) | Per-policy share pages and preview images, 複製並分享 button, 找找 Puma, rename to 導覽器, manual data sync |
@@ -34,6 +35,30 @@ Learnings from building the 沈伯洋 HEART 政策島 導覽器, newest first.
 | [v1.1.0](#v110--puma-brand-theme-and-favicon-2026-10-22-0402) | Light-only theme from puma.taipei's brand tokens, orange header band, Noto Sans TC, official favicon |
 | [v1.0.1](#v101--build-time-data-fetch-2026-10-22-0400) | Pages now deploys through GitHub Actions and downloads the official JSON at build time; no more data commits |
 | [v1.0.0](#v100--initial-release-2026-10-22-0356) | Static per-year view of the 94 HEART policies, daily data sync via GitHub Actions, published on GitHub Pages |
+
+## v1.9.0 — HEART pillar colors (2026-10-23 23:01)
+
+**Review:** not yet
+
+**What was built:**
+- The five HEART pillar colors from puma.taipei (H `#b00201`, E `#5d3188`, A `#0753a7`, R `#21586c`, T `#13744b`) as `--heart-h` … `--heart-t` in `style.css`. The orange `#db6a41` stays the frame color (header band, card edges, section lines).
+- **HEART filter pills** follow the official `/heart` cards: white, peach border, letter and word in the pillar color; a selected pill fills with its color.
+- **Card badges**: one per HEART letter with its name (**E** 機會), white on the pillar color, in place of the plain orange letters. The tag row wraps if a narrow card runs out of room; three badges still fit beside the topic name at 328px.
+- **Topic pills** lead with the island number (01 市府核心 … 14 客家), the way the official map tells topics apart. Cards and pills share one `islandNo()` format.
+- **Share previews**: the same badges replace the white "HT" letters in the top-right corner; all 94 images re-rendered.
+- Work happens on the `visual-refresh` branch so `main` stays the "before" for comparison. Before/after images for Threads (page and share preview, using `transport-bike`) are in `media/before-after/`, not committed.
+
+**Key technical learnings:**
+- `[insight]` The official site gives the 14 topics no colors: the data's palette has only coral, ink, cream and yellow; the 3D island tops are all white; map labels differ only by number. Color means HEART there, so adding topic colors would compete with the five pillars. Numbers carry topic identity instead.
+- `[gotcha]` `puma.taipei/heart-island` loads `./ui.css` and `./app.js`, but without a trailing slash those resolve to `/ui.css`, which returns a 404 HTML page (the same 27,874 bytes for every file). The real files live under `/heart-island-assets/`.
+- `[note]` All five pillar colors pass WCAG AA as small text on white, the page background and the pill fill (5.1–9.3:1), and white text on them passes too. Coral `#db6a41` on white is only 3.4:1, so the topic numbers use `--accent` `#ad4d2a`.
+- `[insight]` Mock UI changes on the real page without touching the repo: a scratch folder with symlinks to `assets/` and `data/`, a copy of `index.html` that adds `mock.css` and `mock.js`, a `MutationObserver` that adjusts the rendered markup, and a floating panel that switches option classes on `<body>`. Comparing options on live data made the choice quick.
+- `[insight]` Before/after screenshots of the page: `git archive main | tar -x` into a scratch folder served on a second port, plus a `shot.html` copy of each version with CSS hiding the header and summary, and the same URL state (`?heart=T&island=transport&q=YouBike`) for both. Headless Chrome at `--force-device-scale-factor=2`, then a small HTML page lays out the pair with 改版前／改版後 labels and gets screenshotted.
+- `[gotcha]` `python3 -I` (isolated mode) skips user site-packages, so a Pillow installed with `pip install --user` disappears.
+- `[note]` Any change to the share card template changes every card hash, so all 94 previews go stale at once and fall back to `og.png` until re-rendered. About 2 of 94 headless renders fail per run; running `--images` again renders only what's still stale.
+
+**Process learnings:**
+- `[note]` For a multi-session visual refresh, a branch keeps `main` as the baseline: `git diff main..visual-refresh` for code, and both versions served side by side for screenshots.
 
 ## v1.8.1 — Shared-link counting (2026-10-23 01:02)
 
