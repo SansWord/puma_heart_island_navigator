@@ -14,6 +14,7 @@ Learnings from building the 沈伯洋 HEART 政策島 導覽器, newest first.
 
 | Version | Summary |
 |---------|---------|
+| [v1.9.1](#v191--check-only-sync-and-versioned-site-preview-2026-10-23-2340) | `sync.py --check` shows old → new without downloading; 最後檢查 date on the page; `og:image` versioned by its hash |
 | [v1.9.0](#v190--heart-pillar-colors-2026-10-23-2306) | HEART pillar colors: official-style HEART pills, colored letter-and-name badges on cards, share previews and the site preview, numbered topic pills |
 | [v1.8.1](#v181--shared-link-counting-2026-10-23-0102) | `shared` event; shared-link visits count at the main page and at `p/<id>/`, overlap documented |
 | [v1.8.0](#v180--goatcounter-analytics-2026-10-23-0051) | GoatCounter on the main page: shared-link visits per policy, click events with site-wide totals, `docs/analytics.md`; 細節 console-error fix |
@@ -35,6 +36,24 @@ Learnings from building the 沈伯洋 HEART 政策島 導覽器, newest first.
 | [v1.1.0](#v110--puma-brand-theme-and-favicon-2026-10-22-0402) | Light-only theme from puma.taipei's brand tokens, orange header band, Noto Sans TC, official favicon |
 | [v1.0.1](#v101--build-time-data-fetch-2026-10-22-0400) | Pages now deploys through GitHub Actions and downloads the official JSON at build time; no more data commits |
 | [v1.0.0](#v100--initial-release-2026-10-22-0356) | Static per-year view of the 94 HEART policies, daily data sync via GitHub Actions, published on GitHub Pages |
+
+## v1.9.1 — Check-only sync and versioned site preview (2026-10-23 23:40)
+
+**Review:** not yet
+
+**What was built:**
+- `scripts/sync.py --check`: downloads the official data and compares it with `data/policies.json` without writing it. It lists added (`+`), removed (`-`) and changed (`~`) policies, and changed topic name, number or HEART letters, each with the old and new value; other differing top-level keys are named. A plain `sync.py` run prints the same detail.
+- `data/sync.json` gains `checkedAt`: the last time `data/` was confirmed to match the official data. A `--check` that finds no changes stamps only `checkedAt`; one that finds changes writes nothing; a full sync stamps `fetchedAt` and `checkedAt`. The page shows it as 最後檢查 after 本站資料更新.
+- `og:image` for the main page is `assets/og.png?v=<first 8 hex of its SHA-256>`. `scripts/og.sh` stamps it into `index.html` after rendering, and share pages use the same URL as their fallback.
+- Old site preview kept locally as `media/before-after/og-old.png`; the 95 page URLs for Meta's debugger in `media/refresh-urls.txt` (both git-ignored).
+
+**Key technical learnings:**
+- `[insight]` Platforms cache link previews by the **page** URL, so a versioned `og:image` alone changes nothing until they re-read the page. It matters once they do: the new image URL can't be served from an image cache. Meta's Sharing Debugger (Scrape Again, or the Batch Invalidator for many URLs) forces the re-read; run it only after the deploy is live, or it caches the old tags again.
+- `[note]` In the debugger, 「此網址尚未分享在 Facebook」 means no cached copy exists, so there's nothing stale to refresh. The `fb:app_id` warning only matters for Facebook Insights or app features; previews work without it. Previews on Threads posts already published may keep their old image.
+- `[insight]` A "last checked" date is worth publishing separately from "last updated": when the official data hasn't changed, 本站資料更新 alone reads as stale even though the data is current. Stamp it only when the check finds nothing new; a check that finds changes means the data isn't current yet.
+- `[note]` Headless Chrome renders `og-card.html` byte-for-byte the same each run, so the image hash only changes when the design does.
+- `[gotcha]` zsh treats `$c:a` as a path modifier (`:a` = absolute path), so `git show $c:assets/og.png` in a loop asks for a path like `/repo/<hash>ssets/og.png`. Write `${c}:assets/og.png`.
+- `[note]` After changing `app.js` or `data/*.json`, a normal reload can serve the cached files; hard-reload (Cmd+Shift+R) before judging the change.
 
 ## v1.9.0 — HEART pillar colors (2026-10-23 23:06)
 
