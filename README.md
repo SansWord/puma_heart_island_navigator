@@ -74,7 +74,7 @@ https://sansword.github.io/puma_heart_island_navigator/p/transport-bus/
 - **id 從哪來**：官方資料 `islands[].buildings[].id`（例如 `transport-bus`）。官方政策島的 3D 建築也用這些 id 對應，預期不會隨資料更新改變。新增的政見下次部署就有分享頁；已移除的政見連結會 404，由 `404.html` 導回首頁。
 - **預覽圖在本機產生、進 repo**：`python3 scripts/share_pages.py --images` 用 headless Chrome 畫出每項的 1200×630 預覽圖到 `assets/share/<id>.png`，commit 前可以逐張檢查。圖上依預填文字的語氣寫「沈伯洋的政見：「政見名稱」」接說明，另有主題、時程，以及「點入看更多，並分享最觸動你的政策 →」。`--stale` 列出需要重畫的政見。
 - **哪些圖需要重畫**：每張圖完全由它的卡片 HTML（政見文字＋版型）決定。`assets/share/manifest.json` 記錄每張圖畫的是哪個 hash；資料或版型改了，hash 對不上就重畫，只畫有變的。已移除的政見，圖也會刪掉。
-- **部署**：只跑 `scripts/share_pages.py`（不畫圖）產生 `p/<id>/` 頁面。圖過期或缺圖的政見改用 `assets/og.png`，部署記錄會出現警告，不會顯示舊文字的圖。圖片網址帶 `?v=<hash>`，換圖後平台會抓新圖。
+- **部署**：只跑 `scripts/share_pages.py`（不畫圖）產生 `p/<id>/` 頁面。圖過期或缺圖的政見改用 `assets/og.png`，部署記錄會出現警告，不會顯示舊文字的圖。圖片網址帶 `?v=<hash>`，換圖後平台會抓新圖；`assets/og.png` 也一樣，`scripts/og.sh` 重畫後會把新 hash 寫進 `index.html`。
 - **本機預覽**：`scripts/serve.sh` 會先產生分享頁。
 - **平台快取**：各平台會快取第一次抓到的預覽。改過文字後，舊的分享可能仍顯示舊版；可用 Meta 的 [Sharing Debugger](https://developers.facebook.com/tools/debug/) 重新抓取。
 

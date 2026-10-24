@@ -37,6 +37,9 @@ ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "p"
 SHARE = ROOT / "assets/share"  # committed preview images, <id>.png
 MANIFEST = SHARE / "manifest.json"
+# Fallback preview, versioned by its own hash like the per-policy images (scripts/og.sh stamps the
+# same ?v= into index.html).
+OG_IMAGE = f"{SITE}assets/og.png?v={hashlib.sha256((ROOT / 'assets/og.png').read_bytes()).hexdigest()[:8]}"
 CHROMES = [
     "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
     "google-chrome",
@@ -80,7 +83,7 @@ def page(p, fresh):
     e = lambda s: html.escape(s, quote=True)
     url = f"{SITE}p/{p['id']}/"
     # ?v= changes with the image, so platforms that cache previews by image URL fetch the new one.
-    image = f"{SITE}assets/share/{p['id']}.png?v={p['hash'][:8]}" if fresh else f"{SITE}assets/og.png"
+    image = f"{SITE}assets/share/{p['id']}.png?v={p['hash'][:8]}" if fresh else OG_IMAGE
     title = f"{p['name']}｜沈伯洋 HEART 政策島 導覽器"
     desc = p["desc"] or f"{p['island']}的政見，依承諾的期程整理（非官方整理）。"
     target = f"../../?p={p['id']}"
