@@ -46,6 +46,17 @@ CHROMES = [
 ]
 
 
+# HEART 政策願景 letters as named on https://puma.taipei/heart, with their pillar colors (same as
+# --heart-h … --heart-t in assets/style.css).
+HEART = {
+    "H": ("空間", "#b00201"),
+    "E": ("機會", "#5d3188"),
+    "A": ("陪伴", "#0753a7"),
+    "R": ("韌性", "#21586c"),
+    "T": ("時間", "#13744b"),
+}
+
+
 def zh(v):
     return v if isinstance(v, str) else (v or {}).get("zh") or ""
 
@@ -59,7 +70,7 @@ def policies(data):
                 "name": zh(b["name"]),
                 "desc": zh(b.get("plain")),
                 "island": f'{isl["number"]:02d} {zh(isl["name"])}',
-                "heart": "".join(isl.get("heart") or []),
+                "heart": [h for h in isl.get("heart") or [] if h in HEART],
                 # Policies without a timing code are listed under 施政方向 on the main page.
                 "when": zh(phase.get("label")) or ("" if phase.get("stages") else "施政方向"),
             }
@@ -121,6 +132,7 @@ def card(p):
     # Clamped text sits in an inner span: -webkit-line-clamp on a padded box lets the next line
     # show through the padding.
     when = f'<div class="when"><span>{e(p["when"])}</span></div>' if p["when"] else ""
+    heart = "".join(f'<span style="background: {HEART[h][1]}">{h} {HEART[h][0]}</span>' for h in p["heart"])
     return f"""<!doctype html>
 <html lang="zh-Hant-TW">
 <head>
@@ -149,7 +161,9 @@ def card(p):
   }}
   .tags {{ display: flex; align-items: baseline; gap: 18px; color: #fff; font-weight: 900; }}
   .island {{ font-size: 32px; }}
-  .heart {{ font-size: 40px; letter-spacing: .15em; }}
+  /* One badge per HEART letter, as on the main page's cards: letter and name, white on the pillar color. */
+  .heart {{ display: flex; gap: 8px; }}
+  .heart span {{ padding: 4px 14px; border-radius: 10px; color: #fff; font-size: 30px; line-height: 1.3; }}
   /* The opening 「 hangs into the margin (it has built-in space on its left); only line one. */
   h1 .q {{ margin-left: -.45em; }}
   .kicker {{ flex: none; margin-top: 18px; font-size: 64px; font-weight: 900; line-height: 1.1; }}
@@ -174,7 +188,7 @@ def card(p):
 </style>
 </head>
 <body>
-  <div class="top"><span class="eyebrow">非官方 · 小水滴自主整理</span><span class="tags"><span class="island">{e(p["island"])}</span><span class="heart">{e(p["heart"])}</span></span></div>
+  <div class="top"><span class="eyebrow">非官方 · 小水滴自主整理</span><span class="tags"><span class="island">{e(p["island"])}</span><span class="heart">{heart}</span></span></div>
   <div class="kicker">沈伯洋的政見：</div>
   <h1><span class="q">「</span>{e(p["name"])}」</h1>
   <p class="desc">{e(p["desc"])}</p>
